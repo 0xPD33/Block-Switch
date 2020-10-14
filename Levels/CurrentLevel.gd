@@ -3,11 +3,13 @@ extends Node2D
 var current_level
 var next_level
 var level_number : int
-var level_loaded = false
 
-var ms = 0
-var s = 0
-var m = 0
+# rating calculation: count amount of blocks in level and divide by time or something idk
+var possible_ratings : PoolStringArray = ["What are you doing?", "Bad.", "Meh.", "Fine.", "Good!", "Great!", "Awesome!", "Perfect!"]
+var rating_level : int
+
+var timer_started : bool = false
+var total_time : float
 
 var time setget set_time, get_time
 
@@ -23,6 +25,12 @@ func get_time():
 func _ready():
 	current_level = load("res://Levels/Level1.tscn")
 	level_number = 1
+
+
+func _process(delta):
+	if timer_started:
+		total_time += delta
+		set_time("Time: " + str(stepify(total_time, 0.01)) + " seconds")
 
 
 func restart_level():
@@ -56,45 +64,24 @@ func load_next_level():
 	add_child(next_level)
 	
 	current_level = next_level
-	
 	Global.level_done = false
 
 
-func _process(delta):
-	# I need to format this. Working with timers is too inaccurate.
-	var OS_ms = OS.get_ticks_msec()
+func calculate_rating():
+	var number_of_blocks = get_tree().get_nodes_in_group("Block").size()
 	
-	if ms > 999:
-		s += 1
-		ms = 0
+	rating_level = number_of_blocks / total_time
+	print(rating_level)
 	
-	if s > 59:
-		m += 1
-		s = 0
-	
-	
-	set_time(str(m) + ":" + str(s) + ":" + str(ms))
-	print(time)
+	var rating : String = possible_ratings[rating_level]
+	return rating
 
 
 func start_timer():
-	ms = 0
-	s = 0
-	m = 0
-	var timer = Timer.new()
-	timer.wait_time = 0.01
-	timer.name = "CompletionTimer" + str(level_number)
-	add_child(timer)
-	timer.connect("timeout", self, "_on_timer_timeout")
-	timer.start()
+	timer_started = true
 
 
 func stop_timer():
-	for node in get_children():
-		if node is Timer:
-			node.queue_free()
-
-
-func _on_timer_timeout():
-	ms += 10
+	timer_started = false
+	total_time = 0
 

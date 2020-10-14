@@ -34,6 +34,7 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "fade_in"
+length = 1.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
@@ -77,7 +78,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.7, 1 ),
+"times": PoolRealArray( 1.1, 1.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -89,7 +90,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.7, 1 ),
+"times": PoolRealArray( 1.1, 1.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -105,6 +106,30 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("VBoxContainer/RatingLabel:percent_visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.7, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("VBoxContainer/ButtonContainer/RetryButton:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 1.1, 1.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -181,6 +206,30 @@ tracks/5/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("VBoxContainer/RatingLabel:percent_visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("VBoxContainer/ButtonContainer/RetryButton:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="LevelDone" type="Control"]
 anchor_right = 1.0
@@ -216,7 +265,7 @@ __meta__ = {
 margin_right = 125.0
 margin_bottom = 25.0
 custom_fonts/font = SubResource( 1 )
-text = "Level done!"
+text = "Level 1 done!"
 align = 1
 valign = 1
 percent_visible = 0.0
@@ -226,21 +275,31 @@ margin_top = 29.0
 margin_right = 125.0
 margin_bottom = 42.0
 custom_fonts/font = SubResource( 2 )
-text = "Time: 0.00 seconds"
+text = "Time: 0 seconds"
+align = 1
+valign = 1
+percent_visible = 0.0
+
+[node name="RatingLabel" type="Label" parent="VBoxContainer"]
+margin_top = 46.0
+margin_right = 125.0
+margin_bottom = 59.0
+custom_fonts/font = SubResource( 2 )
+text = "Perfect!"
 align = 1
 valign = 1
 percent_visible = 0.0
 
 [node name="ButtonContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 46.0
+margin_top = 63.0
 margin_right = 125.0
-margin_bottom = 69.0
+margin_bottom = 86.0
 alignment = 1
 
 [node name="ContinueButton" type="Button" parent="VBoxContainer/ButtonContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 23.0
-margin_right = 70.0
+margin_left = 5.0
+margin_right = 52.0
 margin_bottom = 23.0
 custom_styles/hover = SubResource( 3 )
 custom_styles/pressed = SubResource( 3 )
@@ -254,10 +313,27 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="RetryButton" type="Button" parent="VBoxContainer/ButtonContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 56.0
+margin_right = 89.0
+margin_bottom = 23.0
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Retry"
+__meta__ = {
+"_editor_description_": ""
+}
+
 [node name="QuitButton" type="Button" parent="VBoxContainer/ButtonContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 74.0
-margin_right = 101.0
+margin_left = 93.0
+margin_right = 120.0
 margin_bottom = 23.0
 custom_styles/hover = SubResource( 3 )
 custom_styles/pressed = SubResource( 3 )
@@ -276,4 +352,5 @@ playback_speed = 2.0
 anims/fade_in = SubResource( 5 )
 anims/fade_out = SubResource( 6 )
 [connection signal="pressed" from="VBoxContainer/ButtonContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonContainer/RetryButton" to="." method="_on_RetryButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/ButtonContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

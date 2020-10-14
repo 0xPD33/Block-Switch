@@ -50,14 +50,19 @@ func player_death(player):
 
 func level_done():
 	Global.level_done = true
-	current_level.stop_timer()
 	var completion_time = current_level.get_time()
+	var completion_rating = current_level.calculate_rating()
+	current_level.stop_timer()
+	level_done_scene.done_label.text = "Level " + str(current_level.level_number) + " done!"
 	level_done_scene.time_label.text = str(completion_time)
+	level_done_scene.rating_label.text = completion_rating
 	level_done_scene.show()
 	level_done_scene.get_node("AnimationPlayer").play("fade_in")
 
 
 func restart_level():
+	if Global.level_done:
+		Global.level_done = false
 	current_level.restart_level()
 	get_tree().call_group("Player", "set_cam_current")
 

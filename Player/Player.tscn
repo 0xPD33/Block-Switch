@@ -46,8 +46,6 @@ current = true
 zoom = Vector2( 3, 3 )
 
 [node name="OnScreenControls" parent="." instance=ExtResource( 3 )]
-position = Vector2( 320, 108 )
-scale = Vector2( 4, 4 )
 
 [node name="MoveAnimation" type="AnimationPlayer" parent="."]
 anims/move = SubResource( 2 )
