@@ -30,7 +30,7 @@ func _ready():
 func _process(delta):
 	if timer_started:
 		total_time += delta
-		set_time("Time: " + str(stepify(total_time, 0.01)) + " seconds")
+		set_time(stepify(total_time, 0.01))
 
 
 func restart_level():
