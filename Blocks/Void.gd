@@ -15,4 +15,6 @@ func snap():
 func _on_Void_area_entered(area: Area2D):
 	if area.is_in_group("Player"):
 		area.die()
+	elif area.is_in_group("Block"):
+		queue_free()
 

@@ -12,9 +12,13 @@ onready var tutorial_scene = $UI/Tutorial
 func _ready():
 	get_tree().call_group("Player", "set_cam_current")
 	if !Global.tutorial_shown:
-		get_tree().paused = true
-		tutorial_scene.setup_tutorial("Welcome")
-		tutorial_scene.show_tutorial()
+		launch_tutorial("Welcome")
+
+
+func launch_tutorial(tutorial_type : String):
+	get_tree().paused = true
+	tutorial_scene.setup_tutorial(tutorial_type)
+	tutorial_scene.show_tutorial()
 
 
 func create_death_cam(pos, zoom):

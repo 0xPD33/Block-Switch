@@ -22,7 +22,6 @@ var red_block_tutorial_values : PoolStringArray = [
 	"You have to act fast if you don't want to lose time!"
 ]
 
-
 onready var tutorial_text = $TutorialPanel/TutorialText
 onready var anim_player = $AnimationPlayer
 
@@ -39,6 +38,8 @@ func setup_tutorial(tutorial_type : String):
 			current_values = welcome_tutorial_values
 		"YellowBlock":
 			current_values = yellow_block_tutorial_values
+		"RedBlock":
+			current_values = red_block_tutorial_values
 
 
 func advance_tutorial_text():
@@ -75,7 +76,7 @@ func close_tutorial(last : bool):
 		yield(anim_player, "animation_finished")
 		hide()
 		shown = false
-		Global.tutorial_shown = true
+		Global.tutorial_shown = false
 		get_tree().paused = false
 		tutorial_state = 0
 
