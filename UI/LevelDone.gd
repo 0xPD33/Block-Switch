@@ -6,13 +6,13 @@ onready var rating_label = $VBoxContainer/RatingLabel
 
 
 func _on_ContinueButton_pressed():
-	get_tree().call_group("Game", "change_level")
 	$AnimationPlayer.play("fade_out")
+	get_tree().call_group("Game", "change_level")
 
 
 func _on_RetryButton_pressed():
-	get_tree().call_group("Game", "restart_level")
 	$AnimationPlayer.play("fade_out")
+	get_tree().call_group("Game", "restart_level")
 
 
 func _on_QuitButton_pressed():

@@ -4,7 +4,6 @@ var current_level
 var next_level
 var level_number : int
 
-# rating calculation: count amount of blocks in level and divide by time or something idk
 var possible_ratings : PoolStringArray = ["What are you doing?", "Bad.", "Meh.", "Fine.", "Good!", "Great!", "Awesome!", "Perfect!"]
 var max_rating_level : int = possible_ratings.size() - 1
 var rating_level : int
@@ -70,6 +69,7 @@ func load_next_level():
 	Global.level_done = false
 	
 	if level_number == 7:
+		get_tree().call_group("Player", "set_cam_current")
 		get_parent().launch_tutorial("YellowBlock")
 
 

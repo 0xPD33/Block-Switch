@@ -1,0 +1,302 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Blocks/Void.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Blocks/Block.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Blocks/Goal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Blocks/BlockYellow.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/LevelTemplate.tscn" type="PackedScene" id=6]
+
+[node name="Level9" instance=ExtResource( 6 )]
+
+[node name="Block" parent="Blocks" index="0" instance=ExtResource( 2 )]
+
+[node name="Block11" parent="Blocks" index="1" instance=ExtResource( 2 )]
+position = Vector2( 0, -64 )
+
+[node name="Block24" parent="Blocks" index="2" instance=ExtResource( 2 )]
+position = Vector2( 0, -128 )
+
+[node name="Block28" parent="Blocks" index="3" instance=ExtResource( 2 )]
+position = Vector2( 0, -192 )
+
+[node name="Block2" parent="Blocks" index="4" instance=ExtResource( 2 )]
+position = Vector2( 64, 0 )
+
+[node name="Block3" parent="Blocks" index="5" instance=ExtResource( 2 )]
+position = Vector2( 128, 0 )
+
+[node name="Block4" parent="Blocks" index="6" instance=ExtResource( 2 )]
+position = Vector2( 192, 0 )
+
+[node name="Block5" parent="Blocks" index="7" instance=ExtResource( 2 )]
+position = Vector2( 192, 64 )
+
+[node name="Block6" parent="Blocks" index="8" instance=ExtResource( 2 )]
+position = Vector2( 192, 128 )
+
+[node name="Block7" parent="Blocks" index="9" instance=ExtResource( 2 )]
+position = Vector2( 256, 128 )
+
+[node name="Block8" parent="Blocks" index="10" instance=ExtResource( 2 )]
+position = Vector2( 320, 128 )
+
+[node name="Block25" parent="Blocks" index="11" instance=ExtResource( 2 )]
+position = Vector2( 320, 192 )
+
+[node name="Block26" parent="Blocks" index="12" instance=ExtResource( 2 )]
+position = Vector2( 320, 256 )
+
+[node name="Block9" parent="Blocks" index="13" instance=ExtResource( 2 )]
+position = Vector2( 320, 64 )
+
+[node name="Block10" parent="Blocks" index="14" instance=ExtResource( 2 )]
+position = Vector2( 320, 0 )
+
+[node name="Block12" parent="Blocks" index="15" instance=ExtResource( 2 )]
+position = Vector2( 448, 0 )
+
+[node name="Block13" parent="Blocks" index="16" instance=ExtResource( 2 )]
+position = Vector2( 448, 64 )
+
+[node name="Block14" parent="Blocks" index="17" instance=ExtResource( 2 )]
+position = Vector2( 448, 128 )
+
+[node name="Block15" parent="Blocks" index="18" instance=ExtResource( 2 )]
+position = Vector2( 448, 192 )
+
+[node name="Block27" parent="Blocks" index="19" instance=ExtResource( 2 )]
+position = Vector2( 448, 256 )
+
+[node name="Block16" parent="Blocks" index="20" instance=ExtResource( 2 )]
+position = Vector2( 576, 128 )
+
+[node name="Block17" parent="Blocks" index="21" instance=ExtResource( 2 )]
+position = Vector2( 576, 64 )
+
+[node name="Block18" parent="Blocks" index="22" instance=ExtResource( 2 )]
+position = Vector2( 576, 0 )
+
+[node name="Block19" parent="Blocks" index="23" instance=ExtResource( 2 )]
+position = Vector2( 640, 0 )
+
+[node name="Block20" parent="Blocks" index="24" instance=ExtResource( 2 )]
+position = Vector2( 704, 0 )
+
+[node name="Block21" parent="Blocks" index="25" instance=ExtResource( 2 )]
+position = Vector2( 768, 0 )
+
+[node name="Block22" parent="Blocks" index="26" instance=ExtResource( 2 )]
+position = Vector2( 768, -64 )
+
+[node name="Block23" parent="Blocks" index="27" instance=ExtResource( 2 )]
+position = Vector2( 768, -128 )
+
+[node name="BlockYellow" parent="Blocks" index="28" instance=ExtResource( 5 )]
+position = Vector2( 320, 320 )
+missing_block_pos = Vector2( 384, 0 )
+
+[node name="BlockYellow2" parent="Blocks" index="29" instance=ExtResource( 5 )]
+position = Vector2( 448, 320 )
+missing_block_pos = Vector2( 512, 128 )
+
+[node name="Void" parent="Void" index="0" instance=ExtResource( 1 )]
+position = Vector2( 64, -64 )
+
+[node name="Void2" parent="Void" index="1" instance=ExtResource( 1 )]
+position = Vector2( 64, -128 )
+
+[node name="Void3" parent="Void" index="2" instance=ExtResource( 1 )]
+position = Vector2( 64, -192 )
+
+[node name="Void58" parent="Void" index="3" instance=ExtResource( 1 )]
+position = Vector2( -64, -64 )
+
+[node name="Void59" parent="Void" index="4" instance=ExtResource( 1 )]
+position = Vector2( -64, -128 )
+
+[node name="Void60" parent="Void" index="5" instance=ExtResource( 1 )]
+position = Vector2( -64, -192 )
+
+[node name="Void4" parent="Void" index="6" instance=ExtResource( 1 )]
+position = Vector2( 128, -64 )
+
+[node name="Void5" parent="Void" index="7" instance=ExtResource( 1 )]
+position = Vector2( 192, -64 )
+
+[node name="Void6" parent="Void" index="8" instance=ExtResource( 1 )]
+position = Vector2( 256, -64 )
+
+[node name="Void7" parent="Void" index="9" instance=ExtResource( 1 )]
+position = Vector2( 256, 0 )
+
+[node name="Void8" parent="Void" index="10" instance=ExtResource( 1 )]
+position = Vector2( 256, 64 )
+
+[node name="Void9" parent="Void" index="11" instance=ExtResource( 1 )]
+position = Vector2( 320, -64 )
+
+[node name="Void10" parent="Void" index="12" instance=ExtResource( 1 )]
+position = Vector2( 448, -64 )
+
+[node name="Void11" parent="Void" index="13" instance=ExtResource( 1 )]
+position = Vector2( 576, -64 )
+
+[node name="Void28" parent="Void" index="14" instance=ExtResource( 1 )]
+position = Vector2( 512, -64 )
+
+[node name="Void29" parent="Void" index="15" instance=ExtResource( 1 )]
+position = Vector2( 512, 0 )
+
+[node name="Void30" parent="Void" index="16" instance=ExtResource( 1 )]
+position = Vector2( 512, 64 )
+
+[node name="Void31" parent="Void" index="17" instance=ExtResource( 1 )]
+position = Vector2( 384, 64 )
+
+[node name="Void64" parent="Void" index="18" instance=ExtResource( 1 )]
+position = Vector2( 384, 0 )
+
+[node name="Void65" parent="Void" index="19" instance=ExtResource( 1 )]
+position = Vector2( 512, 128 )
+
+[node name="Void32" parent="Void" index="20" instance=ExtResource( 1 )]
+position = Vector2( 384, -64 )
+
+[node name="Void33" parent="Void" index="21" instance=ExtResource( 1 )]
+position = Vector2( 384, 128 )
+
+[node name="Void34" parent="Void" index="22" instance=ExtResource( 1 )]
+position = Vector2( 384, 192 )
+
+[node name="Void35" parent="Void" index="23" instance=ExtResource( 1 )]
+position = Vector2( 384, 256 )
+
+[node name="Void36" parent="Void" index="24" instance=ExtResource( 1 )]
+position = Vector2( 384, 320 )
+
+[node name="Void37" parent="Void" index="25" instance=ExtResource( 1 )]
+position = Vector2( 512, 192 )
+
+[node name="Void38" parent="Void" index="26" instance=ExtResource( 1 )]
+position = Vector2( 576, 192 )
+
+[node name="Void39" parent="Void" index="27" instance=ExtResource( 1 )]
+position = Vector2( 640, 192 )
+
+[node name="Void40" parent="Void" index="28" instance=ExtResource( 1 )]
+position = Vector2( 512, 256 )
+
+[node name="Void41" parent="Void" index="29" instance=ExtResource( 1 )]
+position = Vector2( 512, 320 )
+
+[node name="Void42" parent="Void" index="30" instance=ExtResource( 1 )]
+position = Vector2( 512, 384 )
+
+[node name="Void43" parent="Void" index="31" instance=ExtResource( 1 )]
+position = Vector2( 448, 384 )
+
+[node name="Void44" parent="Void" index="32" instance=ExtResource( 1 )]
+position = Vector2( 384, 384 )
+
+[node name="Void45" parent="Void" index="33" instance=ExtResource( 1 )]
+position = Vector2( 320, 384 )
+
+[node name="Void46" parent="Void" index="34" instance=ExtResource( 1 )]
+position = Vector2( 256, 384 )
+
+[node name="Void47" parent="Void" index="35" instance=ExtResource( 1 )]
+position = Vector2( 256, 320 )
+
+[node name="Void48" parent="Void" index="36" instance=ExtResource( 1 )]
+position = Vector2( 256, 192 )
+
+[node name="Void49" parent="Void" index="37" instance=ExtResource( 1 )]
+position = Vector2( 256, 256 )
+
+[node name="Void50" parent="Void" index="38" instance=ExtResource( 1 )]
+position = Vector2( 192, 192 )
+
+[node name="Void51" parent="Void" index="39" instance=ExtResource( 1 )]
+position = Vector2( 128, 128 )
+
+[node name="Void52" parent="Void" index="40" instance=ExtResource( 1 )]
+position = Vector2( 128, 192 )
+
+[node name="Void53" parent="Void" index="41" instance=ExtResource( 1 )]
+position = Vector2( 128, 64 )
+
+[node name="Void54" parent="Void" index="42" instance=ExtResource( 1 )]
+position = Vector2( 64, 64 )
+
+[node name="Void55" parent="Void" index="43" instance=ExtResource( 1 )]
+position = Vector2( 0, 64 )
+
+[node name="Void56" parent="Void" index="44" instance=ExtResource( 1 )]
+position = Vector2( -64, 64 )
+
+[node name="Void57" parent="Void" index="45" instance=ExtResource( 1 )]
+position = Vector2( -64, 0 )
+
+[node name="Void12" parent="Void" index="46" instance=ExtResource( 1 )]
+position = Vector2( 640, -64 )
+
+[node name="Void13" parent="Void" index="47" instance=ExtResource( 1 )]
+position = Vector2( 704, -64 )
+
+[node name="Void14" parent="Void" index="48" instance=ExtResource( 1 )]
+position = Vector2( 704, -128 )
+
+[node name="Void15" parent="Void" index="49" instance=ExtResource( 1 )]
+position = Vector2( 704, -192 )
+
+[node name="Void16" parent="Void" index="50" instance=ExtResource( 1 )]
+position = Vector2( 832, -192 )
+
+[node name="Void17" parent="Void" index="51" instance=ExtResource( 1 )]
+position = Vector2( 832, -256 )
+
+[node name="Void18" parent="Void" index="52" instance=ExtResource( 1 )]
+position = Vector2( 704, -256 )
+
+[node name="Void61" parent="Void" index="53" instance=ExtResource( 1 )]
+position = Vector2( -64, -256 )
+
+[node name="Void62" parent="Void" index="54" instance=ExtResource( 1 )]
+position = Vector2( 0, -256 )
+
+[node name="Void63" parent="Void" index="55" instance=ExtResource( 1 )]
+position = Vector2( 64, -256 )
+
+[node name="Void19" parent="Void" index="56" instance=ExtResource( 1 )]
+position = Vector2( 768, -256 )
+
+[node name="Void20" parent="Void" index="57" instance=ExtResource( 1 )]
+position = Vector2( 832, -128 )
+
+[node name="Void21" parent="Void" index="58" instance=ExtResource( 1 )]
+position = Vector2( 832, 64 )
+
+[node name="Void24" parent="Void" index="59" instance=ExtResource( 1 )]
+position = Vector2( 768, 64 )
+
+[node name="Void25" parent="Void" index="60" instance=ExtResource( 1 )]
+position = Vector2( 704, 64 )
+
+[node name="Void26" parent="Void" index="61" instance=ExtResource( 1 )]
+position = Vector2( 640, 64 )
+
+[node name="Void27" parent="Void" index="62" instance=ExtResource( 1 )]
+position = Vector2( 640, 128 )
+
+[node name="Void23" parent="Void" index="63" instance=ExtResource( 1 )]
+position = Vector2( 832, 0 )
+
+[node name="Void22" parent="Void" index="64" instance=ExtResource( 1 )]
+position = Vector2( 832, -64 )
+
+[node name="Goal" parent="." index="2" instance=ExtResource( 4 )]
+position = Vector2( 768, -192 )
+
+[node name="Player" parent="." index="3" instance=ExtResource( 3 )]
+position = Vector2( 0, -192 )
