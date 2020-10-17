@@ -5,7 +5,7 @@ var next_level
 var level_number : int
 
 var possible_ratings : PoolStringArray = ["What are you doing?", "Bad.", "Meh.", "Fine.", "Good!", "Great!", "Awesome!", "Perfect!"]
-var max_rating_level : int = possible_ratings.size() - 1
+var max_rating_level : int = possible_ratings.size()
 var rating_level : int
 
 var timer_started : bool = false
@@ -74,18 +74,20 @@ func load_next_level():
 
 
 func calculate_rating():
-	var number_of_blocks = get_tree().get_nodes_in_group("Block").size()
+	var number_of_normal_blocks = get_tree().get_nodes_in_group("Block").size()
+	var number_of_yellow_blocks = get_tree().get_nodes_in_group("BlockYellow").size()
+	#var number_of_red_blocks = get_tree().get_nodes_in_group("BlockRed").size()
 	
-	rating_level = number_of_blocks / total_time * 1.25
+	rating_level = (number_of_normal_blocks + (number_of_yellow_blocks * 2)) / total_time * 1.33
 	var rating : String 
 	
 	if rating_level <= max_rating_level:
-		rating = possible_ratings[rating_level]
+		rating = possible_ratings[rating_level - 1]
 	else:
 		rating_level = max_rating_level
-		rating = possible_ratings[rating_level]
+		rating = possible_ratings[rating_level - 1]
 	
-	return rating
+	return rating + " " + str(rating_level) + "/" + str(max_rating_level)
 
 
 func start_timer():

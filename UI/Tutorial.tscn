@@ -3,7 +3,7 @@
 [ext_resource path="res://Assets/Font/AtlantisInternational-jen0.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/Tutorial.gd" type="Script" id=2]
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.117647, 0.117647, 0.117647, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -20,16 +20,15 @@ expand_margin_right = 4.0
 expand_margin_top = 4.0
 expand_margin_bottom = 4.0
 
-[sub_resource type="DynamicFont" id=1]
-size = 12
-font_data = ExtResource( 1 )
-
 [sub_resource type="DynamicFont" id=2]
 size = 12
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "close"
+[sub_resource type="DynamicFont" id=3]
+size = 12
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
@@ -79,7 +78,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
@@ -170,7 +169,7 @@ margin_left = -100.0
 margin_top = -50.0
 margin_right = 100.0
 margin_bottom = 50.0
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -182,7 +181,7 @@ anchor_right = 0.5
 margin_left = -80.0
 margin_right = 80.0
 margin_bottom = 80.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "This is tutorial text. It will show once this panel is opened.
 "
 align = 1
@@ -202,7 +201,7 @@ anchor_bottom = 1.0
 margin_left = -100.0
 margin_top = -20.0
 margin_right = 100.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "[ Tap to Continue ]"
 align = 1
 valign = 1
@@ -212,5 +211,5 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/close = SubResource( 3 )
-anims/open = SubResource( 4 )
+anims/close = SubResource( 4 )
+anims/open = SubResource( 5 )
