@@ -24,7 +24,7 @@ expand_margin_bottom = 4.0
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 2 )
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=3]
 content_margin_left = 5.0
 content_margin_right = 5.0
 content_margin_top = 5.0
@@ -41,12 +41,11 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=4]
 size = 12
 font_data = ExtResource( 2 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "hide_controls"
+[sub_resource type="Animation" id=5]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("OptionsPanel:modulate")
@@ -97,8 +96,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "show_controls"
+[sub_resource type="Animation" id=6]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("OptionsPanel:modulate")
@@ -172,6 +170,7 @@ __meta__ = {
 }
 
 [node name="OptionsPanel" type="Panel" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -196,6 +195,7 @@ __meta__ = {
 }
 
 [node name="OptionsLabel" type="Label" parent="OptionsPanel/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
 margin_top = 5.0
 margin_right = 160.0
 margin_bottom = 22.0
@@ -206,36 +206,38 @@ align = 1
 valign = 1
 
 [node name="MoveControlsButton" type="Button" parent="OptionsPanel/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 40.0
 margin_top = 30.0
 margin_right = 120.0
 margin_bottom = 53.0
 rect_min_size = Vector2( 80, 0 )
 size_flags_horizontal = 4
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/focus = SubResource( 5 )
-custom_styles/disabled = SubResource( 5 )
-custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Move Controls"
 
 [node name="ScaleControlsButton" type="Button" parent="OptionsPanel/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 40.0
 margin_top = 61.0
 margin_right = 120.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 80, 0 )
 size_flags_horizontal = 4
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/focus = SubResource( 5 )
-custom_styles/disabled = SubResource( 5 )
-custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Scale Controls"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/hide_controls = SubResource( 3 )
-anims/show_controls = SubResource( 4 )
+anims/hide_controls = SubResource( 5 )
+anims/show_controls = SubResource( 6 )
 [connection signal="pressed" from="OptionsButton" to="." method="_on_OptionsButton_pressed"]

@@ -50,7 +50,7 @@ func restart_level():
 func change_level():
 	level_number += 1
 	# change the number to desired level below
-	#level_number = 7
+	#level_number = 10
 	load_next_level()
 
 
@@ -78,7 +78,7 @@ func calculate_rating():
 	var number_of_yellow_blocks = get_tree().get_nodes_in_group("BlockYellow").size()
 	#var number_of_red_blocks = get_tree().get_nodes_in_group("BlockRed").size()
 	
-	rating_level = (number_of_normal_blocks + (number_of_yellow_blocks * 2)) / total_time * 1.33
+	rating_level = (number_of_normal_blocks + (number_of_yellow_blocks * 5)) / total_time * 1.33
 	var rating : String 
 	
 	if rating_level <= max_rating_level:
