@@ -11,15 +11,13 @@ var welcome_tutorial_values : PoolStringArray = [
 	]
 
 var yellow_block_tutorial_values : PoolStringArray = [
-	"You may notice a new yellow-colored block in this level.",
-	"These blocks add missing blocks to the path.",
-	"You are required to trigger them before you can reach the goal."
+	"You may notice a new block, the yellow-colored block, in this level.",
+	"These blocks add missing blocks to the path. You have to trigger them to fill in the way to the goal",
 ]
 
 var red_block_tutorial_values : PoolStringArray = [
-	"Another new block, the red block, has been introduced.",
-	"It doesn't add new blocks, but rearranges the current path.",
-	"You have to act fast if you don't want to lose time!"
+	"Another new block, the red-colored block, has been introduced.",
+	"It doesn't add new blocks, but rearranges the current path. You have to act fast if you don't want to lose time!",
 ]
 
 onready var tutorial_text = $TutorialPanel/TutorialText
@@ -79,4 +77,5 @@ func close_tutorial(last : bool):
 		Global.tutorial_shown = false
 		get_tree().paused = false
 		tutorial_state = 0
+		get_tree().call_group("CurrentLevel", "start_timer")
 

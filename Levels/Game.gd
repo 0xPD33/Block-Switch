@@ -1,7 +1,5 @@
 extends Node2D
 
-var game_over = false
-
 onready var current_level = $CurrentLevel
 
 onready var game_over_scene = $UI/GameOver
@@ -10,7 +8,7 @@ onready var tutorial_scene = $UI/Tutorial
 
 
 func _ready():
-	get_tree().call_group("Player", "set_cam_current")
+	yield(get_tree(), "idle_frame")
 	if !Global.tutorial_shown:
 		launch_tutorial("Welcome")
 
@@ -54,10 +52,11 @@ func player_death(player):
 
 func level_done():
 	Global.level_done = true
+	var level_number = current_level.level_number
 	var completion_time = current_level.get_time()
 	var completion_rating = current_level.calculate_rating()
 	current_level.stop_timer()
-	level_done_scene.done_label.text = "Level " + str(current_level.level_number) + " done!"
+	level_done_scene.done_label.text = "Level " + str(level_number) + " done!"
 	level_done_scene.time_label.text = "Time: " + str(completion_time) + " seconds"
 	level_done_scene.rating_label.text = completion_rating
 	level_done_scene.show()
@@ -65,10 +64,7 @@ func level_done():
 
 
 func restart_level():
-	if Global.level_done:
-		Global.level_done = false
 	current_level.restart_level()
-	get_tree().call_group("Player", "set_cam_current")
 
 
 func change_level():

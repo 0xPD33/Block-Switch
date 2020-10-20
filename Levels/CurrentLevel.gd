@@ -2,7 +2,7 @@ extends Node2D
 
 var current_level
 var next_level
-var level_number : int
+var level_number : int = 0
 
 var possible_ratings : PoolStringArray = ["What are you doing?", "Bad.", "Meh.", "Fine.", "Good!", "Great!", "Awesome!", "Perfect!"]
 var max_rating_level : int = possible_ratings.size()
@@ -23,8 +23,7 @@ func get_time():
 
 
 func _ready():
-	current_level = load("res://Levels/Level1.tscn")
-	level_number = 1
+	change_level()
 
 
 func _process(delta):
@@ -44,7 +43,7 @@ func restart_level():
 	var restarted_level = restarted_level_resource.instance()
 	add_child(restarted_level)
 	
-	Global.game_over = false
+	get_tree().call_group("Player", "set_cam_current")
 
 
 func change_level():
@@ -62,15 +61,15 @@ func load_next_level():
 	level.call_deferred("free")
 	
 	var next_level_resource = load("res://Levels/Level" + str(level_number) + ".tscn")
-	var next_level = next_level_resource.instance()
-	add_child(next_level)
+	var next_level_instance = next_level_resource.instance()
+	add_child(next_level_instance)
 	
-	current_level = next_level
-	Global.level_done = false
+	get_tree().call_group("Player", "set_cam_current")
 	
 	if level_number == 7:
-		get_tree().call_group("Player", "set_cam_current")
 		get_parent().launch_tutorial("YellowBlock")
+	else:
+		start_timer()
 
 
 func calculate_rating():
@@ -78,7 +77,7 @@ func calculate_rating():
 	var number_of_yellow_blocks = get_tree().get_nodes_in_group("BlockYellow").size()
 	#var number_of_red_blocks = get_tree().get_nodes_in_group("BlockRed").size()
 	
-	rating_level = (number_of_normal_blocks + (number_of_yellow_blocks * 5)) / total_time * 1.33
+	rating_level = (number_of_normal_blocks + (number_of_yellow_blocks * 4)) / total_time * 1.33
 	var rating : String 
 	
 	if rating_level <= max_rating_level:
