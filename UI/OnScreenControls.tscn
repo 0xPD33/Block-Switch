@@ -6,7 +6,10 @@
 [ext_resource path="res://Assets/OnScreenControls/Sprites/transparentLight/transparentLight04.png" type="Texture" id=4]
 [ext_resource path="res://Assets/OnScreenControls/Sprites/transparentLight/transparentLight01.png" type="Texture" id=5]
 
-[node name="OnScreenControls" type="Node2D"]
+[node name="OnScreenControls" type="Node2D" groups=[
+"Controls",
+]]
+pause_mode = 2
 position = Vector2( 320, 110 )
 script = ExtResource( 1 )
 

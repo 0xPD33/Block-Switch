@@ -1,7 +1,5 @@
 extends TileMap
 
-var setup_done = false
-
 export (PackedScene) var block_scene
 
 export (PackedScene) var block_yellow_scene
@@ -9,6 +7,8 @@ export (Array, Vector2) var block_yellow_coordinates
 
 export (PackedScene) var goal_scene
 export (PackedScene) var void_scene
+
+var setup_done = false
 
 
 func _ready():

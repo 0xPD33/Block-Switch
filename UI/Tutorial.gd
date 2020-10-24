@@ -12,7 +12,7 @@ var welcome_tutorial_values : PoolStringArray = [
 
 var yellow_block_tutorial_values : PoolStringArray = [
 	"You may notice a new block, the yellow-colored block, in this level.",
-	"These blocks add missing blocks to the path. You have to trigger them to fill in the way to the goal",
+	"These blocks add missing blocks to the path. You have to trigger them to fill in the way to the goal.",
 ]
 
 var red_block_tutorial_values : PoolStringArray = [

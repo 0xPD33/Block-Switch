@@ -47,7 +47,7 @@ func restart_level():
 func change_level():
 	level_number += 1
 	# change the number to desired level below
-	#level_number = 10
+	#level_number = 9
 	load_next_level()
 
 
@@ -62,7 +62,7 @@ func load_next_level():
 	var next_level_instance = next_level_resource.instance()
 	add_child(next_level_instance)
 	
-	if level_number == 7:
+	if level_number == 10:
 		get_parent().launch_tutorial("YellowBlock")
 	else:
 		start_timer()
@@ -77,6 +77,8 @@ func calculate_rating():
 	var rating : String 
 	
 	if rating_level <= max_rating_level:
+		if rating_level == 0:
+			rating_level = 1
 		rating = possible_ratings[rating_level - 1]
 	else:
 		rating_level = max_rating_level
