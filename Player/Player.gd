@@ -1,5 +1,7 @@
 extends Area2D
 
+var hit_block_sound = "res://Assets/SFX/hit_block.wav"
+
 var tile_size = 64
 
 onready var camera = $Camera2D
@@ -7,6 +9,7 @@ onready var move_anim = $MoveAnimation
 
 
 func _ready():
+	set_cam_current()
 	position = position.snapped(Vector2.ONE * tile_size)
 	position += Vector2.ONE * tile_size / 2
 
@@ -30,6 +33,7 @@ func set_cam_current():
 func move(dir):
 	position += dir * tile_size
 	move_anim.play("move")
+	get_tree().call_group("AudioManager", "create_audio", hit_block_sound)
 
 
 func die():

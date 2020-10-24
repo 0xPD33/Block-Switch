@@ -42,8 +42,6 @@ func restart_level():
 	var restarted_level_resource = load("res://Levels/Level" + str(level_number) + ".tscn")
 	var restarted_level = restarted_level_resource.instance()
 	add_child(restarted_level)
-	
-	get_tree().call_group("Player", "set_cam_current")
 
 
 func change_level():
@@ -63,8 +61,6 @@ func load_next_level():
 	var next_level_resource = load("res://Levels/Level" + str(level_number) + ".tscn")
 	var next_level_instance = next_level_resource.instance()
 	add_child(next_level_instance)
-	
-	get_tree().call_group("Player", "set_cam_current")
 	
 	if level_number == 7:
 		get_parent().launch_tutorial("YellowBlock")

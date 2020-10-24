@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Levels/Level1.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Levels/Game.gd" type="Script" id=2]
+[ext_resource path="res://Game/Game.gd" type="Script" id=2]
 [ext_resource path="res://UI/GameOver.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/CurrentLevel.gd" type="Script" id=4]
 [ext_resource path="res://UI/LevelDone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/Tutorial.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/UI.gd" type="Script" id=7]
 [ext_resource path="res://UI/Options.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Game/AudioManager.gd" type="Script" id=9]
 
 [node name="Game" type="Node2D" groups=[
 "Game",
@@ -34,3 +35,8 @@ visible = false
 
 [node name="Tutorial" parent="UI" instance=ExtResource( 6 )]
 visible = false
+
+[node name="AudioManager" type="Node" parent="." groups=[
+"AudioManager",
+]]
+script = ExtResource( 9 )

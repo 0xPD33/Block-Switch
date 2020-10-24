@@ -1,0 +1,133 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Blocks/Block.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Blocks/Void.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Blocks/Goal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/Level.gd" type="Script" id=5]
+
+[node name="Level1" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Blocks" type="Node2D" parent="."]
+
+[node name="Block" parent="Blocks" instance=ExtResource( 2 )]
+
+[node name="Block2" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 64, 0 )
+
+[node name="Block3" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 128, 0 )
+
+[node name="Block4" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 192, 0 )
+
+[node name="Block5" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 256, 0 )
+
+[node name="Block6" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 320, 0 )
+
+[node name="Block7" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 320, 64 )
+
+[node name="Block8" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 320, 128 )
+
+[node name="Block9" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( -64, 0 )
+
+[node name="Block10" parent="Blocks" instance=ExtResource( 2 )]
+position = Vector2( 320, 192 )
+
+[node name="Void" type="Node2D" parent="."]
+
+[node name="Void" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( 0, 64 )
+
+[node name="Void2" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( 64, 64 )
+
+[node name="Void3" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( 128, 64 )
+
+[node name="Void4" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( 192, 64 )
+
+[node name="Void5" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( 256, 64 )
+
+[node name="Void6" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( 256, 128 )
+
+[node name="Void7" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( 256, 192 )
+
+[node name="Void8" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( 256, 256 )
+
+[node name="Void9" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( 320, 256 )
+
+[node name="Void10" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( 384, 256 )
+
+[node name="Void11" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( 384, 192 )
+
+[node name="Void12" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( 384, 128 )
+
+[node name="Void13" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( 384, 64 )
+
+[node name="Void14" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( 384, 0 )
+
+[node name="Void15" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( 384, -64 )
+
+[node name="Void16" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( 320, -64 )
+
+[node name="Void17" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( 256, -64 )
+
+[node name="Void18" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( 192, -64 )
+
+[node name="Void19" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( 128, -64 )
+
+[node name="Void20" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( 64, -64 )
+
+[node name="Void21" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( 0, -64 )
+
+[node name="Void22" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( -64, -64 )
+
+[node name="Void23" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( -128, -64 )
+
+[node name="Void24" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( -192, 0 )
+
+[node name="Void27" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( -192, 64 )
+
+[node name="Void28" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( -192, -64 )
+
+[node name="Void25" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( -128, 64 )
+
+[node name="Void26" parent="Void" instance=ExtResource( 3 )]
+position = Vector2( -64, 64 )
+
+[node name="Goal" parent="." instance=ExtResource( 4 )]
+position = Vector2( -128, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 320, 192 )
