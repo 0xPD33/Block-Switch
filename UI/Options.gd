@@ -2,28 +2,29 @@ extends Control
 
 var options_shown : bool = false
 
+var edit_mode = false
+var moving_controls = false
+var scaling_controls = false
+
+onready var options_button = $OptionsButton
+onready var accept_button = $AcceptButton
+onready var cancel_button = $CancelButton
+
 onready var anim_player = $AnimationPlayer
 
 
-func _on_OptionsButton_pressed():
-	if !options_shown:
-		open_controls()
-	else:
-		close_controls()
-
-
-func open_controls():
+func options_open():
 	var opening : bool = false
 	if !opening:
+		get_tree().paused = true
 		anim_player.play("show_controls")
 		opening = true
 		yield(anim_player, "animation_finished")
 		options_shown = true
 		opening = false
-		get_tree().paused = true
 
 
-func close_controls():
+func options_close():
 	var closing : bool = false
 	if !closing:
 		anim_player.play("hide_controls")
@@ -31,9 +32,103 @@ func close_controls():
 		yield(anim_player, "animation_finished")
 		options_shown = false
 		closing = false
-		get_tree().paused = false
+		if !edit_mode:
+			get_tree().paused = false
+
+
+func options_button_change_visibility():
+	if options_button.is_visible():
+		options_button.hide()
+	else:
+		options_button.show()
+
+
+func edit_buttons_change_visiblity():
+	if edit_mode:
+		accept_button.show()
+		cancel_button.show()
+	else:
+		accept_button.hide()
+		cancel_button.hide()
+
+
+func move_controls_start():
+	if !edit_mode:
+		edit_mode = true
+		moving_controls = true
+		options_close()
+		options_button_change_visibility()
+		edit_buttons_change_visiblity()
+		get_tree().call_group("ScreenDarkener", "fade_in")
+		get_tree().call_group("Controls", "set_repositioning", true)
+
+
+func move_controls_end():
+	if edit_mode:
+		edit_mode = false
+		moving_controls = false
+		options_open()
+		options_button_change_visibility()
+		edit_buttons_change_visiblity()
+		get_tree().call_group("ScreenDarkener", "fade_out")
+		get_tree().call_group("Controls", "set_repositioning", false)
+
+
+func resize_controls_start():
+	if !edit_mode:
+		edit_mode = true
+		scaling_controls = true
+		options_close()
+		options_button_change_visibility()
+		edit_buttons_change_visiblity()
+		get_tree().call_group("ScreenDarkener", "fade_in")
+		get_tree().call_group("Controls", "set_resizing", true)
+
+
+func resize_controls_end():
+	if edit_mode:
+		edit_mode = false
+		scaling_controls = false
+		options_open()
+		options_button_change_visibility()
+		edit_buttons_change_visiblity()
+		get_tree().call_group("ScreenDarkener", "fade_out")
+		get_tree().call_group("Controls", "set_resizing", false)
+
+
+func _on_OptionsButton_pressed():
+	if !options_shown:
+		options_open()
+	else:
+		options_close()
 
 
 func _on_MoveControlsButton_pressed():
-	get_tree().call_group("Controls", "set_repositioning", true)
+	if options_shown:
+		move_controls_start()
+
+
+func _on_ScaleControlsButton_pressed():
+	if options_shown:
+		resize_controls_start()
+
+
+func _on_AcceptButton_pressed():
+	if edit_mode:
+		if moving_controls:
+			move_controls_end()
+			get_tree().call_group("Controls", "save_position")
+		if scaling_controls:
+			resize_controls_end()
+			get_tree().call_group("Controls", "save_size")
+
+
+func _on_CancelButton_pressed():
+	if edit_mode:
+		if moving_controls:
+			move_controls_end()
+			get_tree().call_group("Controls", "reset_position")
+		if scaling_controls:
+			resize_controls_end()
+			get_tree().call_group("Controls", "reset_size")
 

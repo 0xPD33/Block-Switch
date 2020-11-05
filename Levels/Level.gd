@@ -9,3 +9,8 @@ func _ready():
 	player_tile.setup_player()
 	get_parent().current_level = self
 
+
+func delete_tilemaps():
+	tiles.queue_free()
+	player_tile.queue_free()
+

@@ -19,7 +19,7 @@ normal = ExtResource( 3 )
 pressed = ExtResource( 3 )
 
 [node name="DownButton" type="TouchScreenButton" parent="."]
-position = Vector2( 0, 60 )
+position = Vector2( 0, 61 )
 normal = ExtResource( 5 )
 pressed = ExtResource( 5 )
 

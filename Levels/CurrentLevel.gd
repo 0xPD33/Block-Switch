@@ -4,6 +4,14 @@ var current_level
 var next_level
 var level_number : int = 0
 
+# TODO: change rating system, think about other ways to rate performance of player
+# 
+# Ideas: 
+#
+# star system (1/2/3 out of 3 starts upon completing level)
+# leaderboards (include all players best, developers best and personal best)
+# leave as it is but adapt it and change the way it's calculated
+
 var possible_ratings : PoolStringArray = ["What are you doing?", "Bad.", "Meh.", "Fine.", "Good!", "Great!", "Awesome!", "Perfect!"]
 var max_rating_level : int = possible_ratings.size()
 var rating_level : int
@@ -47,22 +55,25 @@ func restart_level():
 func change_level():
 	level_number += 1
 	# change the number to desired level below
-	#level_number = 9
+	#level_number = 15
 	load_next_level()
 
 
 func load_next_level():
 	stop_timer()
 	
-	var level = get_child(0)
-	remove_child(level)
-	level.call_deferred("free")
+	if get_children():
+		var level = get_child(0)
+		remove_child(level)
+		level.call_deferred("free")
 	
 	var next_level_resource = load("res://Levels/Level" + str(level_number) + ".tscn")
 	var next_level_instance = next_level_resource.instance()
 	add_child(next_level_instance)
 	
 	if level_number == 10:
+		yield(get_tree(), "idle_frame")
+		get_tree().call_group("Player", "set_cam_current")
 		get_parent().launch_tutorial("YellowBlock")
 	else:
 		start_timer()

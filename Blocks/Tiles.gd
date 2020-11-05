@@ -1,48 +1,50 @@
+class_name MyTileMap
 extends TileMap
 
+export (Dictionary) var yellow_blocks := {}
+
 export (PackedScene) var block_scene
-
 export (PackedScene) var block_yellow_scene
-export (Array, Vector2) var block_yellow_coordinates
-
 export (PackedScene) var goal_scene
 export (PackedScene) var void_scene
 
-var setup_done = false
-
-
-func _ready():
-	call_deferred("setup_tiles")
+const BLOCK_ID = 0
+const BLOCK_YELLOW_ID = 1
+const GOAL_ID = 2
+const VOID_ID = 3
 
 
 func setup_tiles():
 	var cells = get_used_cells()
 	for cell in cells:
-		var index = get_cell(cell.x, cell.y)
+		var index = get_cellv(cell)
 		var tile_name = tile_set.tile_get_name(index)
 		match tile_name:
 			"Block":
-				create_instance_from_tilemap(tile_name, cell, block_scene, get_parent())
-			"BlockYellow":
-				create_instance_from_tilemap(tile_name, cell, block_yellow_scene, get_parent())
+				create_instance_from_tilemap(cell, block_scene)
 			"Goal":
-				create_instance_from_tilemap(tile_name, cell, goal_scene, get_parent())
+				create_instance_from_tilemap(cell, goal_scene)
 			"Void":
-				create_instance_from_tilemap(tile_name, cell, void_scene, get_parent())
+				create_instance_from_tilemap(cell, void_scene)
+	
+	create_yellow_blocks()
+	get_parent().delete_tilemaps()
 
 
-func create_instance_from_tilemap(type: String, coordinates: Vector2, prefab: PackedScene, parent: Node2D):
-	var coord_x = int(coordinates.x)
-	var coord_y = int(coordinates.y)
-	set_cell(coord_x, coord_y, -1)
+func create_instance_from_tilemap(coordinates: Vector2, prefab: PackedScene):
+	set_cellv(coordinates, -1)
 	var pf = prefab.instance()
-	pf.position = map_to_world(coordinates)
-	
-	# if type of instance is the yellow block
-	if type == "BlockYellow":
-		pf.missing_block_pos = map_to_world(block_yellow_coordinates.front())
-		block_yellow_coordinates.pop_front()
-	
-	parent.add_child(pf)
-	setup_done = true
+	pf.global_position = to_global(map_to_world(coordinates))
+	get_parent().add_child(pf)
+
+
+func create_yellow_blocks():
+	var yellow_blocks_placed = 0
+	for key in yellow_blocks.keys():
+		set_cellv(key, -1)
+		var yellow_block_instance = block_yellow_scene.instance()
+		yellow_block_instance.global_position = to_global(map_to_world(key))
+		yellow_block_instance.missing_block_pos = map_to_world(yellow_blocks.values()[yellow_blocks_placed])
+		get_parent().add_child(yellow_block_instance)
+		yellow_blocks_placed += 1
 

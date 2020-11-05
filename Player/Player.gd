@@ -8,6 +8,10 @@ onready var camera = $Camera2D
 onready var move_anim = $MoveAnimation
 
 
+func set_cam_current():
+	camera.current = true
+
+
 func _ready():
 	set_cam_current()
 	position = position.snapped(Vector2.ONE * tile_size)
@@ -24,10 +28,6 @@ func _input(_event):
 			move(Vector2.LEFT)
 		if Input.is_action_just_pressed("move_right"):
 			move(Vector2.RIGHT)
-
-
-func set_cam_current():
-	camera.current = true
 
 
 func move(dir):

@@ -1,11 +1,16 @@
 extends Area2D
 
-export (Vector2) var missing_block_pos
+var missing_block_pos setget set_missing_block_pos
 
 var block_scene = preload("res://Blocks/Block.tscn")
+var add_block_sound = "res://Assets/SFX/add_block.wav"
 
 var tile_size = 64
 var triggered = false
+
+
+func set_missing_block_pos(value):
+	missing_block_pos = value
 
 
 func _ready():
@@ -17,6 +22,7 @@ func add_block():
 		triggered = true
 		var block_instance = block_scene.instance()
 		block_instance.position = missing_block_pos
+		get_tree().call_group("AudioManager", "create_audio", add_block_sound)
 		get_parent().call_deferred("add_child", block_instance)
 
 
