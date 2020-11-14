@@ -1,4 +1,97 @@
-[gd_scene format=2]
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Assets/Font/AtlantisInternational-jen0.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 1, 1, 1, 0.498039 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 1, 1, 1, 0.392157 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 1, 1, 1, 0.498039 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="DynamicFont" id=4]
+size = 12
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 12
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color( 0.392157, 0.392157, 0.392157, 1 )
+
+[sub_resource type="Theme" id=8]
+HScrollBar/icons/decrement = null
+HScrollBar/icons/decrement_highlight = null
+HScrollBar/icons/increment = null
+HScrollBar/icons/increment_highlight = null
+HScrollBar/styles/grabber = null
+HScrollBar/styles/grabber_highlight = null
+HScrollBar/styles/grabber_pressed = null
+HScrollBar/styles/scroll = SubResource( 9 )
+HScrollBar/styles/scroll_focus = null
+
+[sub_resource type="StyleBoxFlat" id=6]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 1, 1, 1, 0.498039 )
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="LevelSelector" type="Control"]
 anchor_right = 1.0
@@ -7,28 +100,95 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
 [node name="TabContainer" type="TabContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -120.0
+margin_top = -80.0
+margin_right = 120.0
+margin_bottom = 80.0
+custom_styles/tab_fg = SubResource( 1 )
+custom_styles/tab_disabled = SubResource( 1 )
+custom_styles/tab_bg = SubResource( 2 )
+custom_styles/panel = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MAIN" type="Tabs" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 28.0
+margin_right = -5.0
+margin_bottom = -5.0
+scrolling_enabled = false
+
+[node name="LevelSelectContainer" type="VBoxContainer" parent="TabContainer/MAIN"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Main" type="Tabs" parent="TabContainer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
+[node name="SelectLevelLabel" type="Label" parent="TabContainer/MAIN/LevelSelectContainer"]
+margin_right = 230.0
+margin_bottom = 13.0
+custom_fonts/font = SubResource( 5 )
+text = "Select Level"
+align = 1
+valign = 1
 
-[node name="Custom" type="Tabs" parent="TabContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/MAIN/LevelSelectContainer"]
+margin_top = 17.0
+margin_right = 230.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 230, 103 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource( 8 )
+custom_styles/bg = SubResource( 6 )
+scroll_vertical_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelContainer" type="HBoxContainer" parent="TabContainer/MAIN/LevelSelectContainer/ScrollContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 465.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 460, 80 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CUSTOM" type="Tabs" parent="TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
+margin_left = 5.0
 margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_right = -5.0
+margin_bottom = -5.0
+scrolling_enabled = false
+
+[node name="LevelSelectContainer" type="VBoxContainer" parent="TabContainer/CUSTOM"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectLevelLabel" type="Label" parent="TabContainer/CUSTOM/LevelSelectContainer"]
+margin_right = 230.0
+margin_bottom = 17.0
+custom_fonts/font = SubResource( 5 )
+text = "Select Level"
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
