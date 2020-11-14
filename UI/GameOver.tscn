@@ -181,9 +181,9 @@ margin_right = 112.0
 margin_bottom = 59.0
 alignment = 1
 
-[node name="RestartButton" type="Button" parent="VBoxContainer/ButtonContainer"]
-margin_left = 19.0
-margin_right = 61.0
+[node name="RetryButton" type="Button" parent="VBoxContainer/ButtonContainer"]
+margin_left = 24.0
+margin_right = 57.0
 margin_bottom = 23.0
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 2 )
@@ -192,11 +192,11 @@ custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 2 )
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "Restart"
+text = "Retry"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer/ButtonContainer"]
-margin_left = 65.0
-margin_right = 92.0
+margin_left = 61.0
+margin_right = 88.0
 margin_bottom = 23.0
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 2 )
@@ -210,5 +210,5 @@ text = "Quit"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/fade_in = SubResource( 4 )
 anims/fade_out = SubResource( 5 )
-[connection signal="pressed" from="VBoxContainer/ButtonContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonContainer/RetryButton" to="." method="_on_RetryButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/ButtonContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

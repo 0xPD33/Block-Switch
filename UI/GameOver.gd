@@ -1,7 +1,7 @@
 extends Control
 
 
-func _on_RestartButton_pressed():
+func _on_RetryButton_pressed():
 	$AnimationPlayer.play("fade_out")
 	get_tree().call_group("Game", "restart_level")
 	yield($AnimationPlayer, "animation_finished")

@@ -2,14 +2,17 @@ class_name MyTileMap
 extends TileMap
 
 export (Dictionary) var yellow_blocks := {}
+export (Dictionary) var blue_blocks := {}
 
 export (PackedScene) var block_scene
 export (PackedScene) var block_yellow_scene
+export (PackedScene) var block_blue_scene
 export (PackedScene) var goal_scene
 export (PackedScene) var void_scene
 
 const BLOCK_ID = 0
 const BLOCK_YELLOW_ID = 1
+const BLOCK_BLUE_ID = 4
 const GOAL_ID = 2
 const VOID_ID = 3
 
@@ -28,6 +31,7 @@ func setup_tiles():
 				create_instance_from_tilemap(cell, void_scene)
 	
 	create_yellow_blocks()
+	create_blue_blocks()
 	get_parent().delete_tilemaps()
 
 
@@ -35,7 +39,7 @@ func create_instance_from_tilemap(coordinates: Vector2, prefab: PackedScene):
 	set_cellv(coordinates, -1)
 	var pf = prefab.instance()
 	pf.global_position = to_global(map_to_world(coordinates))
-	get_parent().add_child(pf)
+	get_parent().get_node("PlacedTiles").add_child(pf)
 
 
 func create_yellow_blocks():
@@ -45,6 +49,17 @@ func create_yellow_blocks():
 		var yellow_block_instance = block_yellow_scene.instance()
 		yellow_block_instance.global_position = to_global(map_to_world(key))
 		yellow_block_instance.missing_block_pos = map_to_world(yellow_blocks.values()[yellow_blocks_placed])
-		get_parent().add_child(yellow_block_instance)
+		get_parent().get_node("PlacedTiles").add_child(yellow_block_instance)
 		yellow_blocks_placed += 1
+
+
+func create_blue_blocks():
+	var blue_blocks_placed = 0
+	for key in blue_blocks.keys():
+		set_cellv(key, -1)
+		var blue_block_instance = block_blue_scene.instance()
+		blue_block_instance.global_position = to_global(map_to_world(key))
+		blue_block_instance.teleport_pos = map_to_world(blue_blocks.values()[blue_blocks_placed])
+		get_parent().get_node("PlacedTiles").add_child(blue_block_instance)
+		blue_blocks_placed += 1
 

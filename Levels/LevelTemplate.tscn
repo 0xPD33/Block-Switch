@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Assets/Tilesheets/sokoban_tilesheet.png" type="Texture" id=1]
 [ext_resource path="res://Levels/Level.gd" type="Script" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://Blocks/BlockYellow.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Blocks/Void.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Blocks/BlockBlue.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Decoration/DecorationTiles.gd" type="Script" id=11]
+[ext_resource path="res://Decoration/GemBlue.tscn" type="PackedScene" id=12]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -97,6 +100,36 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 3/shape_one_way_margin = 0.0
 3/shapes = [  ]
 3/z_index = 0
+4/name = "BlockBlue"
+4/texture = ExtResource( 1 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 0.211765, 0.721569, 1, 1 )
+4/region = Rect2( 512, 384, 64, 64 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = 0
+
+[sub_resource type="TileSet" id=6]
+0/name = "GemBlue"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 768, 192, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
 
 [sub_resource type="TileSet" id=5]
 0/name = "Player"
@@ -124,11 +157,26 @@ format = 1
 script = ExtResource( 3 )
 block_scene = ExtResource( 5 )
 block_yellow_scene = ExtResource( 7 )
+block_blue_scene = ExtResource( 10 )
 goal_scene = ExtResource( 6 )
 void_scene = ExtResource( 8 )
+
+[node name="Decoration" type="TileMap" parent="."]
+tile_set = SubResource( 6 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+script = ExtResource( 11 )
+gem_blue = ExtResource( 12 )
 
 [node name="PlayerTile" type="TileMap" parent="."]
 tile_set = SubResource( 5 )
 format = 1
 script = ExtResource( 4 )
 player = ExtResource( 9 )
+
+[node name="PlacedTiles" type="Node2D" parent="."]
+
+[node name="PlacedDecoration" type="Node2D" parent="."]
+
+[node name="PlacedPlayer" type="Node2D" parent="."]

@@ -15,9 +15,9 @@ var yellow_block_tutorial_values : PoolStringArray = [
 	"These blocks add missing blocks to the path. You have to trigger them to fill in the way to the goal.",
 ]
 
-var red_block_tutorial_values : PoolStringArray = [
-	"Another new block, the red-colored block, has been introduced.",
-	"It doesn't add new blocks, but rearranges the current path. You have to act fast if you don't want to lose time!",
+var blue_block_tutorial_values : PoolStringArray = [
+	"Another new block, the blue-colored block, has been introduced.",
+	"This block teleports you around the level. The blue gems placed around the level are an indicator for where you're headed next.",
 ]
 
 onready var tutorial_text = $TutorialPanel/TutorialText
@@ -36,8 +36,8 @@ func setup_tutorial(tutorial_type : String):
 			current_values = welcome_tutorial_values
 		"YellowBlock":
 			current_values = yellow_block_tutorial_values
-		"RedBlock":
-			current_values = red_block_tutorial_values
+		"BlueBlock":
+			current_values = blue_block_tutorial_values
 
 
 func advance_tutorial_text():

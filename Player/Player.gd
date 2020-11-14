@@ -14,8 +14,7 @@ func set_cam_current():
 
 func _ready():
 	set_cam_current()
-	position = position.snapped(Vector2.ONE * tile_size)
-	position += Vector2.ONE * tile_size / 2
+	snap()
 
 
 func _input(_event):
@@ -28,6 +27,11 @@ func _input(_event):
 			move(Vector2.LEFT)
 		if Input.is_action_just_pressed("move_right"):
 			move(Vector2.RIGHT)
+
+
+func snap():
+	position = position.snapped(Vector2.ONE * tile_size)
+	position += Vector2.ONE * tile_size / 2
 
 
 func move(dir):

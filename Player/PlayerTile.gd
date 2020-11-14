@@ -1,7 +1,5 @@
 extends TileMap
 
-var setup_done = false
-
 export (PackedScene) var player
 
 
@@ -19,5 +17,5 @@ func create_player_from_tilemap(coordinates: Vector2, prefab: PackedScene):
 	set_cellv(coordinates, -1)
 	var pf = prefab.instance()
 	pf.global_position = to_global(map_to_world(coordinates))
-	get_parent().add_child(pf)
+	get_parent().get_node("PlacedPlayer").add_child(pf)
 

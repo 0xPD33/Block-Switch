@@ -27,6 +27,10 @@ func forward_canvas_gui_input(event: InputEvent) -> bool:
 			if not tileMap.yellow_blocks.has(coords):
 				tileMap.yellow_blocks[coords] = Vector2.ZERO
 				get_editor_interface().get_inspector().refresh()
+		elif cell == MyTileMap.BLOCK_BLUE_ID:
+			if not tileMap.blue_blocks.has(coords):
+				tileMap.blue_blocks[coords] = Vector2.ZERO
+				get_editor_interface().get_inspector().refresh()
 		else:
 			if tileMap.yellow_blocks.has(coords):
 				tileMap.yellow_blocks.erase(coords)
