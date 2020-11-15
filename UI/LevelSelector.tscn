@@ -1,38 +1,38 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Font/AtlantisInternational-jen0.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://UI/LevelButtonGrid.gd" type="Script" id=2]
+[ext_resource path="res://UI/LevelSelector.gd" type="Script" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
-content_margin_left = 5.0
-content_margin_right = 5.0
-content_margin_top = 5.0
-content_margin_bottom = 5.0
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
 bg_color = Color( 1, 1, 1, 0.498039 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 border_color = Color( 1, 1, 1, 1 )
-border_blend = true
-corner_radius_top_left = 4
-corner_radius_top_right = 4
+expand_margin_left = 1.0
 expand_margin_bottom = 2.0
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=2]
-content_margin_left = 5.0
-content_margin_right = 5.0
-content_margin_top = 5.0
-content_margin_bottom = 5.0
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
 bg_color = Color( 1, 1, 1, 0.392157 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 border_color = Color( 1, 1, 1, 1 )
-border_blend = true
-corner_radius_top_left = 4
-corner_radius_top_right = 4
+expand_margin_left = 1.0
 expand_margin_bottom = 2.0
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=3]
 content_margin_left = 5.0
@@ -45,11 +45,10 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color( 1, 1, 1, 1 )
-border_blend = true
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+anti_aliasing = false
 
 [sub_resource type="DynamicFont" id=4]
 size = 12
@@ -59,43 +58,45 @@ font_data = ExtResource( 1 )
 size = 12
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=9]
-content_margin_top = 3.0
-content_margin_bottom = 3.0
-bg_color = Color( 0.392157, 0.392157, 0.392157, 1 )
-
-[sub_resource type="Theme" id=8]
-HScrollBar/icons/decrement = null
-HScrollBar/icons/decrement_highlight = null
-HScrollBar/icons/increment = null
-HScrollBar/icons/increment_highlight = null
-HScrollBar/styles/grabber = null
-HScrollBar/styles/grabber_highlight = null
-HScrollBar/styles/grabber_pressed = null
-HScrollBar/styles/scroll = SubResource( 9 )
-HScrollBar/styles/scroll_focus = null
-
 [sub_resource type="StyleBoxFlat" id=6]
 content_margin_left = 5.0
-content_margin_right = 5.0
-content_margin_top = 5.0
-content_margin_bottom = 5.0
+content_margin_right = 4.0
+content_margin_top = 1.0
+content_margin_bottom = 2.0
 bg_color = Color( 1, 1, 1, 0.498039 )
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 border_color = Color( 1, 1, 1, 1 )
-border_blend = true
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[sub_resource type="DynamicFont" id=8]
+size = 12
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=7]
+default_font = SubResource( 8 )
+Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = SubResource( 6 )
+Button/styles/focus = SubResource( 6 )
+Button/styles/hover = SubResource( 6 )
+Button/styles/normal = SubResource( 6 )
+Button/styles/pressed = SubResource( 6 )
 
 [node name="LevelSelector" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -123,7 +124,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
-margin_top = 28.0
+margin_top = 26.0
 margin_right = -5.0
 margin_bottom = -5.0
 scrolling_enabled = false
@@ -131,6 +132,8 @@ scrolling_enabled = false
 [node name="LevelSelectContainer" type="VBoxContainer" parent="TabContainer/MAIN"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -143,35 +146,26 @@ text = "Select Level"
 align = 1
 valign = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/MAIN/LevelSelectContainer"]
+[node name="LevelButtonGrid" type="GridContainer" parent="TabContainer/MAIN/LevelSelectContainer"]
+margin_left = 115.0
 margin_top = 17.0
-margin_right = 230.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 230, 103 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = SubResource( 8 )
-custom_styles/bg = SubResource( 6 )
-scroll_vertical_enabled = false
+margin_right = 115.0
+margin_bottom = 17.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = SubResource( 7 )
+columns = 10
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="LevelContainer" type="HBoxContainer" parent="TabContainer/MAIN/LevelSelectContainer/ScrollContainer"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 465.0
-margin_bottom = 92.0
-rect_min_size = Vector2( 460, 80 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="CUSTOM" type="Tabs" parent="TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
-margin_top = 32.0
+margin_top = 28.0
 margin_right = -5.0
 margin_bottom = -5.0
 scrolling_enabled = false

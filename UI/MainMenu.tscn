@@ -15,22 +15,18 @@ content_margin_right = 5.0
 content_margin_top = 5.0
 content_margin_bottom = 5.0
 bg_color = Color( 1, 1, 1, 0.498039 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 border_color = Color( 1, 1, 1, 1 )
-border_blend = true
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+anti_aliasing = false
 
 [sub_resource type="DynamicFont" id=3]
 extra_spacing_top = -1
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "main_menu_hide"
 length = 2.0
 tracks/0/type = "value"
@@ -82,7 +78,7 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Title:percent_visible")
@@ -133,7 +129,7 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "hide_video"
 tracks/0/type = "value"
 tracks/0/path = NodePath("GameplayVideoLoop:modulate")
@@ -148,8 +144,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "show_video"
+[sub_resource type="Animation" id=7]
 tracks/0/type = "value"
 tracks/0/path = NodePath("GameplayVideoLoop:modulate")
 tracks/0/interp = 1
@@ -273,11 +268,11 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/main_menu_hide = SubResource( 6 )
-anims/main_menu_show = SubResource( 4 )
+anims/main_menu_hide = SubResource( 4 )
+anims/main_menu_show = SubResource( 5 )
 
 [node name="VideoAnimation" type="AnimationPlayer" parent="."]
-anims/hide_video = SubResource( 7 )
-anims/show_video = SubResource( 5 )
+anims/hide_video = SubResource( 6 )
+anims/show_video = SubResource( 7 )
 [connection signal="finished" from="GameplayVideoLoop" to="." method="_on_GameplayVideoLoop_finished"]
 [connection signal="pressed" from="ButtonContainer/PlayButton" to="." method="_on_PlayButton_pressed"]

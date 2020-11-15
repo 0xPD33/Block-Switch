@@ -2,7 +2,7 @@ extends Node2D
 
 var current_level
 var next_level
-var level_number : int = 0
+var level_number : int = 0 setget set_level_number, get_level_number
 
 # TODO: change rating system, think about other ways to rate performance of player
 # 
@@ -22,6 +22,14 @@ var total_time : float
 var time setget set_time, get_time
 
 
+func set_level_number(value):
+	level_number = value
+
+
+func get_level_number():
+	return level_number
+
+
 func set_time(value):
 	time = value
 
@@ -31,7 +39,8 @@ func get_time():
 
 
 func _ready():
-	change_level()
+	set_level_number(Global.current_level_number)
+	load_next_level()
 
 
 func _process(delta):
@@ -53,9 +62,9 @@ func restart_level():
 
 
 func change_level():
-	#level_number += 1
-	# change the number to desired level below
-	level_number = 0
+	level_number += 1
+	Global.current_level_number = get_level_number()
+	print(Global.current_level_number)
 	load_next_level()
 
 
