@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assets/Font/AtlantisInternational-jen0.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/LevelButtonGrid.gd" type="Script" id=2]
+[ext_resource path="res://Assets/OnScreenControls/Sprites/transparentLight/transparentLight14.png" type="Texture" id=3]
 [ext_resource path="res://UI/LevelSelector.gd" type="Script" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -16,10 +17,9 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color( 1, 1, 1, 1 )
 expand_margin_left = 1.0
-expand_margin_bottom = 2.0
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=9]
 content_margin_left = 4.0
 content_margin_right = 4.0
 content_margin_top = 4.0
@@ -31,7 +31,6 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color( 1, 1, 1, 1 )
 expand_margin_left = 1.0
-expand_margin_bottom = 2.0
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=3]
@@ -45,9 +44,10 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color( 1, 1, 1, 1 )
-expand_margin_left = 4.0
-expand_margin_right = 4.0
-expand_margin_bottom = 4.0
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
 anti_aliasing = false
 
 [sub_resource type="DynamicFont" id=4]
@@ -75,12 +75,12 @@ expand_margin_top = 1.0
 expand_margin_bottom = 1.0
 anti_aliasing = false
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=7]
 size = 12
 font_data = ExtResource( 1 )
 
-[sub_resource type="Theme" id=7]
-default_font = SubResource( 8 )
+[sub_resource type="Theme" id=8]
+default_font = SubResource( 7 )
 Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
@@ -92,6 +92,63 @@ Button/styles/focus = SubResource( 6 )
 Button/styles/hover = SubResource( 6 )
 Button/styles/normal = SubResource( 6 )
 Button/styles/pressed = SubResource( 6 )
+
+[sub_resource type="Animation" id=14]
+resource_name = "disable_play_button"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("LevelPlayButton:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.705882 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "enable_play_button"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("LevelPlayButton:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.705882 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=10]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 1, 1, 1, 0.498039 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[sub_resource type="DynamicFont" id=11]
+size = 8
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 8
+font_data = ExtResource( 1 )
 
 [node name="LevelSelector" type="Control"]
 anchor_right = 1.0
@@ -107,12 +164,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -120.0
-margin_top = -80.0
+margin_top = -81.0
 margin_right = 120.0
-margin_bottom = 80.0
+margin_bottom = 79.0
 custom_styles/tab_fg = SubResource( 1 )
 custom_styles/tab_disabled = SubResource( 1 )
-custom_styles/tab_bg = SubResource( 2 )
+custom_styles/tab_bg = SubResource( 9 )
 custom_styles/panel = SubResource( 3 )
 custom_fonts/font = SubResource( 4 )
 tab_align = 0
@@ -130,8 +187,11 @@ margin_bottom = -5.0
 scrolling_enabled = false
 
 [node name="LevelSelectContainer" type="VBoxContainer" parent="TabContainer/MAIN"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -64.5
+margin_right = 180.0
+margin_bottom = 64.5
 size_flags_horizontal = 0
 size_flags_vertical = 0
 __meta__ = {
@@ -139,33 +199,131 @@ __meta__ = {
 }
 
 [node name="SelectLevelLabel" type="Label" parent="TabContainer/MAIN/LevelSelectContainer"]
-margin_right = 230.0
+margin_right = 180.0
 margin_bottom = 13.0
 custom_fonts/font = SubResource( 5 )
 text = "Select Level"
-align = 1
 valign = 1
 
 [node name="LevelButtonGrid" type="GridContainer" parent="TabContainer/MAIN/LevelSelectContainer"]
-margin_left = 115.0
 margin_top = 17.0
-margin_right = 115.0
 margin_bottom = 17.0
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = SubResource( 7 )
-columns = 10
+theme = SubResource( 8 )
+columns = 8
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ButtonContainer" type="HBoxContainer" parent="TabContainer/MAIN/LevelSelectContainer"]
+margin_left = 78.0
+margin_top = 105.0
+margin_right = 102.0
+margin_bottom = 129.0
+rect_min_size = Vector2( 0, 12 )
+size_flags_horizontal = 4
+size_flags_vertical = 10
+alignment = 1
+
+[node name="LevelPlayButton" type="TextureButton" parent="TabContainer/MAIN/LevelSelectContainer/ButtonContainer"]
+modulate = Color( 1, 1, 1, 0.705882 )
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+disabled = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 3 )
+texture_disabled = ExtResource( 3 )
+expand = true
+
+[node name="ButtonAnimation" type="AnimationPlayer" parent="TabContainer/MAIN/LevelSelectContainer/ButtonContainer"]
+anims/disable_play_button = SubResource( 14 )
+anims/enable_play_button = SubResource( 13 )
+
+[node name="LevelDetailsPanel" type="Panel" parent="TabContainer/MAIN"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = -64.5
+margin_bottom = 64.5
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DetailsPanelContainer" type="VBoxContainer" parent="TabContainer/MAIN/LevelDetailsPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -21.0
+margin_top = -60.5
+margin_right = 21.0
+margin_bottom = 60.5
+size_flags_horizontal = 0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelLabel" type="Label" parent="TabContainer/MAIN/LevelDetailsPanel/DetailsPanelContainer"]
+margin_right = 42.0
+margin_bottom = 9.0
+custom_fonts/font = SubResource( 11 )
+text = "Level -"
+align = 1
+valign = 1
+
+[node name="BestTimeLabel" type="Label" parent="TabContainer/MAIN/LevelDetailsPanel/DetailsPanelContainer"]
+margin_top = 13.0
+margin_right = 42.0
+margin_bottom = 22.0
+custom_fonts/font = SubResource( 12 )
+text = "Best time:"
+align = 1
+valign = 1
+
+[node name="BestTimeValueLabel" type="Label" parent="TabContainer/MAIN/LevelDetailsPanel/DetailsPanelContainer"]
+margin_top = 26.0
+margin_right = 42.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 12 )
+text = "---"
+align = 1
+valign = 1
+
+[node name="BestRatingLabel" type="Label" parent="TabContainer/MAIN/LevelDetailsPanel/DetailsPanelContainer"]
+margin_top = 39.0
+margin_right = 42.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 12 )
+text = "Best rating:"
+align = 1
+valign = 1
+
+[node name="BestRatingValueLabel" type="Label" parent="TabContainer/MAIN/LevelDetailsPanel/DetailsPanelContainer"]
+margin_top = 52.0
+margin_right = 42.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 12 )
+text = "---"
+align = 1
+valign = 1
 
 [node name="CUSTOM" type="Tabs" parent="TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
-margin_top = 28.0
+margin_top = 26.0
 margin_right = -5.0
 margin_bottom = -5.0
 scrolling_enabled = false
@@ -186,3 +344,4 @@ align = 1
 valign = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[connection signal="pressed" from="TabContainer/MAIN/LevelSelectContainer/ButtonContainer/LevelPlayButton" to="." method="_on_LevelPlayButton_pressed"]

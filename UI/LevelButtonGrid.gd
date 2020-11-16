@@ -1,5 +1,6 @@
 extends GridContainer
 
+var level_selector = null
 var level_numbers := []
 
 
@@ -42,5 +43,7 @@ func custom_sort(a, b):
 
 func _on_level_button_pressed(num):
 	Global.current_level_number = num
-	get_tree().change_scene("res://Game/Game.tscn")
+	level_selector.level_selected = true
+	level_selector.update_panel()
+	level_selector.update_buttons()
 
