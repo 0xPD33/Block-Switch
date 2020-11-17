@@ -98,7 +98,7 @@ func calculate_rating():
 	var number_of_blue_blocks = get_tree().get_nodes_in_group("BlockBlue").size()
 	
 	rating_level = (number_of_normal_blocks + (number_of_yellow_blocks * 4) + (number_of_blue_blocks * 2)) / total_time * 1.33
-	var rating : String 
+	var rating : String
 	
 	if rating_level <= max_rating_level:
 		if rating_level == 0:

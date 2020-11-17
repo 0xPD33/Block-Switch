@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Assets/Font/AtlantisInternational-jen0.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/LevelButtonGrid.gd" type="Script" id=2]
@@ -19,7 +19,7 @@ border_color = Color( 1, 1, 1, 1 )
 expand_margin_left = 1.0
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=2]
 content_margin_left = 4.0
 content_margin_right = 4.0
 content_margin_top = 4.0
@@ -93,7 +93,7 @@ Button/styles/hover = SubResource( 6 )
 Button/styles/normal = SubResource( 6 )
 Button/styles/pressed = SubResource( 6 )
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=9]
 resource_name = "disable_play_button"
 length = 0.4
 tracks/0/type = "value"
@@ -109,7 +109,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.705882 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=10]
 resource_name = "enable_play_button"
 length = 0.4
 tracks/0/type = "value"
@@ -125,7 +125,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0.705882 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="StyleBoxFlat" id=10]
+[sub_resource type="StyleBoxFlat" id=11]
 content_margin_left = 5.0
 content_margin_right = 5.0
 content_margin_top = 5.0
@@ -142,15 +142,96 @@ expand_margin_top = 1.0
 expand_margin_bottom = 1.0
 anti_aliasing = false
 
-[sub_resource type="DynamicFont" id=11]
-size = 8
-font_data = ExtResource( 1 )
-
 [sub_resource type="DynamicFont" id=12]
 size = 8
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=13]
+size = 8
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=14]
+resource_name = "level_selector_fade_in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TabContainer/MAIN/LevelSelectContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TabContainer/MAIN/LevelDetailsPanel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "level_selector_fade_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TabContainer/MAIN/LevelSelectContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TabContainer/MAIN/LevelDetailsPanel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [node name="LevelSelector" type="Control"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 4 )
@@ -169,7 +250,7 @@ margin_right = 120.0
 margin_bottom = 79.0
 custom_styles/tab_fg = SubResource( 1 )
 custom_styles/tab_disabled = SubResource( 1 )
-custom_styles/tab_bg = SubResource( 9 )
+custom_styles/tab_bg = SubResource( 2 )
 custom_styles/panel = SubResource( 3 )
 custom_fonts/font = SubResource( 4 )
 tab_align = 0
@@ -187,6 +268,7 @@ margin_bottom = -5.0
 scrolling_enabled = false
 
 [node name="LevelSelectContainer" type="VBoxContainer" parent="TabContainer/MAIN"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_top = -64.5
@@ -241,10 +323,11 @@ texture_disabled = ExtResource( 3 )
 expand = true
 
 [node name="ButtonAnimation" type="AnimationPlayer" parent="TabContainer/MAIN/LevelSelectContainer/ButtonContainer"]
-anims/disable_play_button = SubResource( 14 )
-anims/enable_play_button = SubResource( 13 )
+anims/disable_play_button = SubResource( 9 )
+anims/enable_play_button = SubResource( 10 )
 
 [node name="LevelDetailsPanel" type="Panel" parent="TabContainer/MAIN"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -254,7 +337,7 @@ margin_top = -64.5
 margin_bottom = 64.5
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_styles/panel = SubResource( 10 )
+custom_styles/panel = SubResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -277,7 +360,7 @@ __meta__ = {
 [node name="LevelLabel" type="Label" parent="TabContainer/MAIN/LevelDetailsPanel/DetailsPanelContainer"]
 margin_right = 42.0
 margin_bottom = 9.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
 text = "Level -"
 align = 1
 valign = 1
@@ -286,7 +369,7 @@ valign = 1
 margin_top = 13.0
 margin_right = 42.0
 margin_bottom = 22.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 13 )
 text = "Best time:"
 align = 1
 valign = 1
@@ -295,7 +378,7 @@ valign = 1
 margin_top = 26.0
 margin_right = 42.0
 margin_bottom = 35.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 13 )
 text = "---"
 align = 1
 valign = 1
@@ -304,7 +387,7 @@ valign = 1
 margin_top = 39.0
 margin_right = 42.0
 margin_bottom = 48.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 13 )
 text = "Best rating:"
 align = 1
 valign = 1
@@ -313,7 +396,7 @@ valign = 1
 margin_top = 52.0
 margin_right = 42.0
 margin_bottom = 61.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 13 )
 text = "---"
 align = 1
 valign = 1
@@ -344,4 +427,6 @@ align = 1
 valign = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/level_selector_fade_in = SubResource( 14 )
+anims/level_selector_fade_out = SubResource( 15 )
 [connection signal="pressed" from="TabContainer/MAIN/LevelSelectContainer/ButtonContainer/LevelPlayButton" to="." method="_on_LevelPlayButton_pressed"]

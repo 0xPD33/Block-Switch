@@ -34,6 +34,11 @@ func populate_grid():
 		add_child(level_button)
 
 
+# TODO: Lock levels that have not been played yet
+func lock_levels():
+	pass
+
+
 func custom_sort(a, b):
 	if typeof(a) != typeof(b):
 		return typeof(a) < typeof(b)

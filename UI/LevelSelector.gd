@@ -4,13 +4,22 @@ var level_selected : bool = false
 
 onready var level_button_grid = $TabContainer/MAIN/LevelSelectContainer/LevelButtonGrid
 onready var button_container = $TabContainer/MAIN/LevelSelectContainer/ButtonContainer
-
 onready var level_details_panel = $TabContainer/MAIN/LevelDetailsPanel
+onready var anim_player = $AnimationPlayer
 
 
 func _ready():
 	level_button_grid.level_selector = self
 	level_button_grid.populate_grid()
+	fade_in()
+
+
+func fade_in():
+	anim_player.play("level_selector_fade_in")
+
+
+func fade_out():
+	anim_player.play("level_selector_fade_out")
 
 
 func update_panel():
@@ -29,5 +38,7 @@ func update_buttons():
 
 
 func _on_LevelPlayButton_pressed():
+	fade_out()
+	yield(anim_player, "animation_finished")
 	get_tree().change_scene("res://Game/Game.tscn")
 
