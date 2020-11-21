@@ -25,6 +25,12 @@ func fade_out():
 func update_panel():
 	var level_label = level_details_panel.get_node("DetailsPanelContainer/LevelLabel")
 	level_label.text = "Level " + str(Global.current_level_number)
+	
+	var best_time_value = level_details_panel.get_node("DetailsPanelContainer/BestTimeValueLabel")
+	best_time_value.text = str(SaveManager.load_level_time(Global.current_level_number))
+	
+	var best_rating_value = level_details_panel.get_node("DetailsPanelContainer/BestRatingValueLabel")
+	best_rating_value.text = str(SaveManager.load_level_rating(Global.current_level_number))
 
 
 func update_buttons():

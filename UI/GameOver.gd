@@ -10,5 +10,6 @@ func _on_RetryButton_pressed():
 
 
 func _on_QuitButton_pressed():
+	Global.game_over = false
 	get_tree().change_scene("res://UI/LevelSelector.tscn")
 

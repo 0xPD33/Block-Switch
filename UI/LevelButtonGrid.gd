@@ -30,13 +30,11 @@ func populate_grid():
 	for num in level_numbers:
 		var level_button = Button.new()
 		level_button.text = str(num)
+		level_button.name = "LevelButton" + str(num)
 		level_button.connect("pressed", self, "_on_level_button_pressed", [num])
 		add_child(level_button)
-
-
-# TODO: Lock levels that have not been played yet
-func lock_levels():
-	pass
+		if !Global.levels_unlocked.has(num):
+			level_button.disabled = true
 
 
 func custom_sort(a, b):

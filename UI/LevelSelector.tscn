@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Assets/Font/AtlantisInternational-jen0.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/LevelButtonGrid.gd" type="Script" id=2]
@@ -7,7 +7,7 @@
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 4.0
-content_margin_right = 4.0
+content_margin_right = 5.0
 content_margin_top = 4.0
 content_margin_bottom = 4.0
 bg_color = Color( 1, 1, 1, 0.498039 )
@@ -21,7 +21,7 @@ anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=2]
 content_margin_left = 4.0
-content_margin_right = 4.0
+content_margin_right = 5.0
 content_margin_top = 4.0
 content_margin_bottom = 4.0
 bg_color = Color( 1, 1, 1, 0.392157 )
@@ -63,6 +63,23 @@ content_margin_left = 5.0
 content_margin_right = 4.0
 content_margin_top = 1.0
 content_margin_bottom = 2.0
+bg_color = Color( 1, 1, 1, 0.392157 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=7]
+content_margin_left = 5.0
+content_margin_right = 4.0
+content_margin_top = 1.0
+content_margin_bottom = 2.0
 bg_color = Color( 1, 1, 1, 0.498039 )
 border_width_left = 1
 border_width_top = 1
@@ -75,26 +92,59 @@ expand_margin_top = 1.0
 expand_margin_bottom = 1.0
 anti_aliasing = false
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="StyleBoxFlat" id=8]
+content_margin_left = 5.0
+content_margin_right = 4.0
+content_margin_top = 1.0
+content_margin_bottom = 2.0
+bg_color = Color( 1, 1, 1, 0.498039 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=9]
+content_margin_left = 5.0
+content_margin_right = 4.0
+content_margin_top = 1.0
+content_margin_bottom = 2.0
+bg_color = Color( 1, 1, 1, 0.627451 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[sub_resource type="DynamicFont" id=10]
 size = 12
 font_data = ExtResource( 1 )
 
-[sub_resource type="Theme" id=8]
-default_font = SubResource( 7 )
-Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
-Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+[sub_resource type="Theme" id=11]
+default_font = SubResource( 10 )
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_disabled = Color( 1, 1, 1, 0.235294 )
 Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
-Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 0.862745 )
 Button/constants/hseparation = 2
 Button/fonts/font = null
 Button/styles/disabled = SubResource( 6 )
-Button/styles/focus = SubResource( 6 )
-Button/styles/hover = SubResource( 6 )
-Button/styles/normal = SubResource( 6 )
-Button/styles/pressed = SubResource( 6 )
+Button/styles/focus = SubResource( 7 )
+Button/styles/hover = SubResource( 7 )
+Button/styles/normal = SubResource( 8 )
+Button/styles/pressed = SubResource( 9 )
 
-[sub_resource type="Animation" id=9]
-resource_name = "disable_play_button"
+[sub_resource type="Animation" id=12]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("LevelPlayButton:modulate")
@@ -109,8 +159,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.705882 ) ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "enable_play_button"
+[sub_resource type="Animation" id=13]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("LevelPlayButton:modulate")
@@ -125,7 +174,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0.705882 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="StyleBoxFlat" id=11]
+[sub_resource type="StyleBoxFlat" id=14]
 content_margin_left = 5.0
 content_margin_right = 5.0
 content_margin_top = 5.0
@@ -142,16 +191,15 @@ expand_margin_top = 1.0
 expand_margin_bottom = 1.0
 anti_aliasing = false
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=15]
 size = 8
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=16]
 size = 8
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=14]
-resource_name = "level_selector_fade_in"
+[sub_resource type="Animation" id=17]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -190,8 +238,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=15]
-resource_name = "level_selector_fade_out"
+[sub_resource type="Animation" id=18]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -292,7 +339,7 @@ margin_top = 17.0
 margin_bottom = 17.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = SubResource( 8 )
+theme = SubResource( 11 )
 columns = 8
 script = ExtResource( 2 )
 __meta__ = {
@@ -323,8 +370,8 @@ texture_disabled = ExtResource( 3 )
 expand = true
 
 [node name="ButtonAnimation" type="AnimationPlayer" parent="TabContainer/MAIN/LevelSelectContainer/ButtonContainer"]
-anims/disable_play_button = SubResource( 9 )
-anims/enable_play_button = SubResource( 10 )
+anims/disable_play_button = SubResource( 12 )
+anims/enable_play_button = SubResource( 13 )
 
 [node name="LevelDetailsPanel" type="Panel" parent="TabContainer/MAIN"]
 modulate = Color( 1, 1, 1, 0 )
@@ -337,7 +384,7 @@ margin_top = -64.5
 margin_bottom = 64.5
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_styles/panel = SubResource( 11 )
+custom_styles/panel = SubResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -360,7 +407,7 @@ __meta__ = {
 [node name="LevelLabel" type="Label" parent="TabContainer/MAIN/LevelDetailsPanel/DetailsPanelContainer"]
 margin_right = 42.0
 margin_bottom = 9.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 15 )
 text = "Level -"
 align = 1
 valign = 1
@@ -369,7 +416,7 @@ valign = 1
 margin_top = 13.0
 margin_right = 42.0
 margin_bottom = 22.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 16 )
 text = "Best time:"
 align = 1
 valign = 1
@@ -378,7 +425,7 @@ valign = 1
 margin_top = 26.0
 margin_right = 42.0
 margin_bottom = 35.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 16 )
 text = "---"
 align = 1
 valign = 1
@@ -387,7 +434,7 @@ valign = 1
 margin_top = 39.0
 margin_right = 42.0
 margin_bottom = 48.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 16 )
 text = "Best rating:"
 align = 1
 valign = 1
@@ -396,7 +443,7 @@ valign = 1
 margin_top = 52.0
 margin_right = 42.0
 margin_bottom = 61.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 16 )
 text = "---"
 align = 1
 valign = 1
@@ -427,6 +474,6 @@ align = 1
 valign = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/level_selector_fade_in = SubResource( 14 )
-anims/level_selector_fade_out = SubResource( 15 )
+anims/level_selector_fade_in = SubResource( 17 )
+anims/level_selector_fade_out = SubResource( 18 )
 [connection signal="pressed" from="TabContainer/MAIN/LevelSelectContainer/ButtonContainer/LevelPlayButton" to="." method="_on_LevelPlayButton_pressed"]

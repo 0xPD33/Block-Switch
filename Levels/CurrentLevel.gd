@@ -64,7 +64,6 @@ func restart_level():
 func change_level():
 	level_number += 1
 	Global.current_level_number = get_level_number()
-	print(Global.current_level_number)
 	load_next_level()
 
 

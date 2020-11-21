@@ -52,11 +52,13 @@ func player_death(player):
 
 func level_done():
 	Global.level_done = true
-	var level_number = current_level.level_number
+	Global.levels_unlocked.append(Global.current_level_number + 1)
 	var completion_time = current_level.get_time()
 	var completion_rating = current_level.calculate_rating()
+	SaveManager.save_level_time(Global.current_level_number, completion_time)
+	SaveManager.save_level_rating(Global.current_level_number, completion_rating)
 	current_level.stop_timer()
-	level_done_scene.done_label.text = "Level " + str(level_number) + " done!"
+	level_done_scene.done_label.text = "Level " + str(Global.current_level_number) + " done!"
 	level_done_scene.time_label.text = "Time: " + str(completion_time) + " seconds"
 	level_done_scene.rating_label.text = completion_rating
 	level_done_scene.show()
