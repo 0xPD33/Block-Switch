@@ -3,19 +3,28 @@ extends Node
 const FILE_NAME = "user://savegame.json"
 
 var save_data = {
+	"levels_unlocked": [],
 	"level_times": {},
 	"level_ratings": {}
 }
 
 
+func save_levels_unlocked():
+	save_data["levels_unlocked"] = Global.levels_unlocked
+
+
+func load_levels_unlocked():
+	return save_data["levels_unlocked"]
+
+
 func save_level_time(level_num : int, time : float):
-	if save_data["level_times"].empty():
-		save_data["level_times"]["Level" + str(level_num)] = time
-	else:
+	if save_data["level_times"].has("Level" + str(level_num)):
 		if time < save_data["level_times"]["Level" + str(level_num)]:
 			save_data["level_times"]["Level" + str(level_num)] = time
 		else:
 			return
+	else:
+		save_data["level_times"]["Level" + str(level_num)] = time
 
 
 func load_level_time(level_num : int):
@@ -26,14 +35,15 @@ func load_level_time(level_num : int):
 
 
 func save_level_rating(level_num : int, rating : String):
-	if save_data["level_ratings"].empty():
-		save_data["level_ratings"]["Level" + str(level_num)] = rating
-	else:
+	if save_data["level_ratings"].has("Level" + str(level_num)):
 		var new_rating_num = rating.trim_suffix("/8").to_int()
 		var old_rating_num = save_data["level_ratings"]["Level" + str(level_num)].trim_suffix("/8").to_int()
 		if new_rating_num > old_rating_num:
 			save_data["level_ratings"]["Level" + str(level_num)] = rating
-		pass
+		else:
+			return
+	else:
+		save_data["level_ratings"]["Level" + str(level_num)] = rating
 
 
 func load_level_rating(level_num : int):

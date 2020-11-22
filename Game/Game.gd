@@ -55,8 +55,10 @@ func level_done():
 	Global.levels_unlocked.append(Global.current_level_number + 1)
 	var completion_time = current_level.get_time()
 	var completion_rating = current_level.calculate_rating()
+	SaveManager.save_levels_unlocked()
 	SaveManager.save_level_time(Global.current_level_number, completion_time)
 	SaveManager.save_level_rating(Global.current_level_number, completion_rating)
+	SaveManager.save_game()
 	current_level.stop_timer()
 	level_done_scene.done_label.text = "Level " + str(Global.current_level_number) + " done!"
 	level_done_scene.time_label.text = "Time: " + str(completion_time) + " seconds"

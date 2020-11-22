@@ -9,6 +9,8 @@ onready var anim_player = $AnimationPlayer
 
 
 func _ready():
+	SaveManager.load_game()
+	Global.levels_unlocked = SaveManager.load_levels_unlocked()
 	level_button_grid.level_selector = self
 	level_button_grid.populate_grid()
 	fade_in()
@@ -26,11 +28,16 @@ func update_panel():
 	var level_label = level_details_panel.get_node("DetailsPanelContainer/LevelLabel")
 	level_label.text = "Level " + str(Global.current_level_number)
 	
-	var best_time_value = level_details_panel.get_node("DetailsPanelContainer/BestTimeValueLabel")
-	best_time_value.text = str(SaveManager.load_level_time(Global.current_level_number))
+	var best_time_value_label = level_details_panel.get_node("DetailsPanelContainer/BestTimeValueLabel")
+	var best_time_value = SaveManager.load_level_time(Global.current_level_number)
+	if typeof(best_time_value) == TYPE_REAL:
+		best_time_value_label.text = str(best_time_value) + " seconds"
+	else:
+		best_time_value_label.text = best_time_value
 	
-	var best_rating_value = level_details_panel.get_node("DetailsPanelContainer/BestRatingValueLabel")
-	best_rating_value.text = str(SaveManager.load_level_rating(Global.current_level_number))
+	var best_rating_value_label = level_details_panel.get_node("DetailsPanelContainer/BestRatingValueLabel")
+	var best_rating_value = SaveManager.load_level_rating(Global.current_level_number)
+	best_rating_value_label.text = best_rating_value
 
 
 func update_buttons():
