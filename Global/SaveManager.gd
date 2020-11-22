@@ -25,13 +25,15 @@ func load_level_time(level_num : int):
 		return "---"
 
 
-# TODO: Fix saving of ratings
-
 func save_level_rating(level_num : int, rating : String):
 	if save_data["level_ratings"].empty():
 		save_data["level_ratings"]["Level" + str(level_num)] = rating
 	else:
-		print(rating.to_int())
+		var new_rating_num = rating.trim_suffix("/8").to_int()
+		var old_rating_num = save_data["level_ratings"]["Level" + str(level_num)].trim_suffix("/8").to_int()
+		if new_rating_num > old_rating_num:
+			save_data["level_ratings"]["Level" + str(level_num)] = rating
+		pass
 
 
 func load_level_rating(level_num : int):
@@ -40,7 +42,6 @@ func load_level_rating(level_num : int):
 	else:
 		return "---"
 
-# TODO: Make data actually save to file
 
 func save_game():
 	var file = File.new()

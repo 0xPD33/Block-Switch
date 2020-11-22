@@ -15,7 +15,7 @@ colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 gradient = SubResource( 2 )
 
 [sub_resource type="Curve" id=4]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.268182 ), -0.84492, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.157955 ), -0.84492, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=5]
 curve = SubResource( 4 )
@@ -26,14 +26,14 @@ flag_disable_z = true
 direction = Vector3( 0, 0, 0 )
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 15.0
+initial_velocity = 30.0
 angular_velocity = 180.0
 angular_velocity_random = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-linear_accel = 15.0
-radial_accel = 30.0
-tangential_accel = 90.0
+linear_accel = 30.0
+radial_accel = 45.0
+tangential_accel = 60.0
 tangential_accel_random = 1.0
 scale = 0.15
 scale_curve = SubResource( 5 )
@@ -76,6 +76,7 @@ collision_mask = 6
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1.2, 1.2, 1.2, 1 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 512, 384, 64, 65 )
@@ -84,11 +85,15 @@ region_rect = Rect2( 512, 384, 64, 65 )
 visible = false
 shape = SubResource( 1 )
 
-[node name="Particles2D" type="Particles2D" parent="."]
+[node name="HitParticle" type="Particles2D" parent="."]
+visible = false
 emitting = false
-amount = 16
-lifetime = 1.5
+amount = 32
+one_shot = true
+preprocess = 0.2
+speed_scale = 2.0
 explosiveness = 1.0
+randomness = 1.0
 process_material = SubResource( 6 )
 texture = ExtResource( 3 )
 

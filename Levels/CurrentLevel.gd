@@ -4,11 +4,7 @@ var current_level
 var next_level
 var level_number : int = 0 setget set_level_number, get_level_number
 
-# TODO: change rating system, think about other ways to rate performance of player
-# 
-# Ideas: 
-#
-# star system (1/2/3 out of 3 starts upon completing level)
+# TODO: change rating system, think about other ways to rate performance of player:
 # leaderboards (include all players best, developers best and personal best)
 # leave as it is but adapt it and change the way it's calculated
 
