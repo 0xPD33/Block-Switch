@@ -5,7 +5,6 @@ var tile_size : int = 64
 var lit : bool = false
 var lit_time : float = 0.33
 
-onready var hit_particle = $HitParticle
 onready var anim_player = $AnimationPlayer
 
 
@@ -36,6 +35,5 @@ func light_down():
 
 func _on_Block_area_entered(area: Area2D):
 	if area.is_in_group("Player"):
-		#hit_particle.emitting = true
 		light_up()
 

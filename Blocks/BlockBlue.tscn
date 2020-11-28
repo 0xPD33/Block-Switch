@@ -25,4 +25,6 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 [connection signal="area_entered" from="." to="." method="_on_BlockBlue_area_entered"]

@@ -3,6 +3,9 @@ extends GridContainer
 var level_selector = null
 var level_numbers := []
 
+var locked_color = Color(0.7, 0.65, 0.65, 1)
+var unlocked_color = Color(1, 1, 1, 1)
+
 
 func count_levels():
 	var dir = Directory.new()
@@ -17,7 +20,7 @@ func count_levels():
 			level_numbers.append(file.to_int())
 	
 	dir.list_dir_end()
-	level_numbers.sort_custom(self, "custom_sort")
+	level_numbers.sort_custom(Helper, "custom_sort")
 	
 	while level_numbers.front() == 0:
 		level_numbers.pop_front()
@@ -33,20 +36,24 @@ func populate_grid():
 		level_button.name = "LevelButton" + str(num)
 		level_button.connect("pressed", self, "_on_level_button_pressed", [num])
 		add_child(level_button)
-		if !Global.levels_unlocked.has(num):
-			level_button.disabled = true
+		level_button.add_to_group("LevelButton")
+		level_button.modulate = locked_color
+		if num in Global.levels_unlocked:
+			if Global.levels_unlocked[num - 1] == num:
+				level_button.modulate = unlocked_color
 
 
-func custom_sort(a, b):
-	if typeof(a) != typeof(b):
-		return typeof(a) < typeof(b)
+func check_lock():
+	if Global.current_level_number in Global.levels_unlocked:
+		level_selector.level_locked = false
 	else:
-		return a < b
+		level_selector.level_locked = true
 
 
 func _on_level_button_pressed(num):
 	Global.current_level_number = num
+	check_lock()
 	level_selector.level_selected = true
-	level_selector.update_panel()
 	level_selector.update_buttons()
+	level_selector.update_panel()
 

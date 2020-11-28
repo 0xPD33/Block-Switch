@@ -29,3 +29,9 @@ func _on_PlayButton_pressed():
 	yield(anim_player, "animation_finished")
 	get_tree().change_scene("res://UI/LevelSelector.tscn")
 
+
+func _on_OptionsButton_pressed():
+	anim_player.play("main_menu_hide")
+	yield(anim_player, "animation_finished")
+	get_tree().change_scene("res://UI/OptionsMenu.tscn")
+

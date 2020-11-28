@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Font/AtlantisInternational-jen0.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/OnScreenControls/Sprites/transparentLight/transparentLight14.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Video/GameplayVideo-640x360.webm" type="VideoStream" id=3]
 [ext_resource path="res://UI/MainMenu.gd" type="Script" id=4]
+[ext_resource path="res://Assets/OnScreenControls/Sprites/transparentLight/transparentLight29.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -89,6 +90,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("OptionsButton:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [sub_resource type="Animation" id=5]
 length = 2.0
@@ -151,6 +164,18 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("OptionsButton:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -216,6 +241,22 @@ margin_bottom = 120.0
 stream = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
+}
+
+[node name="OptionsButton" type="TextureButton" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -32.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
 }
 
 [node name="ButtonContainer" type="HBoxContainer" parent="."]
@@ -300,4 +341,5 @@ anims/main_menu_show = SubResource( 5 )
 anims/hide_video = SubResource( 6 )
 anims/show_video = SubResource( 7 )
 [connection signal="finished" from="GameplayVideoLoop" to="." method="_on_GameplayVideoLoop_finished"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="ButtonContainer/PlayButton" to="." method="_on_PlayButton_pressed"]

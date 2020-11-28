@@ -35,6 +35,9 @@ func forward_canvas_gui_input(event: InputEvent) -> bool:
 			if tileMap.yellow_blocks.has(coords):
 				tileMap.yellow_blocks.erase(coords)
 				get_editor_interface().get_inspector().refresh()
+			if tileMap.blue_blocks.has(coords):
+				tileMap.blue_blocks.erase(coords)
+				get_editor_interface().get_inspector().refresh()
 				
 				if selectedCoords == coords:
 					selectedCoords = null

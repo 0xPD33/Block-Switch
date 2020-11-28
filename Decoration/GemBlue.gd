@@ -18,3 +18,14 @@ func snap():
 func spin_and_glow():
 	anim_player.play("spin_and_glow")
 
+
+func disappear():
+	anim_player.play("disappear")
+	yield(anim_player, "animation_finished")
+	queue_free()
+
+
+func _on_HitArea_area_entered(area: Area2D):
+	if area.is_in_group("Player"):
+		disappear()
+

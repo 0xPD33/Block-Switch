@@ -1,0 +1,546 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Assets/Font/AtlantisInternational-jen0.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/OnScreenControls/Sprites/transparentLight/transparentLight44.png" type="Texture" id=2]
+[ext_resource path="res://Assets/OnScreenControls/Sprites/transparentLight/transparentLight22.png" type="Texture" id=3]
+[ext_resource path="res://UI/OptionsMenu.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 4.0
+content_margin_right = 5.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 1, 1, 1, 0.498039 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+expand_margin_left = 1.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_left = 4.0
+content_margin_right = 5.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 1, 1, 1, 0.392157 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+expand_margin_left = 1.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 1, 1, 1, 0.498039 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+anti_aliasing = false
+
+[sub_resource type="DynamicFont" id=4]
+size = 12
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 1, 1, 1, 0.498039 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=6]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 1, 1, 1, 0.627451 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=7]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 1, 1, 1, 0.498039 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=8]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 1, 1, 1, 0.498039 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=9]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 1, 1, 1, 0.498039 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+anti_aliasing = false
+
+[sub_resource type="DynamicFont" id=10]
+size = 12
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.498039, 0.498039, 0.498039, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+anti_aliasing = false
+
+[sub_resource type="DynamicFont" id=12]
+size = 12
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=13]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=14]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=17]
+resource_name = "options_menu_fade_in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TabContainer/GAMEPLAY/OptionsContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TabContainer/GAMEPLAY/OptionsContainer/ButtonContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "options_menu_fade_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TabContainer/GAMEPLAY/OptionsContainer/ButtonContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TabContainer/GAMEPLAY/OptionsContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "confirmation_fade_in"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("ConfirmationPopup:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ConfirmationPopup/VBoxContainer/ButtonContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ConfirmationPopup/VBoxContainer/Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "confirmation_fade_out"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("ConfirmationPopup/VBoxContainer/ButtonContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ConfirmationPopup/VBoxContainer/Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ConfirmationPopup:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="OptionsMenu" type="Control"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -135.0
+margin_top = -80.0
+margin_right = 135.0
+margin_bottom = 80.0
+custom_styles/tab_fg = SubResource( 1 )
+custom_styles/tab_disabled = SubResource( 1 )
+custom_styles/tab_bg = SubResource( 2 )
+custom_styles/panel = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="GAMEPLAY" type="Tabs" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 26.0
+margin_right = -5.0
+margin_bottom = -5.0
+
+[node name="OptionsContainer" type="VBoxContainer" parent="TabContainer/GAMEPLAY"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -130.0
+margin_top = -64.5
+margin_right = 130.0
+margin_bottom = 64.5
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeleteSaveButton" type="Button" parent="TabContainer/GAMEPLAY/OptionsContainer"]
+margin_left = 99.0
+margin_right = 160.0
+margin_bottom = 23.0
+size_flags_horizontal = 4
+size_flags_vertical = 2
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 0.235294 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 0.862745 )
+text = "Delete Save"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="ButtonContainer" type="HBoxContainer" parent="TabContainer/GAMEPLAY/OptionsContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 105.0
+margin_right = 260.0
+margin_bottom = 129.0
+alignment = 1
+
+[node name="ReturnToMenuButton" type="TextureButton" parent="TabContainer/GAMEPLAY/OptionsContainer/ButtonContainer"]
+margin_left = 104.0
+margin_right = 128.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+size_flags_horizontal = 0
+texture_normal = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="AcceptButton" type="TextureButton" parent="TabContainer/GAMEPLAY/OptionsContainer/ButtonContainer"]
+margin_left = 132.0
+margin_right = 156.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+disabled = true
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 2 )
+texture_disabled = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="GRAPHICS" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 26.0
+margin_right = -5.0
+margin_bottom = -5.0
+
+[node name="AUDIO" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 26.0
+margin_right = -5.0
+margin_bottom = -5.0
+
+[node name="ConfirmationPopup" type="PopupPanel" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -80.0
+margin_top = -45.0
+margin_right = 80.0
+margin_bottom = 45.0
+custom_styles/panel = SubResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConfirmationPopup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+custom_constants/separation = 16
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ConfirmationPopup/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 5.0
+margin_right = 152.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 12 )
+text = "Are you sure you want to delete all of your progress?"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="ButtonContainer" type="HBoxContainer" parent="ConfirmationPopup/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 50.0
+margin_right = 152.0
+margin_bottom = 77.0
+custom_constants/separation = 8
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmationYesButton" type="Button" parent="ConfirmationPopup/VBoxContainer/ButtonContainer"]
+margin_left = 46.0
+margin_right = 74.0
+margin_bottom = 27.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 0.235294 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 0.862745 )
+text = "Yes"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="ConfirmationNoButton" type="Button" parent="ConfirmationPopup/VBoxContainer/ButtonContainer"]
+margin_left = 82.0
+margin_right = 105.0
+margin_bottom = 27.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+custom_fonts/font = SubResource( 14 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 0.235294 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 0.862745 )
+text = "No"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/options_menu_fade_in = SubResource( 17 )
+anims/options_menu_fade_out = SubResource( 18 )
+
+[node name="ConfirmationPopupAnimation" type="AnimationPlayer" parent="."]
+anims/confirmation_fade_in = SubResource( 15 )
+anims/confirmation_fade_out = SubResource( 16 )
+[connection signal="pressed" from="TabContainer/GAMEPLAY/OptionsContainer/DeleteSaveButton" to="." method="_on_DeleteSaveButton_pressed"]
+[connection signal="pressed" from="TabContainer/GAMEPLAY/OptionsContainer/ButtonContainer/ReturnToMenuButton" to="." method="_on_ReturnToMenuButton_pressed"]
+[connection signal="pressed" from="TabContainer/GAMEPLAY/OptionsContainer/ButtonContainer/AcceptButton" to="." method="_on_AcceptButton_pressed"]
+[connection signal="pressed" from="ConfirmationPopup/VBoxContainer/ButtonContainer/ConfirmationYesButton" to="." method="_on_ConfirmationYesButton_pressed"]
+[connection signal="pressed" from="ConfirmationPopup/VBoxContainer/ButtonContainer/ConfirmationNoButton" to="." method="_on_ConfirmationNoButton_pressed"]

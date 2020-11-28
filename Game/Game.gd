@@ -52,7 +52,7 @@ func player_death(player):
 
 func level_done():
 	Global.level_done = true
-	Global.levels_unlocked.append(Global.current_level_number + 1)
+	unlock_next_level()
 	var completion_time = current_level.get_time()
 	var completion_rating = current_level.calculate_rating()
 	SaveManager.save_levels_unlocked()
@@ -65,6 +65,11 @@ func level_done():
 	level_done_scene.rating_label.text = completion_rating
 	level_done_scene.show()
 	level_done_scene.get_node("AnimationPlayer").play("fade_in")
+
+
+func unlock_next_level():
+	if not Global.current_level_number + 1 in Global.levels_unlocked:
+		Global.levels_unlocked.append(Global.current_level_number + 1)
 
 
 func restart_level():

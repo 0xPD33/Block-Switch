@@ -1,9 +1,14 @@
 extends Control
 
 var level_selected : bool = false
+var level_locked : bool = false
 
-onready var level_button_grid = $TabContainer/MAIN/LevelSelectContainer/LevelButtonGrid
-onready var button_container = $TabContainer/MAIN/LevelSelectContainer/ButtonContainer
+onready var level_button_grid = $TabContainer/MAIN/LevelSelectContainer/ScrollContainer/MarginContainer/LevelButtonGrid
+onready var button_container = $TabContainer/MAIN/ButtonContainer
+
+onready var button_anim = button_container.get_node("ButtonAnimation")
+onready var play_button = button_container.get_node("LevelPlayButton")
+
 onready var level_details_panel = $TabContainer/MAIN/LevelDetailsPanel
 onready var anim_player = $AnimationPlayer
 
@@ -26,32 +31,73 @@ func fade_out():
 
 func update_panel():
 	var level_label = level_details_panel.get_node("DetailsPanelContainer/LevelLabel")
-	level_label.text = "Level " + str(Global.current_level_number)
-	
 	var best_time_value_label = level_details_panel.get_node("DetailsPanelContainer/BestTimeValueLabel")
 	var best_time_value = SaveManager.load_level_time(Global.current_level_number)
-	if typeof(best_time_value) == TYPE_REAL:
-		best_time_value_label.text = str(best_time_value) + " seconds"
-	else:
-		best_time_value_label.text = best_time_value
-	
 	var best_rating_value_label = level_details_panel.get_node("DetailsPanelContainer/BestRatingValueLabel")
 	var best_rating_value = SaveManager.load_level_rating(Global.current_level_number)
+	var delete_score_button = level_details_panel.get_node("DeleteScoreButton")
+	
+	if level_selected:
+		level_label.text = "Level " + str(Global.current_level_number)
+	else:
+		level_label.text = "Level -"
+	
+	if typeof(best_time_value) == TYPE_REAL:
+		delete_score_button.visible = true
+		best_time_value_label.text = str(best_time_value) + " seconds"
+	else:
+		delete_score_button.visible = false
+		best_time_value_label.text = best_time_value
+	
 	best_rating_value_label.text = best_rating_value
 
 
 func update_buttons():
-	var button_anim = button_container.get_node("ButtonAnimation")
-	var play_button = button_container.get_node("LevelPlayButton")
-	
-	if play_button.disabled:
-		button_anim.play("enable_play_button")
-		yield(button_anim, "animation_finished")
-		play_button.disabled = false
+	if level_selected:
+		if level_locked:
+			if !play_button.disabled:
+				disable_play_button()
+		else:
+			if play_button.disabled:
+				enable_play_button()
+	else:
+		if !play_button.disabled:
+			disable_play_button()
+
+
+func enable_play_button():
+	button_anim.play("enable_play_button")
+	yield(button_anim, "animation_finished")
+	play_button.disabled = false
+
+
+func disable_play_button():
+	play_button.disabled = true
+	button_anim.play("disable_play_button")
+	yield(button_anim, "animation_finished")
+
+
+func _on_LevelSelectContainer_gui_input(event: InputEvent):
+	if event is InputEventScreenTouch:
+		Global.current_level_number = 0
+		level_selected = false
+		update_panel()
+		update_buttons()
 
 
 func _on_LevelPlayButton_pressed():
 	fade_out()
 	yield(anim_player, "animation_finished")
 	get_tree().change_scene("res://Game/Game.tscn")
+
+
+func _on_ReturnToMenuButton_pressed():
+	fade_out()
+	yield(anim_player, "animation_finished")
+	get_tree().change_scene("res://UI/MainMenu.tscn")
+
+
+func _on_DeleteScoreButton_pressed():
+	SaveManager.delete_level_score(Global.current_level_number)
+	update_panel()
 

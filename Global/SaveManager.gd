@@ -3,7 +3,7 @@ extends Node
 const FILE_NAME = "user://savegame.json"
 
 var save_data = {
-	"levels_unlocked": [],
+	"levels_unlocked": [1],
 	"level_times": {},
 	"level_ratings": {}
 }
@@ -53,6 +53,11 @@ func load_level_rating(level_num : int):
 		return "---"
 
 
+func delete_level_score(level_num : int):
+	save_data["level_times"].erase("Level" + str(level_num))
+	save_data["level_ratings"].erase("Level" + str(level_num))
+
+
 func save_game():
 	var file = File.new()
 	file.open(FILE_NAME, File.WRITE)
@@ -72,4 +77,13 @@ func load_game():
 			printerr("Corrupted data!")
 	else:
 		printerr("No saved data!")
+
+
+func delete_save_file():
+	save_data["levels_unlocked"].clear()
+	save_data["level_times"].clear()
+	save_data["level_ratings"].clear()
+	var dir = Directory.new()
+	dir.remove("user://savegame.json")
+	save_data["levels_unlocked"].append(1)
 

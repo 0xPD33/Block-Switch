@@ -29,6 +29,7 @@ config/icon="res://icon.png"
 Global="*res://Global/Global.gd"
 GlobalOptions="*res://Global/GlobalOptions.gd"
 SaveManager="*res://Global/SaveManager.gd"
+Helper="*res://Global/Helper.gd"
 
 [debug]
 
@@ -45,7 +46,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray(  )
+enabled=PoolStringArray( "." )
 
 [input]
 
