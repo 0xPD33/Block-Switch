@@ -10,5 +10,8 @@ yellow_blocks = {
 Vector2( 4, 0 ): Vector2( 1, -1 )
 }
 
-[node name="PlayerTile" parent="." index="1"]
+[node name="Decoration" parent="." index="1"]
+tile_data = PoolIntArray( -65535, 1, 0 )
+
+[node name="PlayerTile" parent="." index="2"]
 tile_data = PoolIntArray( 196609, 0, 0 )

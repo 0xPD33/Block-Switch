@@ -12,5 +12,8 @@ Vector2( 8, 4 ): Vector2( 4, 5 ),
 Vector2( 8, 8 ): Vector2( 3, 8 )
 }
 
-[node name="PlayerTile" parent="." index="1"]
+[node name="Decoration" parent="." index="1"]
+tile_data = PoolIntArray( 65540, 1, 0, 327684, 1, 0, 524291, 1, 0 )
+
+[node name="PlayerTile" parent="." index="2"]
 tile_data = PoolIntArray( 0, 0, 0 )

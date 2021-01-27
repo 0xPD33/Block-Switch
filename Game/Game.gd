@@ -61,7 +61,7 @@ func level_done():
 	SaveManager.save_game()
 	current_level.stop_timer()
 	level_done_scene.done_label.text = "Level " + str(Global.current_level_number) + " done!"
-	level_done_scene.time_label.text = "Time: " + str(completion_time) + " seconds"
+	level_done_scene.time_label.text = "Time: " + completion_time
 	level_done_scene.rating_label.text = completion_rating
 	level_done_scene.show()
 	level_done_scene.get_node("AnimationPlayer").play("fade_in")

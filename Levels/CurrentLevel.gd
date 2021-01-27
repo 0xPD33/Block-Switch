@@ -42,7 +42,13 @@ func _ready():
 func _process(delta):
 	if timer_started:
 		total_time += delta
-		set_time(stepify(total_time, 0.01))
+		
+	var ms = fmod(total_time, 1) * 1000
+	var s = fmod(total_time, 60)
+	var m = fmod(total_time, 60 * 60) / 60
+	
+	var time_passed = "%02d:%02d:%03d" % [m, s, ms]
+	set_time(time_passed)
 
 
 func restart_level():
@@ -76,15 +82,19 @@ func load_next_level():
 	add_child(next_level_instance)
 	
 	if level_number == 10:
-		yield(get_tree(), "idle_frame")
-		get_tree().call_group("Player", "set_cam_current")
-		get_parent().launch_tutorial("YellowBlock")
+		launch_tutorial("YellowBlock")
 	elif level_number == 20:
-		yield(get_tree(), "idle_frame")
-		get_tree().call_group("Player", "set_cam_current")
-		get_parent().launch_tutorial("BlueBlock")
+		launch_tutorial("BlueBlock")
+	elif level_number == 50:
+		launch_tutorial("MultipleWays")
 	else:
 		start_timer()
+
+
+func launch_tutorial(tutorial_string : String):
+	yield(get_tree(), "idle_frame")
+	get_tree().call_group("Player", "set_cam_current")
+	get_parent().launch_tutorial(tutorial_string)
 
 
 func calculate_rating():
@@ -92,7 +102,7 @@ func calculate_rating():
 	var number_of_yellow_blocks = get_tree().get_nodes_in_group("BlockYellow").size()
 	var number_of_blue_blocks = get_tree().get_nodes_in_group("BlockBlue").size()
 	
-	rating_level = (number_of_normal_blocks + (number_of_yellow_blocks * 4) + (number_of_blue_blocks * 2)) / total_time * 1.33
+	rating_level = (number_of_normal_blocks + (number_of_yellow_blocks * 4) + (number_of_blue_blocks * 2)) / total_time * 1.5
 	var rating : String
 	
 	if rating_level <= max_rating_level:

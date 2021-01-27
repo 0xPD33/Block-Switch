@@ -14,7 +14,7 @@ script = ExtResource( 2 )
 block_scene = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 1, 1, 0, 1 )
+modulate = Color( 1, 0.937255, 0, 1 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 512, 384, 64, 65 )

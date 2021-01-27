@@ -1,0 +1,426 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Assets/PNG/Default size/Blocks/block_06.png" type="Texture" id=1]
+[ext_resource path="res://Levels/LevelEditorPanel.gd" type="Script" id=2]
+[ext_resource path="res://Assets/PNG/Default size/Environment/environment_15.png" type="Texture" id=3]
+[ext_resource path="res://Levels/LevelEditorButtonGrid.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Font/AtlantisInternational-jen0.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Levels/LevelEditorSelectedBlock.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/PNG/Default size/Environment/environment_06.png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.498039, 0.498039, 0.498039, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.498039, 0.498039, 0.498039, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_left = 5.0
+content_margin_right = 4.0
+content_margin_top = 1.0
+content_margin_bottom = 2.0
+bg_color = Color( 1, 1, 1, 0.498039 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=4]
+content_margin_left = 5.0
+content_margin_right = 4.0
+content_margin_top = 1.0
+content_margin_bottom = 2.0
+bg_color = Color( 1, 1, 1, 0.627451 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=5]
+content_margin_left = 5.0
+content_margin_right = 4.0
+content_margin_top = 1.0
+content_margin_bottom = 2.0
+bg_color = Color( 1, 1, 1, 0 )
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=6]
+content_margin_left = 5.0
+content_margin_right = 4.0
+content_margin_top = 1.0
+content_margin_bottom = 2.0
+bg_color = Color( 1, 1, 1, 0.392157 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=7]
+content_margin_left = 5.0
+content_margin_right = 4.0
+content_margin_top = 1.0
+content_margin_bottom = 2.0
+bg_color = Color( 1, 1, 1, 0.498039 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[sub_resource type="DynamicFont" id=8]
+size = 8
+font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+content_margin_left = 5.0
+content_margin_right = 4.0
+content_margin_top = 1.0
+content_margin_bottom = 2.0
+bg_color = Color( 1, 1, 1, 0.498039 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=10]
+content_margin_left = 5.0
+content_margin_right = 4.0
+content_margin_top = 1.0
+content_margin_bottom = 2.0
+bg_color = Color( 1, 1, 1, 0.627451 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=11]
+content_margin_left = 5.0
+content_margin_right = 4.0
+content_margin_top = 1.0
+content_margin_bottom = 2.0
+bg_color = Color( 1, 1, 1, 0 )
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=12]
+content_margin_left = 5.0
+content_margin_right = 4.0
+content_margin_top = 1.0
+content_margin_bottom = 2.0
+bg_color = Color( 1, 1, 1, 0.392157 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=13]
+content_margin_left = 5.0
+content_margin_right = 4.0
+content_margin_top = 1.0
+content_margin_bottom = 2.0
+bg_color = Color( 1, 1, 1, 0.498039 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[sub_resource type="DynamicFont" id=14]
+size = 12
+font_data = ExtResource( 5 )
+
+[node name="LevelEditorPanel" type="Control"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -54.0
+margin_top = -81.0
+margin_bottom = 81.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="LevelEditorSelectedBlock" parent="." instance=ExtResource( 6 )]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -27.0
+margin_right = 27.0
+
+[node name="BigPanel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -27.0
+margin_top = -49.0
+margin_right = 27.0
+margin_bottom = 41.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="BigPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelEditorButtonGrid" type="GridContainer" parent="BigPanel/MarginContainer"]
+margin_left = 9.0
+margin_top = 8.0
+margin_right = 45.0
+margin_bottom = 82.0
+mouse_filter = 0
+size_flags_horizontal = 4
+columns = 2
+script = ExtResource( 4 )
+
+[node name="BlockButton" type="TextureButton" parent="BigPanel/MarginContainer/LevelEditorButtonGrid"]
+margin_right = 16.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture_normal = ExtResource( 1 )
+expand = true
+
+[node name="VoidButton" type="TextureButton" parent="BigPanel/MarginContainer/LevelEditorButtonGrid"]
+margin_left = 20.0
+margin_right = 36.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture_normal = ExtResource( 3 )
+expand = true
+
+[node name="BlockYellowButton" type="TextureButton" parent="BigPanel/MarginContainer/LevelEditorButtonGrid"]
+modulate = Color( 1, 1, 0, 1 )
+margin_top = 20.0
+margin_right = 16.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 16, 16 )
+texture_normal = ExtResource( 1 )
+expand = true
+
+[node name="BlockBlueButton" type="TextureButton" parent="BigPanel/MarginContainer/LevelEditorButtonGrid"]
+modulate = Color( 0.211765, 0.721569, 1, 1 )
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 36.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 16, 16 )
+texture_normal = ExtResource( 1 )
+expand = true
+
+[node name="GoalButton" type="TextureButton" parent="BigPanel/MarginContainer/LevelEditorButtonGrid"]
+modulate = Color( 0.631373, 1, 0.380392, 1 )
+margin_top = 40.0
+margin_right = 16.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 16, 16 )
+texture_normal = ExtResource( 1 )
+expand = true
+
+[node name="PlayerButton" type="TextureButton" parent="BigPanel/MarginContainer/LevelEditorButtonGrid"]
+margin_left = 20.0
+margin_top = 40.0
+margin_right = 36.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 16, 16 )
+texture_normal = ExtResource( 7 )
+expand = true
+
+[node name="SmallPanel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -27.0
+margin_top = -40.0
+margin_right = 27.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SmallPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MoveButton" type="Button" parent="SmallPanel/VBoxContainer"]
+margin_left = 9.0
+margin_top = 6.0
+margin_right = 45.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 36, 0 )
+focus_mode = 0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 0.235294 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 0.862745 )
+toggle_mode = true
+text = "Move"
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="DeleteButton" type="Button" parent="SmallPanel/VBoxContainer"]
+margin_left = 9.0
+margin_top = 22.0
+margin_right = 45.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 36, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 0.235294 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 0.862745 )
+toggle_mode = true
+text = "Delete"
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="OpenPanelButton" type="Button" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = -18.0
+margin_top = -18.0
+margin_right = -1.0
+margin_bottom = -1.0
+rect_min_size = Vector2( 17, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/focus = SubResource( 11 )
+custom_styles/disabled = SubResource( 12 )
+custom_styles/normal = SubResource( 13 )
+custom_fonts/font = SubResource( 14 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 0.235294 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 0.862745 )
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="MoveTween" type="Tween" parent="."]
+[connection signal="pressed" from="SmallPanel/VBoxContainer/MoveButton" to="." method="_on_MoveButton_pressed"]
+[connection signal="pressed" from="SmallPanel/VBoxContainer/DeleteButton" to="." method="_on_DeleteButton_pressed"]
+[connection signal="pressed" from="OpenPanelButton" to="." method="_on_OpenPanelButton_pressed"]

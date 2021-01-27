@@ -52,7 +52,7 @@ func check_lock():
 
 func _on_level_button_pressed(num):
 	Global.current_level_number = num
-	check_lock()
+	#check_lock()
 	level_selector.level_selected = true
 	level_selector.update_buttons()
 	level_selector.update_panel()

@@ -2,8 +2,18 @@ extends Area2D
 
 var tile_size = 64
 
+# LEVEL EDITOR VARIABLES
+
+var editor
+var editor_mode = false
+
+#
+
 
 func _ready():
+	if get_tree().current_scene.name == "LevelEditor":
+		editor = get_tree().current_scene
+		editor_mode = true
 	snap()
 
 
@@ -13,5 +23,8 @@ func snap():
 
 
 func _on_Goal_area_entered(area: Area2D):
-	get_tree().call_group("Game", "level_done")
+	if editor_mode:
+		editor.stop_testing_level(true)
+	else:
+		get_tree().call_group("Game", "level_done")
 

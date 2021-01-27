@@ -1,0 +1,163 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Font/AtlantisInternational-jen0.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/PNG/Default size/Blocks/block_06.png" type="Texture" id=2]
+[ext_resource path="res://Assets/PNG/Default size/Environment/environment_06.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "title_anim"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("SwapContainer:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -53 ), Vector2( 0, 1 ), Vector2( -10, 1 ), Vector2( 78, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SwapContainer:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 90.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SquareContainer:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 58, 0 ), Vector2( 58, 1 ), Vector2( 68, 1 ), Vector2( 0, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SquareContainer:rect_rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -90.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "title_hide"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="TitleAnimation" type="Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -65.0
+margin_right = 65.0
+margin_bottom = 54.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SwapContainer" type="VBoxContainer" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -80.0
+margin_right = 54.0001
+margin_bottom = -27.0
+rect_rotation = 90.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitlePartSwap" type="Label" parent="SwapContainer"]
+margin_right = 54.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 1 )
+text = "Swap"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="TextureRect" type="TextureRect" parent="SwapContainer"]
+margin_left = 19.0
+margin_top = 37.0
+margin_right = 35.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 16, 16 )
+size_flags_horizontal = 4
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="SquareContainer" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -72.0
+margin_top = -27.0
+margin_right = 0.00222778
+margin_bottom = 26.0
+rect_rotation = -90.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitlePartSquare" type="Label" parent="SquareContainer"]
+margin_right = 72.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 1 )
+text = "Square"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="TextureRect" type="TextureRect" parent="SquareContainer"]
+margin_left = 28.0
+margin_top = 37.0
+margin_right = 44.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 16, 16 )
+size_flags_horizontal = 4
+texture = ExtResource( 2 )
+expand = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/title_anim = SubResource( 2 )
+anims/title_hide = SubResource( 3 )

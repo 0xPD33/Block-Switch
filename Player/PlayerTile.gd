@@ -14,7 +14,8 @@ func setup_player():
 
 
 func create_player_from_tilemap(coordinates: Vector2, prefab: PackedScene):
-	set_cellv(coordinates, -1)
+	if !get_parent().in_editor:
+		set_cellv(coordinates, -1)
 	var pf = prefab.instance()
 	pf.global_position = to_global(map_to_world(coordinates))
 	get_parent().get_node("PlacedPlayer").add_child(pf)

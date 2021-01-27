@@ -101,3 +101,7 @@ func _on_DeleteScoreButton_pressed():
 	SaveManager.delete_level_score(Global.current_level_number)
 	update_panel()
 
+
+func _on_CustomLevelCreateButton_pressed():
+	get_tree().change_scene("res://Levels/LevelEditor.tscn")
+

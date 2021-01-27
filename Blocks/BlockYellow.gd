@@ -6,6 +6,17 @@ export (String, FILE) var add_block_sound = "res://Assets/SFX/add_block.wav"
 var missing_block_pos setget set_missing_block_pos
 var triggered = false
 
+# LEVEL EDITOR VARIABLES
+
+var editor_mode = false
+
+#
+
+
+func _ready():
+	if get_tree().current_scene.name == "LevelEditor":
+		editor_mode = true
+
 
 func set_missing_block_pos(value):
 	missing_block_pos = value
@@ -13,6 +24,7 @@ func set_missing_block_pos(value):
 
 func add_block():
 	if !triggered:
+		#if !editor_mode:
 		triggered = true
 		var block_instance = block_scene.instance()
 		block_instance.position = missing_block_pos

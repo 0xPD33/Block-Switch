@@ -6,7 +6,18 @@ export (String, FILE) var teleport_sound_2 = "res://Assets/SFX/teleport_sound2.w
 var teleport_pos setget set_teleport_pos
 var triggered = false
 
+# LEVEL EDITOR VARIABLES
+
+var editor_mode = false
+
+#
+
 onready var teleport_sounds = [teleport_sound_1, teleport_sound_2]
+
+
+func _ready():
+	if get_tree().current_scene.name == "LevelEditor":
+		editor_mode = true
 
 
 func set_teleport_pos(value):
@@ -15,7 +26,8 @@ func set_teleport_pos(value):
 
 func teleport(player):
 	if !triggered:
-		triggered = true
+		if !editor_mode:
+			triggered = true
 		player.global_position = teleport_pos
 		player.snap()
 		play_teleport_sound()

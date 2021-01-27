@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/delete_block.wav-d490160ea61b9846357b6c8e75d822f3.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/delete_block.wav"
+dest_files=[ "res://.import/delete_block.wav-d490160ea61b9846357b6c8e75d822f3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

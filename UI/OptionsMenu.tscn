@@ -1,9 +1,11 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Assets/Font/AtlantisInternational-jen0.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/OnScreenControls/Sprites/transparentLight/transparentLight44.png" type="Texture" id=2]
 [ext_resource path="res://Assets/OnScreenControls/Sprites/transparentLight/transparentLight22.png" type="Texture" id=3]
 [ext_resource path="res://UI/OptionsMenu.gd" type="Script" id=4]
+[ext_resource path="res://Assets/OnScreenControls/Sprites/transparentLight/transparentLight13.png" type="Texture" id=5]
+[ext_resource path="res://Assets/OnScreenControls/Sprites/transparentLight/transparentLight11.png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 4.0
@@ -123,7 +125,11 @@ anti_aliasing = false
 size = 12
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=11]
+[sub_resource type="DynamicFont" id=11]
+size = 12
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=12]
 content_margin_left = 5.0
 content_margin_right = 5.0
 content_margin_top = 5.0
@@ -140,19 +146,18 @@ expand_margin_top = 2.0
 expand_margin_bottom = 2.0
 anti_aliasing = false
 
-[sub_resource type="DynamicFont" id=12]
-size = 12
-font_data = ExtResource( 1 )
-
 [sub_resource type="DynamicFont" id=13]
+size = 12
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=14]
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="DynamicFont" id=15]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=16]
 resource_name = "options_menu_fade_in"
-length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -165,73 +170,24 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("TabContainer/GAMEPLAY/OptionsContainer:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.5, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("TabContainer/GAMEPLAY/OptionsContainer/ButtonContainer:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 1.5, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=17]
 resource_name = "options_menu_fade_out"
-length = 2.0
+step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("TabContainer/GAMEPLAY/OptionsContainer/ButtonContainer:modulate")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("TabContainer/GAMEPLAY/OptionsContainer:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.5, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 1, 2 ),
+"times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=15]
-resource_name = "confirmation_fade_in"
+[sub_resource type="Animation" id=18]
 length = 1.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("ConfirmationPopup:modulate")
@@ -270,8 +226,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=16]
-resource_name = "confirmation_fade_out"
+[sub_resource type="Animation" id=19]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("ConfirmationPopup/VBoxContainer/ButtonContainer:modulate")
@@ -318,6 +273,10 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+volume_loud_texture = ExtResource( 6 )
+volume_mute_texture = ExtResource( 5 )
+volume_loud_color = Color( 1, 1, 1, 1 )
+volume_mute_color = Color( 1, 1, 1, 0.705882 )
 
 [node name="TabContainer" type="TabContainer" parent="."]
 anchor_left = 0.5
@@ -348,7 +307,6 @@ margin_right = -5.0
 margin_bottom = -5.0
 
 [node name="OptionsContainer" type="VBoxContainer" parent="TabContainer/GAMEPLAY"]
-modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -384,7 +342,6 @@ __meta__ = {
 }
 
 [node name="ButtonContainer" type="HBoxContainer" parent="TabContainer/GAMEPLAY/OptionsContainer"]
-modulate = Color( 1, 1, 1, 0 )
 margin_top = 105.0
 margin_right = 260.0
 margin_bottom = 129.0
@@ -409,7 +366,6 @@ margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
-disabled = true
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 2 )
 texture_disabled = ExtResource( 2 )
@@ -436,6 +392,113 @@ margin_top = 26.0
 margin_right = -5.0
 margin_bottom = -5.0
 
+[node name="OptionsContainer" type="VBoxContainer" parent="TabContainer/AUDIO"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXVolumeContainer" type="HBoxContainer" parent="TabContainer/AUDIO/OptionsContainer"]
+margin_right = 260.0
+margin_bottom = 16.0
+
+[node name="SFXVolumeLabel" type="Label" parent="TabContainer/AUDIO/OptionsContainer/SFXVolumeContainer"]
+margin_top = 1.0
+margin_right = 108.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 11 )
+text = "SFX Volume"
+align = 1
+valign = 1
+
+[node name="SFXVolumeSlider" type="HSlider" parent="TabContainer/AUDIO/OptionsContainer/SFXVolumeContainer"]
+margin_left = 112.0
+margin_right = 240.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 128, 0 )
+min_value = -80.0
+max_value = 6.0
+
+[node name="SFXMuteButton" type="TextureButton" parent="TabContainer/AUDIO/OptionsContainer/SFXVolumeContainer"]
+margin_left = 244.0
+margin_right = 260.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture_normal = ExtResource( 6 )
+expand = true
+
+[node name="MusicVolumeContainer" type="HBoxContainer" parent="TabContainer/AUDIO/OptionsContainer"]
+margin_top = 20.0
+margin_right = 260.0
+margin_bottom = 36.0
+
+[node name="MusicVolumeLabel" type="Label" parent="TabContainer/AUDIO/OptionsContainer/MusicVolumeContainer"]
+margin_top = 1.0
+margin_right = 108.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 11 )
+text = "Music Volume"
+align = 1
+valign = 1
+
+[node name="MusicVolumeSlider" type="HSlider" parent="TabContainer/AUDIO/OptionsContainer/MusicVolumeContainer"]
+margin_left = 112.0
+margin_right = 240.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 128, 0 )
+min_value = -80.0
+max_value = 6.0
+
+[node name="MusicMuteButton" type="TextureButton" parent="TabContainer/AUDIO/OptionsContainer/MusicVolumeContainer"]
+margin_left = 244.0
+margin_right = 260.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture_normal = ExtResource( 6 )
+expand = true
+
+[node name="ButtonContainer" type="HBoxContainer" parent="TabContainer/AUDIO/OptionsContainer"]
+margin_left = 104.0
+margin_top = 105.0
+margin_right = 156.0
+margin_bottom = 129.0
+size_flags_horizontal = 4
+size_flags_vertical = 10
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReturnToMenuButton" type="TextureButton" parent="TabContainer/AUDIO/OptionsContainer/ButtonContainer"]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+size_flags_horizontal = 0
+texture_normal = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="AcceptButton" type="TextureButton" parent="TabContainer/AUDIO/OptionsContainer/ButtonContainer"]
+margin_left = 28.0
+margin_right = 52.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 2 )
+texture_disabled = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_editor_description_": ""
+}
+
 [node name="ConfirmationPopup" type="PopupPanel" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
@@ -446,7 +509,7 @@ margin_left = -80.0
 margin_top = -45.0
 margin_right = 80.0
 margin_bottom = 45.0
-custom_styles/panel = SubResource( 11 )
+custom_styles/panel = SubResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -454,10 +517,10 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="ConfirmationPopup"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
 custom_constants/separation = 16
 alignment = 1
 __meta__ = {
@@ -466,10 +529,10 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="ConfirmationPopup/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 5.0
-margin_right = 152.0
-margin_bottom = 34.0
-custom_fonts/font = SubResource( 12 )
+margin_top = 4.0
+margin_right = 150.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 13 )
 text = "Are you sure you want to delete all of your progress?"
 align = 1
 valign = 1
@@ -481,9 +544,9 @@ __meta__ = {
 
 [node name="ButtonContainer" type="HBoxContainer" parent="ConfirmationPopup/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 50.0
-margin_right = 152.0
-margin_bottom = 77.0
+margin_top = 49.0
+margin_right = 150.0
+margin_bottom = 76.0
 custom_constants/separation = 8
 alignment = 1
 __meta__ = {
@@ -491,29 +554,8 @@ __meta__ = {
 }
 
 [node name="ConfirmationYesButton" type="Button" parent="ConfirmationPopup/VBoxContainer/ButtonContainer"]
-margin_left = 46.0
-margin_right = 74.0
-margin_bottom = 27.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/focus = SubResource( 7 )
-custom_styles/disabled = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
-custom_fonts/font = SubResource( 13 )
-custom_colors/font_color_disabled = Color( 1, 1, 1, 0.235294 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 1, 0.862745 )
-text = "Yes"
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="ConfirmationNoButton" type="Button" parent="ConfirmationPopup/VBoxContainer/ButtonContainer"]
-margin_left = 82.0
-margin_right = 105.0
+margin_left = 45.0
+margin_right = 73.0
 margin_bottom = 27.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -527,20 +569,47 @@ custom_colors/font_color_disabled = Color( 1, 1, 1, 0.235294 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 0.862745 )
+text = "Yes"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="ConfirmationNoButton" type="Button" parent="ConfirmationPopup/VBoxContainer/ButtonContainer"]
+margin_left = 81.0
+margin_right = 104.0
+margin_bottom = 27.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+custom_fonts/font = SubResource( 15 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 0.235294 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 0.862745 )
 text = "No"
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/options_menu_fade_in = SubResource( 17 )
-anims/options_menu_fade_out = SubResource( 18 )
+anims/options_menu_fade_in = SubResource( 16 )
+anims/options_menu_fade_out = SubResource( 17 )
 
 [node name="ConfirmationPopupAnimation" type="AnimationPlayer" parent="."]
-anims/confirmation_fade_in = SubResource( 15 )
-anims/confirmation_fade_out = SubResource( 16 )
+anims/confirmation_fade_in = SubResource( 18 )
+anims/confirmation_fade_out = SubResource( 19 )
 [connection signal="pressed" from="TabContainer/GAMEPLAY/OptionsContainer/DeleteSaveButton" to="." method="_on_DeleteSaveButton_pressed"]
 [connection signal="pressed" from="TabContainer/GAMEPLAY/OptionsContainer/ButtonContainer/ReturnToMenuButton" to="." method="_on_ReturnToMenuButton_pressed"]
 [connection signal="pressed" from="TabContainer/GAMEPLAY/OptionsContainer/ButtonContainer/AcceptButton" to="." method="_on_AcceptButton_pressed"]
+[connection signal="value_changed" from="TabContainer/AUDIO/OptionsContainer/SFXVolumeContainer/SFXVolumeSlider" to="." method="_on_SFXVolumeSlider_value_changed"]
+[connection signal="pressed" from="TabContainer/AUDIO/OptionsContainer/SFXVolumeContainer/SFXMuteButton" to="." method="_on_SFXMuteButton_pressed"]
+[connection signal="value_changed" from="TabContainer/AUDIO/OptionsContainer/MusicVolumeContainer/MusicVolumeSlider" to="." method="_on_MusicVolumeSlider_value_changed"]
+[connection signal="pressed" from="TabContainer/AUDIO/OptionsContainer/MusicVolumeContainer/MusicMuteButton" to="." method="_on_MusicMuteButton_pressed"]
+[connection signal="pressed" from="TabContainer/AUDIO/OptionsContainer/ButtonContainer/ReturnToMenuButton" to="." method="_on_ReturnToMenuButton_pressed"]
+[connection signal="pressed" from="TabContainer/AUDIO/OptionsContainer/ButtonContainer/AcceptButton" to="." method="_on_AcceptButton_pressed"]
 [connection signal="pressed" from="ConfirmationPopup/VBoxContainer/ButtonContainer/ConfirmationYesButton" to="." method="_on_ConfirmationYesButton_pressed"]
 [connection signal="pressed" from="ConfirmationPopup/VBoxContainer/ButtonContainer/ConfirmationNoButton" to="." method="_on_ConfirmationNoButton_pressed"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/gem_disappear.wav-04d2f3c1d9e2f2ea19d7910f94b62312.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/gem_disappear.wav"
+dest_files=[ "res://.import/gem_disappear.wav-04d2f3c1d9e2f2ea19d7910f94b62312.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

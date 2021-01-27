@@ -16,7 +16,7 @@ Vector2( 5, 0 ): Vector2( 5, -2 )
 }
 
 [node name="Decoration" parent="." index="1"]
-tile_data = PoolIntArray( -131067, 0, 0, 393216, 0, 0 )
+tile_data = PoolIntArray( -131067, 0, 0, -2, 1, 0, 327683, 1, 0, 393216, 0, 0 )
 
 [node name="PlayerTile" parent="." index="2"]
 tile_data = PoolIntArray( 0, 0, 0 )
