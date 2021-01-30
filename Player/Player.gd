@@ -55,7 +55,7 @@ func move(dir):
 
 func die():
 	if editor_mode:
-		respawn()
+		reset_level()
 	else:
 		get_tree().call_group("Game", "player_death", self)
 		queue_free()
@@ -65,3 +65,13 @@ func respawn():
 	position = starting_position
 	snap()
 
+
+func reset_level():
+	for block in get_tree().get_nodes_in_group("MissingBlocks"):
+		block.queue_free()
+	for yellow_block in get_tree().get_nodes_in_group("BlockYellow"):
+		if yellow_block.triggered:
+			yellow_block.set_triggered(false)
+			yellow_block.place_void()
+	respawn()
+	
