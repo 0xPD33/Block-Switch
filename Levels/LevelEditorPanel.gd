@@ -42,13 +42,23 @@ func close_level_editor_panel():
 	is_open = false
 
 
+func disable_buttons():
+	$SmallPanel/ButtonContainer/MoveButton.disabled = true
+	$SmallPanel/ButtonContainer/DeleteButton.disabled = true
+
+
+func enable_buttons():
+	$SmallPanel/ButtonContainer/MoveButton.disabled = false
+	$SmallPanel/ButtonContainer/DeleteButton.disabled = false
+
+
 func _on_button_pressed(block_name : String, block_image: Texture, block_modulate: Color):
 	level_editor.select_block(block_name)
 	level_editor_selected_block.change_selected_block(block_name, block_image, block_modulate)
 	level_editor_camera_container.move_enabled = false
 	level_editor.can_delete = false
-	$SmallPanel/VBoxContainer/MoveButton.pressed = false
-	$SmallPanel/VBoxContainer/DeleteButton.pressed = false
+	$SmallPanel/ButtonContainer/MoveButton.pressed = false
+	$SmallPanel/ButtonContainer/DeleteButton.pressed = false
 
 
 func _on_MoveButton_pressed():
@@ -56,7 +66,7 @@ func _on_MoveButton_pressed():
 	level_editor_selected_block.remove_selected_block()
 	level_editor.current_block_selected = null
 	level_editor.can_delete = false
-	$SmallPanel/VBoxContainer/DeleteButton.pressed = false
+	$SmallPanel/ButtonContainer/DeleteButton.pressed = false
 
 
 func _on_DeleteButton_pressed():
@@ -64,7 +74,7 @@ func _on_DeleteButton_pressed():
 	level_editor_selected_block.remove_selected_block()
 	level_editor.current_block_selected = null
 	level_editor_camera_container.move_enabled = false
-	$SmallPanel/VBoxContainer/MoveButton.pressed = false
+	$SmallPanel/ButtonContainer/MoveButton.pressed = false
 
 
 func _on_OpenPanelButton_pressed():

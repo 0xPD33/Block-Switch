@@ -1,34 +1,26 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Font/AtlantisInternational-jen0.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/LevelDone.gd" type="Script" id=2]
+[ext_resource path="res://UI/black.theme" type="Theme" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=7]
 size = 12
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=3]
-content_margin_left = 5.0
-content_margin_right = 5.0
-content_margin_top = 5.0
-content_margin_bottom = 5.0
-bg_color = Color( 1, 1, 1, 0.498039 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 1, 1, 1, 1 )
-anti_aliasing = false
-
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=6]
 size = 12
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="DynamicFont" id=8]
+size = 12
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=4]
 length = 1.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
@@ -127,7 +119,7 @@ tracks/7/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
@@ -228,6 +220,7 @@ tracks/7/keys = {
 [node name="LevelDone" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 3 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -246,18 +239,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -62.5
-margin_top = -33.0
-margin_right = 62.5
-margin_bottom = 33.0
+margin_left = -67.5
+margin_top = -44.5
+margin_right = 67.5
+margin_bottom = 44.5
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="DoneLabel" type="Label" parent="VBoxContainer"]
-margin_right = 125.0
-margin_bottom = 25.0
+margin_top = 1.0
+margin_right = 135.0
+margin_bottom = 26.0
 custom_fonts/font = SubResource( 1 )
 text = "Level 1 done!"
 align = 1
@@ -265,42 +259,37 @@ valign = 1
 percent_visible = 0.0
 
 [node name="TimeLabel" type="Label" parent="VBoxContainer"]
-margin_top = 29.0
-margin_right = 125.0
-margin_bottom = 42.0
-custom_fonts/font = SubResource( 2 )
+margin_top = 30.0
+margin_right = 135.0
+margin_bottom = 43.0
+custom_fonts/font = SubResource( 7 )
 text = "Time: 0 seconds"
 align = 1
 valign = 1
 percent_visible = 0.0
 
 [node name="RatingLabel" type="Label" parent="VBoxContainer"]
-margin_top = 46.0
-margin_right = 125.0
-margin_bottom = 59.0
-custom_fonts/font = SubResource( 2 )
+margin_top = 47.0
+margin_right = 135.0
+margin_bottom = 60.0
+custom_fonts/font = SubResource( 6 )
 text = "Perfect!"
 align = 1
 valign = 1
 percent_visible = 0.0
 
 [node name="ButtonContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 63.0
-margin_right = 125.0
-margin_bottom = 86.0
+margin_top = 64.0
+margin_right = 135.0
+margin_bottom = 87.0
 alignment = 1
 
 [node name="ContinueButton" type="Button" parent="VBoxContainer/ButtonContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 5.0
-margin_right = 52.0
+margin_left = 10.0
+margin_right = 57.0
 margin_bottom = 23.0
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/disabled = SubResource( 3 )
-custom_styles/normal = SubResource( 3 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Continue"
 __meta__ = {
@@ -309,15 +298,10 @@ __meta__ = {
 
 [node name="RetryButton" type="Button" parent="VBoxContainer/ButtonContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 56.0
-margin_right = 89.0
+margin_left = 61.0
+margin_right = 94.0
 margin_bottom = 23.0
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/disabled = SubResource( 3 )
-custom_styles/normal = SubResource( 3 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Retry"
 __meta__ = {
@@ -326,15 +310,10 @@ __meta__ = {
 
 [node name="QuitButton" type="Button" parent="VBoxContainer/ButtonContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 93.0
-margin_right = 120.0
+margin_left = 98.0
+margin_right = 125.0
 margin_bottom = 23.0
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/disabled = SubResource( 3 )
-custom_styles/normal = SubResource( 3 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Quit"
 __meta__ = {
@@ -343,8 +322,8 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 2.0
-anims/fade_in = SubResource( 5 )
-anims/fade_out = SubResource( 6 )
+anims/fade_in = SubResource( 4 )
+anims/fade_out = SubResource( 5 )
 [connection signal="pressed" from="VBoxContainer/ButtonContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/ButtonContainer/RetryButton" to="." method="_on_RetryButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/ButtonContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

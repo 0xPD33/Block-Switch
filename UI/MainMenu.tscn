@@ -1,30 +1,18 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Font/AtlantisInternational-jen0.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Assets/OnScreenControls/Sprites/transparentLight/transparentLight14.png" type="Texture" id=2]
+[ext_resource path="res://Assets/GameIcons/PNG/White/1x/forward.png" type="Texture" id=2]
 [ext_resource path="res://UI/TitleAnimation.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/MainMenu.gd" type="Script" id=4]
-[ext_resource path="res://Assets/OnScreenControls/Sprites/transparentLight/transparentLight29.png" type="Texture" id=5]
+[ext_resource path="res://Assets/GameIcons/PNG/White/1x/gear.png" type="Texture" id=5]
+[ext_resource path="res://UI/black.theme" type="Theme" id=6]
 
-[sub_resource type="StyleBoxFlat" id=1]
-content_margin_left = 5.0
-content_margin_right = 5.0
-content_margin_top = 5.0
-content_margin_bottom = 5.0
-bg_color = Color( 1, 1, 1, 0.498039 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 1, 1, 1, 1 )
-anti_aliasing = false
-
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
+size = 15
 extra_spacing_top = -1
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "main_menu_hide"
+[sub_resource type="Animation" id=2]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("ButtonContainer:modulate")
@@ -39,7 +27,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("OptionsButton:modulate")
+tracks/1/path = NodePath("OptionsButtonPanel:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -51,7 +39,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("ButtonContainer:modulate")
@@ -66,7 +54,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("OptionsButton:modulate")
+tracks/1/path = NodePath("OptionsButtonPanel:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -83,6 +71,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 0.420441
 margin_right = 0.420441
+theme = ExtResource( 6 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -90,14 +79,26 @@ __meta__ = {
 
 [node name="TitleAnimation" parent="." instance=ExtResource( 3 )]
 
-[node name="OptionsButton" type="TextureButton" parent="."]
-modulate = Color( 1, 1, 1, 0 )
+[node name="OptionsButtonPanel" type="Panel" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -32.0
-margin_top = 16.0
-margin_right = -16.0
-margin_bottom = 32.0
+margin_left = -40.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsButton" type="TextureButton" parent="OptionsButtonPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 7.0
+margin_bottom = 8.0
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 5 )
 expand = true
@@ -107,15 +108,14 @@ __meta__ = {
 }
 
 [node name="ButtonContainer" type="HBoxContainer" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -80.0
-margin_top = -57.5
+margin_top = -57.0
 margin_right = 80.0
-margin_bottom = -33.5
+margin_bottom = -31.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -124,15 +124,10 @@ __meta__ = {
 [node name="PlayButton" type="Button" parent="ButtonContainer"]
 margin_left = 50.0
 margin_right = 110.0
-margin_bottom = 24.0
+margin_bottom = 26.0
 rect_min_size = Vector2( 60, 24 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 1 )
-custom_styles/focus = SubResource( 1 )
-custom_styles/disabled = SubResource( 1 )
-custom_styles/normal = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -141,10 +136,7 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="ButtonContainer/PlayButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_top = 1.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_constants/separation = 12
@@ -154,12 +146,14 @@ __meta__ = {
 }
 
 [node name="PlayImage" type="TextureButton" parent="ButtonContainer/PlayButton/HBoxContainer"]
-margin_right = 16.0
-margin_bottom = 16.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 20.0
+margin_bottom = 20.0
 rect_min_size = Vector2( 16, 16 )
 mouse_filter = 2
 size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_vertical = 4
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 2 )
 expand = true
@@ -169,19 +163,19 @@ __meta__ = {
 }
 
 [node name="PlayLabel" type="Label" parent="ButtonContainer/PlayButton/HBoxContainer"]
-margin_left = 28.0
-margin_right = 52.0
-margin_bottom = 16.0
+margin_left = 32.0
+margin_top = 5.0
+margin_right = 56.0
+margin_bottom = 19.0
 size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "PLAY"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/main_menu_hide = SubResource( 3 )
-anims/main_menu_show = SubResource( 4 )
-[connection signal="pressed" from="OptionsButton" to="." method="_on_OptionsButton_pressed"]
+anims/main_menu_hide = SubResource( 2 )
+anims/main_menu_show = SubResource( 3 )
+[connection signal="pressed" from="OptionsButtonPanel/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="ButtonContainer/PlayButton" to="." method="_on_PlayButton_pressed"]

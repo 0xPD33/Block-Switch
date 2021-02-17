@@ -1,100 +1,20 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assets/Font/AtlantisInternational-jen0.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/LevelButtonGrid.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/OnScreenControls/Sprites/transparentLight/transparentLight45.png" type="Texture" id=3]
 [ext_resource path="res://UI/LevelSelector.gd" type="Script" id=4]
-[ext_resource path="res://Assets/OnScreenControls/Sprites/transparentLight/transparentLight22.png" type="Texture" id=5]
-[ext_resource path="res://Assets/OnScreenControls/Sprites/transparentLight/transparentLight44.png" type="Texture" id=6]
+[ext_resource path="res://Assets/GameIcons/PNG/White/1x/exitLeft.png" type="Texture" id=5]
+[ext_resource path="res://Assets/GameIcons/PNG/White/1x/checkmark.png" type="Texture" id=6]
+[ext_resource path="res://UI/black.theme" type="Theme" id=7]
+[ext_resource path="res://UI/black_level_button_grid.theme" type="Theme" id=8]
+[ext_resource path="res://UI/black_level_details_panel.theme" type="Theme" id=9]
 
-[sub_resource type="StyleBoxFlat" id=1]
-content_margin_left = 4.0
-content_margin_right = 5.0
-content_margin_top = 4.0
-content_margin_bottom = 4.0
-bg_color = Color( 1, 1, 1, 0.498039 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 1, 1, 1, 1 )
-expand_margin_left = 1.0
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id=2]
-content_margin_left = 4.0
-content_margin_right = 5.0
-content_margin_top = 4.0
-content_margin_bottom = 4.0
-bg_color = Color( 1, 1, 1, 0.392157 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 1, 1, 1, 1 )
-expand_margin_left = 1.0
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id=3]
-content_margin_left = 5.0
-content_margin_right = 5.0
-content_margin_top = 5.0
-content_margin_bottom = 5.0
-bg_color = Color( 1, 1, 1, 0.498039 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 1, 1, 1, 1 )
-expand_margin_left = 2.0
-expand_margin_right = 2.0
-expand_margin_top = 2.0
-expand_margin_bottom = 2.0
-anti_aliasing = false
-
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=1]
 size = 12
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=5]
-size = 12
-font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.74902, 0.74902, 0.74902, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 1, 1, 1, 1 )
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id=7]
-bg_color = Color( 0.827451, 0.827451, 0.827451, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 1, 1, 1, 1 )
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id=8]
-content_margin_left = 4.0
-content_margin_right = 4.0
-bg_color = Color( 0.74902, 0.74902, 0.74902, 1 )
-
-[sub_resource type="Theme" id=9]
-VScrollBar/icons/decrement = null
-VScrollBar/icons/decrement_highlight = null
-VScrollBar/icons/increment = null
-VScrollBar/icons/increment_highlight = null
-VScrollBar/styles/grabber = SubResource( 6 )
-VScrollBar/styles/grabber_highlight = SubResource( 6 )
-VScrollBar/styles/grabber_pressed = SubResource( 7 )
-VScrollBar/styles/scroll = SubResource( 8 )
-VScrollBar/styles/scroll_focus = SubResource( 8 )
-
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=2]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("LevelPlayButton:modulate")
@@ -109,7 +29,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.666667 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=3]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("LevelPlayButton:modulate")
@@ -124,104 +44,19 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0.666667 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="StyleBoxFlat" id=12]
-content_margin_left = 5.0
-content_margin_right = 5.0
-content_margin_top = 5.0
-content_margin_bottom = 5.0
-bg_color = Color( 1, 1, 1, 0.498039 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 1, 1, 1, 1 )
-expand_margin_left = 1.0
-expand_margin_right = 1.0
-expand_margin_top = 1.0
-expand_margin_bottom = 1.0
-anti_aliasing = false
-
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=4]
 size = 12
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=5]
 size = 8
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=15]
-content_margin_left = 5.0
-content_margin_right = 4.0
-content_margin_top = 1.0
-content_margin_bottom = 2.0
-bg_color = Color( 1, 1, 1, 0.498039 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 2
-border_color = Color( 1, 1, 1, 1 )
-expand_margin_left = 1.0
-expand_margin_right = 1.0
-expand_margin_top = 1.0
-expand_margin_bottom = 1.0
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id=16]
-content_margin_left = 5.0
-content_margin_right = 4.0
-content_margin_top = 1.0
-content_margin_bottom = 2.0
-bg_color = Color( 1, 1, 1, 0.627451 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 2
-border_color = Color( 1, 1, 1, 1 )
-expand_margin_left = 1.0
-expand_margin_right = 1.0
-expand_margin_top = 1.0
-expand_margin_bottom = 1.0
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id=17]
-content_margin_left = 5.0
-content_margin_right = 4.0
-content_margin_top = 1.0
-content_margin_bottom = 2.0
-bg_color = Color( 1, 1, 1, 0.392157 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 1, 1, 1, 1 )
-expand_margin_left = 1.0
-expand_margin_right = 1.0
-expand_margin_top = 1.0
-expand_margin_bottom = 1.0
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id=18]
-content_margin_left = 5.0
-content_margin_right = 4.0
-content_margin_top = 1.0
-content_margin_bottom = 2.0
-bg_color = Color( 1, 1, 1, 0.498039 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 1, 1, 1, 1 )
-expand_margin_left = 1.0
-expand_margin_right = 1.0
-expand_margin_top = 1.0
-expand_margin_bottom = 1.0
-anti_aliasing = false
-
-[sub_resource type="DynamicFont" id=19]
+[sub_resource type="DynamicFont" id=6]
 size = 12
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=7]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -272,7 +107,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=8]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -324,13 +159,13 @@ tracks/3/keys = {
 }
 
 [node name="LevelSelector" type="Control"]
-modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 0.176758
 margin_top = -0.176777
 margin_right = 0.176758
 margin_bottom = -0.176773
+theme = ExtResource( 7 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -345,11 +180,6 @@ margin_left = -135.0
 margin_top = -80.0
 margin_right = 135.0
 margin_bottom = 80.0
-custom_styles/tab_fg = SubResource( 1 )
-custom_styles/tab_disabled = SubResource( 1 )
-custom_styles/tab_bg = SubResource( 2 )
-custom_styles/panel = SubResource( 3 )
-custom_fonts/font = SubResource( 4 )
 tab_align = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -358,14 +188,13 @@ __meta__ = {
 [node name="MAIN" type="Tabs" parent="TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 26.0
-margin_right = -5.0
+margin_left = 6.0
+margin_top = 29.0
+margin_right = -4.0
 margin_bottom = -5.0
 scrolling_enabled = false
 
 [node name="LevelSelectContainer" type="VBoxContainer" parent="TabContainer/MAIN"]
-modulate = Color( 1, 1, 1, 0 )
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_top = -64.5
@@ -380,7 +209,7 @@ __meta__ = {
 [node name="SelectLevelLabel" type="Label" parent="TabContainer/MAIN/LevelSelectContainer"]
 margin_right = 193.0
 margin_bottom = 13.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "Select Level"
 valign = 1
 
@@ -389,7 +218,6 @@ margin_top = 17.0
 margin_right = 193.0
 margin_bottom = 99.0
 size_flags_vertical = 3
-theme = SubResource( 9 )
 scroll_horizontal_enabled = false
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/MAIN/LevelSelectContainer/ScrollContainer"]
@@ -405,9 +233,9 @@ margin_left = 1.0
 margin_top = 1.0
 margin_right = 1.0
 margin_bottom = 1.0
+theme = ExtResource( 8 )
 
 [node name="ButtonContainer" type="HBoxContainer" parent="TabContainer/MAIN"]
-modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -447,11 +275,10 @@ texture_disabled = ExtResource( 6 )
 expand = true
 
 [node name="ButtonAnimation" type="AnimationPlayer" parent="TabContainer/MAIN/ButtonContainer"]
-anims/disable_play_button = SubResource( 10 )
-anims/enable_play_button = SubResource( 11 )
+anims/disable_play_button = SubResource( 2 )
+anims/enable_play_button = SubResource( 3 )
 
 [node name="LevelDetailsPanel" type="Panel" parent="TabContainer/MAIN"]
-modulate = Color( 1, 1, 1, 0 )
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -461,7 +288,7 @@ margin_top = -65.0
 margin_bottom = 65.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_styles/panel = SubResource( 12 )
+theme = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -472,7 +299,7 @@ anchor_bottom = 1.0
 margin_left = 4.0
 margin_top = 4.0
 margin_right = -4.0
-margin_bottom = -16.0
+margin_bottom = -4.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 __meta__ = {
@@ -482,7 +309,7 @@ __meta__ = {
 [node name="LevelLabel" type="Label" parent="TabContainer/MAIN/LevelDetailsPanel/DetailsPanelContainer"]
 margin_right = 52.0
 margin_bottom = 13.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 4 )
 text = "Level -"
 align = 1
 valign = 1
@@ -491,7 +318,7 @@ valign = 1
 margin_top = 17.0
 margin_right = 52.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 5 )
 text = "Best time:"
 align = 1
 valign = 1
@@ -500,7 +327,7 @@ valign = 1
 margin_top = 30.0
 margin_right = 52.0
 margin_bottom = 39.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 5 )
 text = "---"
 align = 1
 valign = 1
@@ -509,7 +336,7 @@ valign = 1
 margin_top = 43.0
 margin_right = 52.0
 margin_bottom = 52.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 5 )
 text = "Best rating:"
 align = 1
 valign = 1
@@ -518,7 +345,7 @@ valign = 1
 margin_top = 56.0
 margin_right = 52.0
 margin_bottom = 65.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 5 )
 text = "---"
 align = 1
 valign = 1
@@ -546,9 +373,9 @@ __meta__ = {
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 26.0
-margin_right = -5.0
+margin_left = 6.0
+margin_top = 29.0
+margin_right = -4.0
 margin_bottom = -5.0
 scrolling_enabled = false
 
@@ -560,32 +387,28 @@ __meta__ = {
 }
 
 [node name="SelectCustomLevelLabel" type="Label" parent="TabContainer/CUSTOM/CustomLevelSelectContainer"]
-margin_right = 260.0
+margin_right = 262.0
 margin_bottom = 13.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "Select Custom Level"
 valign = 1
 
 [node name="CustomLevelCreateButton" type="Button" parent="TabContainer/CUSTOM/CustomLevelSelectContainer"]
-margin_right = 12.0
-margin_bottom = 20.0
+margin_top = 17.0
+margin_right = 62.0
+margin_bottom = 40.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_styles/hover = SubResource( 15 )
-custom_styles/pressed = SubResource( 16 )
-custom_styles/focus = SubResource( 15 )
-custom_styles/disabled = SubResource( 17 )
-custom_styles/normal = SubResource( 18 )
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 0.235294 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 0.862745 )
-text = "+"
+text = "OPEN EDITOR"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/level_selector_fade_in = SubResource( 20 )
-anims/level_selector_fade_out = SubResource( 21 )
+anims/level_selector_fade_in = SubResource( 7 )
+anims/level_selector_fade_out = SubResource( 8 )
 [connection signal="gui_input" from="TabContainer/MAIN/LevelSelectContainer" to="." method="_on_LevelSelectContainer_gui_input"]
 [connection signal="gui_input" from="TabContainer/MAIN/ButtonContainer" to="." method="_on_LevelSelectContainer_gui_input"]
 [connection signal="pressed" from="TabContainer/MAIN/ButtonContainer/ReturnToMenuButton" to="." method="_on_ReturnToMenuButton_pressed"]

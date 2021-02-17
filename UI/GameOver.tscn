@@ -2,29 +2,17 @@
 
 [ext_resource path="res://Assets/Font/AtlantisInternational-jen0.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/GameOver.gd" type="Script" id=2]
+[ext_resource path="res://UI/black.theme" type="Theme" id=3]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
 size = 24
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=2]
-content_margin_left = 5.0
-content_margin_right = 5.0
-content_margin_top = 5.0
-content_margin_bottom = 5.0
-bg_color = Color( 1, 1, 1, 0.498039 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 1, 1, 1, 1 )
-anti_aliasing = false
-
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=8]
 size = 12
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("VBoxContainer/FailedLabel:percent_visible")
@@ -75,7 +63,7 @@ tracks/3/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "fade_out"
 length = 0.7
 tracks/0/type = "value"
@@ -130,6 +118,7 @@ tracks/3/keys = {
 [node name="GameOver" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 3 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -138,7 +127,7 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0 )
+color = Color( 0, 0, 0, 0.784314 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -161,17 +150,15 @@ __meta__ = {
 margin_top = 7.0
 margin_right = 112.0
 margin_bottom = 32.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "You failed!"
 align = 1
 valign = 1
-percent_visible = 0.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ButtonContainer" type="HBoxContainer" parent="VBoxContainer"]
-modulate = Color( 1, 1, 1, 0 )
 margin_top = 36.0
 margin_right = 112.0
 margin_bottom = 59.0
@@ -181,12 +168,7 @@ alignment = 1
 margin_left = 24.0
 margin_right = 57.0
 margin_bottom = 23.0
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/focus = SubResource( 2 )
-custom_styles/disabled = SubResource( 2 )
-custom_styles/normal = SubResource( 2 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Retry"
 
@@ -194,17 +176,12 @@ text = "Retry"
 margin_left = 61.0
 margin_right = 88.0
 margin_bottom = 23.0
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/focus = SubResource( 2 )
-custom_styles/disabled = SubResource( 2 )
-custom_styles/normal = SubResource( 2 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Quit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/fade_in = SubResource( 4 )
-anims/fade_out = SubResource( 5 )
+anims/fade_in = SubResource( 1 )
+anims/fade_out = SubResource( 2 )
 [connection signal="pressed" from="VBoxContainer/ButtonContainer/RetryButton" to="." method="_on_RetryButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/ButtonContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

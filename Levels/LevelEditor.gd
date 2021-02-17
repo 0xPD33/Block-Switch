@@ -234,12 +234,14 @@ func place_block(block_position : Vector2):
 				yellow_block_coordinates = block_position
 				placing_yellow_block = true
 				level_editor_button_grid.disable_all_buttons()
+				level_editor_panel.disable_buttons()
 		block_blue_scene:
 			if _check_if_placeable(block_position) == true and _check_if_decoration_placed(block_position) == false:
 				tiles.set_cellv(block_position, tiles.BLOCK_BLUE_ID)
 				blue_block_coordinates = block_position
 				placing_blue_block = true
 				level_editor_button_grid.disable_all_buttons()
+				level_editor_panel.disable_buttons()
 		goal_scene:
 			if _check_if_placeable(block_position) == true and _check_if_decoration_placed(block_position) == false:
 				if last_goal_position != null and tiles.get_cellv(last_goal_position) == tiles.GOAL_ID:
@@ -449,5 +451,6 @@ func _on_place_confirmation_placement_accepted():
 	current_block_selected = null
 	level_editor_selected_block.remove_selected_block()
 	level_editor_button_grid.enable_all_buttons()
+	level_editor_panel.enable_buttons()
 	_check_if_testable()
 

@@ -31,6 +31,6 @@ func _unhandled_input(event):
 					var new_zoom = (1 + zoom_step) if drag_distance < last_drag_distance else (1 - zoom_step)
 					new_zoom = clamp(level_editor_cam.zoom.x * new_zoom, min_zoom, max_zoom)
 					level_editor_cam.zoom = Vector2.ONE * new_zoom
-					level_editor_grid.multiply_region_rect(new_zoom)
+					print(level_editor_grid.region_rect)
 					last_drag_distance = drag_distance
 					

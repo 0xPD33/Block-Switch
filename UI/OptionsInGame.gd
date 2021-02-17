@@ -6,9 +6,9 @@ var edit_mode = false
 var moving_controls = false
 var scaling_controls = false
 
-onready var options_button = $OptionsButton
-onready var accept_button = $AcceptButton
-onready var cancel_button = $CancelButton
+onready var options_button_panel = $OptionsButtonPanel
+onready var accept_button_panel = $AcceptButtonPanel
+onready var cancel_button_panel = $CancelButtonPanel
 
 onready var anim_player = $AnimationPlayer
 
@@ -37,19 +37,19 @@ func options_close():
 
 
 func options_button_change_visibility():
-	if options_button.is_visible():
-		options_button.hide()
+	if options_button_panel.is_visible():
+		options_button_panel.hide()
 	else:
-		options_button.show()
+		options_button_panel.show()
 
 
 func edit_buttons_change_visiblity():
 	if edit_mode:
-		accept_button.show()
-		cancel_button.show()
+		accept_button_panel.show()
+		cancel_button_panel.show()
 	else:
-		accept_button.hide()
-		cancel_button.hide()
+		accept_button_panel.hide()
+		cancel_button_panel.hide()
 
 
 func move_controls_start():

@@ -25,7 +25,7 @@ motion_mirroring = Vector2( 64, 64 )
 texture = ExtResource( 6 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 0, 0, 1088, 576 )
+region_rect = Rect2( 0, 0, 2176, 1152 )
 script = ExtResource( 12 )
 
 [node name="LevelEditorCameraContainer" type="Node2D" parent="."]
@@ -59,6 +59,7 @@ script = ExtResource( 9 )
 mouse_filter = 2
 
 [node name="LevelEditorPlaceConfirmation" parent="UI" instance=ExtResource( 5 )]
+visible = false
 
 [node name="LevelEditorOptionsPanel" parent="UI" instance=ExtResource( 4 )]
 

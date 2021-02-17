@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/click1.ogg-7715eed9da5e9b35d226baffe7b0137f.oggstr"
+
+[deps]
+
+source_file="res://Assets/UIPack_fixed/Bonus/click1.ogg"
+dest_files=[ "res://.import/click1.ogg-7715eed9da5e9b35d226baffe7b0137f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
