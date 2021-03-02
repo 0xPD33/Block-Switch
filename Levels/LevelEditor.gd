@@ -11,6 +11,8 @@ var can_delete : bool = false
 var can_drag : bool = false
 var drag_events := {}
 
+var saved_block_id
+
 var placing_yellow_block : bool = false
 var yellow_block_coordinates : Vector2
 var last_missing_block_position : Vector2
@@ -168,13 +170,14 @@ func _unhandled_input(event):
 				var missing_block_position : Vector2 = tiles.world_to_map(to_global(event.position * level_editor_camera.zoom.x + level_editor_camera_container.global_position))
 				tiles.yellow_blocks[yellow_block_coordinates] = missing_block_position
 				if tiles.get_cellv(missing_block_position) != tiles.BLOCK_YELLOW_ID and _check_if_not_goal_and_not_player(missing_block_position) == true:
+					save_block_information(missing_block_position)
 					place_missing_block(missing_block_position)
 			elif event.pressed and missing_block_placed:
 				var missing_block_position : Vector2 = tiles.world_to_map(to_global(event.position * level_editor_camera.zoom.x + level_editor_camera_container.global_position))
 				tiles.yellow_blocks[yellow_block_coordinates] = missing_block_position
 				if tiles.get_cellv(missing_block_position) != tiles.BLOCK_YELLOW_ID and _check_if_not_goal_and_not_player(missing_block_position) == true:
-					tiles.set_cellv(last_missing_block_position, -1)
-					decoration.set_cellv(last_missing_block_position, -1)
+					place_last_block()
+					save_block_information(missing_block_position)
 					place_missing_block(missing_block_position)
 	if placing_blue_block:
 		if event is InputEventScreenTouch:
@@ -182,14 +185,14 @@ func _unhandled_input(event):
 				var teleport_target_position : Vector2 = tiles.world_to_map(to_global(event.position * level_editor_camera.zoom.x + level_editor_camera_container.global_position))
 				tiles.blue_blocks[blue_block_coordinates] = teleport_target_position
 				if tiles.get_cellv(teleport_target_position) != tiles.BLOCK_BLUE_ID and _check_if_not_goal_and_not_player(teleport_target_position) == true:
+					save_block_information(teleport_target_position)
 					place_teleport_target(teleport_target_position)
 			elif event.pressed and teleport_target_placed:
 				var teleport_target_position : Vector2 = tiles.world_to_map(to_global(event.position * level_editor_camera.zoom.x + level_editor_camera_container.global_position))
 				tiles.blue_blocks[blue_block_coordinates] = teleport_target_position
 				if tiles.get_cellv(teleport_target_position) != tiles.BLOCK_BLUE_ID and _check_if_not_goal_and_not_player(teleport_target_position) == true:
-					tiles.set_cellv(last_teleport_target_position, -1)
-					tiles.blue_blocks.erase(last_teleport_target_position)
-					decoration.set_cellv(last_teleport_target_position, -1)
+					place_last_block()
+					save_block_information(teleport_target_position)
 					place_teleport_target(teleport_target_position)
 
 
@@ -212,12 +215,25 @@ func select_block(block_name : String):
 func create_audio(block_selected, block_position : Vector2):
 	if block_selected != void_scene and block_selected != null:
 		if _check_if_tile_empty(block_position) == true or tiles.get_cellv(block_position) == tiles.VOID_ID:
-			level_editor_audio_manager.create_audio(place_block_sound)
+			level_editor_audio_manager.create_audio(place_block_sound, 0.9, 1.1)
 	elif block_selected == void_scene:
 		if _check_if_tile_empty(block_position) == true or tiles.get_cellv(block_position) == tiles.BLOCK_ID:
-			level_editor_audio_manager.create_audio(place_block_sound)
+			level_editor_audio_manager.create_audio(place_block_sound, 0.9, 1.1)
 	elif block_selected == null:
-		level_editor_audio_manager.create_audio(delete_block_sound)
+		level_editor_audio_manager.create_audio(delete_block_sound, 0.8, 1.2)
+
+
+func save_block_information(block_position : Vector2):
+	saved_block_id = tiles.get_cellv(block_position)
+
+
+func place_last_block():
+	tiles.set_cellv(last_missing_block_position, saved_block_id)
+	decoration.set_cellv(last_missing_block_position, -1)
+	if tiles.yellow_blocks.has(last_missing_block_position):
+		tiles.yellow_blocks.erase(last_missing_block_position)
+	if tiles.blue_blocks.has(last_missing_block_position):
+		tiles.blue_blocks.erase(last_missing_block_position)
 
 
 func place_block(block_position : Vector2):

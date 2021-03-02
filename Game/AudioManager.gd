@@ -8,7 +8,7 @@ func _ready():
 		sfx_volume = GlobalOptions.sfx_volume
 
 
-func create_audio(audio_path : String, pitch_range_start : float = 0.9, pitch_range_end : float = 1.1):
+func create_audio(audio_path : String, pitch_range_start : float = 1, pitch_range_end : float = 1):
 	var audio_player = AudioStreamPlayer.new()
 	audio_player.stream = load(audio_path)
 	audio_player.set_bus("SFX")

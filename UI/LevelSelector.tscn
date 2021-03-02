@@ -4,8 +4,8 @@
 [ext_resource path="res://UI/LevelButtonGrid.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/OnScreenControls/Sprites/transparentLight/transparentLight45.png" type="Texture" id=3]
 [ext_resource path="res://UI/LevelSelector.gd" type="Script" id=4]
-[ext_resource path="res://Assets/GameIcons/PNG/White/1x/exitLeft.png" type="Texture" id=5]
-[ext_resource path="res://Assets/GameIcons/PNG/White/1x/checkmark.png" type="Texture" id=6]
+[ext_resource path="res://Assets/GameIcons/PNG/White/2x/exitLeft.png" type="Texture" id=5]
+[ext_resource path="res://Assets/GameIcons/PNG/White/2x/checkmark.png" type="Texture" id=6]
 [ext_resource path="res://UI/black.theme" type="Theme" id=7]
 [ext_resource path="res://UI/black_level_button_grid.theme" type="Theme" id=8]
 [ext_resource path="res://UI/black_level_details_panel.theme" type="Theme" id=9]
@@ -159,6 +159,7 @@ tracks/3/keys = {
 }
 
 [node name="LevelSelector" type="Control"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 0.176758
@@ -195,6 +196,7 @@ margin_bottom = -5.0
 scrolling_enabled = false
 
 [node name="LevelSelectContainer" type="VBoxContainer" parent="TabContainer/MAIN"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_top = -64.5
@@ -236,6 +238,7 @@ margin_bottom = 1.0
 theme = ExtResource( 8 )
 
 [node name="ButtonContainer" type="HBoxContainer" parent="TabContainer/MAIN"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -279,6 +282,7 @@ anims/disable_play_button = SubResource( 2 )
 anims/enable_play_button = SubResource( 3 )
 
 [node name="LevelDetailsPanel" type="Panel" parent="TabContainer/MAIN"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0

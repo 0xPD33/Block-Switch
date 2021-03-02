@@ -14,6 +14,7 @@ var starting_position
 #
 
 onready var camera = $Camera2D
+onready var controls = $OnScreenControls
 onready var move_anim = $MoveAnimation
 
 
@@ -26,8 +27,12 @@ func _ready():
 		editor = get_tree().current_scene
 		editor_mode = true
 		starting_position = position
-	set_cam_current()
+	else:
+		get_tree().current_scene.player = self
+	#set_cam_current()
 	snap()
+	if !get_tree().current_scene.restarting:
+		controls.fade_in()
 
 
 func _input(_event):
@@ -48,16 +53,18 @@ func snap():
 
 
 func move(dir):
+	if get_tree().current_scene.name == "Game":
+		get_tree().current_scene.get_node("CurrentLevel").start_timer()
 	position += dir * tile_size
 	move_anim.play("move")
-	get_tree().call_group("AudioManager", "create_audio", hit_block_sound)
+	get_tree().call_group("AudioManager", "create_audio", hit_block_sound, 0.9, 1.1)
 
 
 func die():
 	if editor_mode:
 		reset_level()
 	else:
-		get_tree().call_group("Game", "player_death", self)
+		get_tree().call_group("Game", "player_death")
 		queue_free()
 
 

@@ -5,13 +5,17 @@ var moving = false
 var repositioning = false setget set_repositioning
 var resizing = false setget set_resizing
 
+onready var fade_in_anim = $FadeInAnimation
+
 
 func set_repositioning(value):
 	repositioning = value
+	highlight_controls(value)
 
 
 func set_resizing(value):
 	resizing = value
+	highlight_controls(value)
 
 
 func _ready():
@@ -26,6 +30,20 @@ func _input(event):
 	if resizing:
 		if event is InputEventScreenDrag:
 			scale += event.relative / 50
+
+
+func fade_in():
+	set_visible(true)
+	fade_in_anim.play("fade_in")
+
+
+func highlight_controls(changing_controls : bool):
+	for child in get_children():
+		if child is TouchScreenButton:
+			if changing_controls:
+				child.modulate = Color(2, 2, 2)
+			else:
+				child.modulate = Color(1, 1, 1)
 
 
 func check_saved_position():

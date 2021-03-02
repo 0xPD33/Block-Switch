@@ -23,8 +23,9 @@ func snap():
 
 
 func _on_Goal_area_entered(area: Area2D):
-	if editor_mode:
-		editor.stop_testing_level(true)
-	else:
-		get_tree().call_group("Game", "level_done")
+	if area.is_in_group("Player"):
+		if editor_mode:
+			editor.stop_testing_level(true)
+		else:
+			get_tree().call_group("Game", "level_done")
 

@@ -41,7 +41,7 @@ func add_block():
 		block_instance.position = missing_block_pos
 		block_instance.name = "MissingBlock"
 		block_instance.add_to_group("MissingBlocks")
-		get_tree().call_group("AudioManager", "create_audio", add_block_sound)
+		get_tree().call_group("AudioManager", "create_audio", add_block_sound, 0.9, 1.1)
 		get_parent().call_deferred("add_child", block_instance)
 
 

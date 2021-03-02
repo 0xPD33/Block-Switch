@@ -5,7 +5,7 @@ var tutorial_state = 0
 var current_values : PoolStringArray
 
 var welcome_tutorial_values : PoolStringArray = [
-	"Welcome to Block Switch! Your goal is to reach the green block as fast as possible.",
+	"Welcome to Square Swap! Your goal in this game is to reach the green block as fast as possible.",
 	"Hitting the translucent blocks next to the track will cause you to fail the level.",
 	"Move using the arrow keys on your screen. Have fun!",
 	]

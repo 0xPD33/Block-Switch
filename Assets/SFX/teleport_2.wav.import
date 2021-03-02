@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/gem_disappear.wav-04d2f3c1d9e2f2ea19d7910f94b62312.sample"
+path="res://.import/teleport_2.wav-7a72dab4aff1a016784a8d66a48bb1d1.sample"
 
 [deps]
 
-source_file="res://Assets/SFX/gem_disappear.wav"
-dest_files=[ "res://.import/gem_disappear.wav-04d2f3c1d9e2f2ea19d7910f94b62312.sample" ]
+source_file="res://Assets/SFX/teleport_2.wav"
+dest_files=[ "res://.import/teleport_2.wav-7a72dab4aff1a016784a8d66a48bb1d1.sample" ]
 
 [params]
 

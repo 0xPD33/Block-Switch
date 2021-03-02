@@ -2,9 +2,11 @@ extends Node2D
 
 var current_level
 var next_level
+
 var level_number : int = 0 setget set_level_number, get_level_number
 
-# TODO: change rating system, think about other ways to rate performance of player:
+# TODO: 
+# change rating system, think about other ways to rate performance of player:
 # leaderboards (include all players best, developers best and personal best)
 # leave as it is but adapt it and change the way it's calculated
 
@@ -28,6 +30,7 @@ func get_level_number():
 
 func set_time(value):
 	time = value
+	get_tree().call_group("TimerInGame", "set_timer", time)
 
 
 func get_time():
@@ -52,8 +55,6 @@ func _process(delta):
 
 
 func restart_level():
-	stop_timer()
-	
 	var level = get_child(0)
 	remove_child(level)
 	level.call_deferred("free")
@@ -61,6 +62,7 @@ func restart_level():
 	var restarted_level_resource = load("res://Levels/Level" + str(level_number) + ".tscn")
 	var restarted_level = restarted_level_resource.instance()
 	add_child(restarted_level)
+	get_parent().player_restart()
 
 
 func change_level():
@@ -87,8 +89,6 @@ func load_next_level():
 		launch_tutorial("BlueBlock")
 	elif level_number == 50:
 		launch_tutorial("MultipleWays")
-	else:
-		start_timer()
 
 
 func launch_tutorial(tutorial_string : String):
@@ -102,7 +102,8 @@ func calculate_rating():
 	var number_of_yellow_blocks = get_tree().get_nodes_in_group("BlockYellow").size()
 	var number_of_blue_blocks = get_tree().get_nodes_in_group("BlockBlue").size()
 	
-	rating_level = (number_of_normal_blocks + (number_of_yellow_blocks * 4) + (number_of_blue_blocks * 2)) / total_time * 1.5
+	if total_time > 0:
+		rating_level = (number_of_normal_blocks + (number_of_yellow_blocks * 4) + (number_of_blue_blocks * 2)) / total_time * 1.5
 	var rating : String
 	
 	if rating_level <= max_rating_level:
@@ -122,5 +123,9 @@ func start_timer():
 
 func stop_timer():
 	timer_started = false
+
+
+func reset_timer():
 	total_time = 0
+	get_tree().call_group("TimerInGame", "set_timer", get_time())
 

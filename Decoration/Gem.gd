@@ -1,6 +1,6 @@
 extends Node2D
 
-export (String, FILE) var gem_disappear_sound = "res://Assets/SFX/add_block.wav"
+export (String, FILE) var gem_disappear_sound
 
 var tile_size = 64
 
@@ -32,7 +32,7 @@ func spin_and_glow():
 func disappear():
 	if !editor_mode:
 		anim_player.play("disappear")
-		get_tree().call_group("AudioManager", "create_audio", gem_disappear_sound, 1.1, 1.3)
+		#get_tree().call_group("AudioManager", "create_audio", gem_disappear_sound, 1.1, 1.3)
 		yield(anim_player, "animation_finished")
 		queue_free()
 

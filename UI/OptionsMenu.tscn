@@ -1,162 +1,36 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assets/Font/AtlantisInternational-jen0.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Assets/OnScreenControls/Sprites/transparentLight/transparentLight44.png" type="Texture" id=2]
-[ext_resource path="res://Assets/OnScreenControls/Sprites/transparentLight/transparentLight22.png" type="Texture" id=3]
+[ext_resource path="res://UI/black_options_menu.theme" type="Theme" id=2]
 [ext_resource path="res://UI/OptionsMenu.gd" type="Script" id=4]
 [ext_resource path="res://Assets/OnScreenControls/Sprites/transparentLight/transparentLight13.png" type="Texture" id=5]
 [ext_resource path="res://Assets/OnScreenControls/Sprites/transparentLight/transparentLight11.png" type="Texture" id=6]
+[ext_resource path="res://Assets/GameIcons/PNG/White/2x/exitLeft.png" type="Texture" id=7]
+[ext_resource path="res://Assets/GameIcons/PNG/White/2x/checkmark.png" type="Texture" id=8]
 
-[sub_resource type="StyleBoxFlat" id=1]
-content_margin_left = 4.0
-content_margin_right = 5.0
-content_margin_top = 4.0
-content_margin_bottom = 4.0
-bg_color = Color( 1, 1, 1, 0.498039 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 1, 1, 1, 1 )
-expand_margin_left = 1.0
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id=2]
-content_margin_left = 4.0
-content_margin_right = 5.0
-content_margin_top = 4.0
-content_margin_bottom = 4.0
-bg_color = Color( 1, 1, 1, 0.392157 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 1, 1, 1, 1 )
-expand_margin_left = 1.0
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id=3]
-content_margin_left = 5.0
-content_margin_right = 5.0
-content_margin_top = 5.0
-content_margin_bottom = 5.0
-bg_color = Color( 1, 1, 1, 0.498039 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 1, 1, 1, 1 )
-expand_margin_left = 2.0
-expand_margin_right = 2.0
-expand_margin_top = 2.0
-expand_margin_bottom = 2.0
-anti_aliasing = false
-
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=37]
 size = 12
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=5]
-content_margin_left = 5.0
-content_margin_right = 5.0
-content_margin_top = 5.0
-content_margin_bottom = 5.0
-bg_color = Color( 1, 1, 1, 0.498039 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 1, 1, 1, 1 )
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id=6]
-content_margin_left = 5.0
-content_margin_right = 5.0
-content_margin_top = 5.0
-content_margin_bottom = 5.0
-bg_color = Color( 1, 1, 1, 0.627451 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 1, 1, 1, 1 )
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id=7]
-content_margin_left = 5.0
-content_margin_right = 5.0
-content_margin_top = 5.0
-content_margin_bottom = 5.0
-bg_color = Color( 1, 1, 1, 0.498039 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 1, 1, 1, 1 )
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id=8]
-content_margin_left = 5.0
-content_margin_right = 5.0
-content_margin_top = 5.0
-content_margin_bottom = 5.0
-bg_color = Color( 1, 1, 1, 0.498039 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 1, 1, 1, 1 )
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id=9]
-content_margin_left = 5.0
-content_margin_right = 5.0
-content_margin_top = 5.0
-content_margin_bottom = 5.0
-bg_color = Color( 1, 1, 1, 0.498039 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 1, 1, 1, 1 )
-anti_aliasing = false
-
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=38]
 size = 12
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=39]
 size = 12
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=12]
-content_margin_left = 5.0
-content_margin_right = 5.0
-content_margin_top = 5.0
-content_margin_bottom = 5.0
-bg_color = Color( 0.498039, 0.498039, 0.498039, 1 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 1, 1, 1, 1 )
-expand_margin_left = 2.0
-expand_margin_right = 2.0
-expand_margin_top = 2.0
-expand_margin_bottom = 2.0
-anti_aliasing = false
-
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=41]
 size = 12
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=47]
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="DynamicFont" id=48]
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=49]
 resource_name = "options_menu_fade_in"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -171,7 +45,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=50]
 resource_name = "options_menu_fade_out"
 step = 0.05
 tracks/0/type = "value"
@@ -187,7 +61,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=51]
 length = 1.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("ConfirmationPopup:modulate")
@@ -226,7 +100,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=52]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("ConfirmationPopup/VBoxContainer/ButtonContainer:modulate")
@@ -267,8 +141,15 @@ tracks/2/keys = {
 
 [node name="OptionsMenu" type="Control"]
 modulate = Color( 1, 1, 1, 0 )
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = -90.0
+margin_right = 160.0
+margin_bottom = 90.0
+theme = ExtResource( 2 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -287,11 +168,7 @@ margin_left = -135.0
 margin_top = -80.0
 margin_right = 135.0
 margin_bottom = 80.0
-custom_styles/tab_fg = SubResource( 1 )
-custom_styles/tab_disabled = SubResource( 1 )
-custom_styles/tab_bg = SubResource( 2 )
-custom_styles/panel = SubResource( 3 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 37 )
 tab_align = 0
 __meta__ = {
 "_edit_use_anchors_": false,
@@ -301,20 +178,14 @@ __meta__ = {
 [node name="GAMEPLAY" type="Tabs" parent="TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 26.0
-margin_right = -5.0
+margin_left = 6.0
+margin_top = 29.0
+margin_right = -4.0
 margin_bottom = -5.0
 
 [node name="OptionsContainer" type="VBoxContainer" parent="TabContainer/GAMEPLAY"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -130.0
-margin_top = -64.5
-margin_right = 130.0
-margin_bottom = 64.5
+anchor_right = 1.0
+anchor_bottom = 1.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -326,12 +197,7 @@ margin_right = 160.0
 margin_bottom = 23.0
 size_flags_horizontal = 4
 size_flags_vertical = 2
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/focus = SubResource( 7 )
-custom_styles/disabled = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 38 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 0.235294 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
@@ -342,9 +208,9 @@ __meta__ = {
 }
 
 [node name="ButtonContainer" type="HBoxContainer" parent="TabContainer/GAMEPLAY/OptionsContainer"]
-margin_top = 105.0
+margin_top = 102.0
 margin_right = 260.0
-margin_bottom = 129.0
+margin_bottom = 126.0
 alignment = 1
 
 [node name="ReturnToMenuButton" type="TextureButton" parent="TabContainer/GAMEPLAY/OptionsContainer/ButtonContainer"]
@@ -353,7 +219,7 @@ margin_right = 128.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 size_flags_horizontal = 0
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 7 )
 expand = true
 __meta__ = {
 "_editor_description_": ""
@@ -366,9 +232,9 @@ margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
-texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 2 )
-texture_disabled = ExtResource( 2 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 8 )
+texture_disabled = ExtResource( 8 )
 expand = true
 __meta__ = {
 "_editor_description_": ""
@@ -381,16 +247,18 @@ anchor_bottom = 1.0
 margin_left = 5.0
 margin_top = 26.0
 margin_right = -5.0
-margin_bottom = -5.0
+margin_bottom = -8.0
 
 [node name="AUDIO" type="Tabs" parent="TabContainer"]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.0037037
+anchor_top = 0.025
+anchor_right = 1.0037
+anchor_bottom = 1.025
 margin_left = 5.0
 margin_top = 26.0
 margin_right = -5.0
-margin_bottom = -5.0
+margin_bottom = -8.0
 
 [node name="OptionsContainer" type="VBoxContainer" parent="TabContainer/AUDIO"]
 anchor_right = 1.0
@@ -409,7 +277,7 @@ margin_top = 1.0
 margin_right = 108.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 39 )
 text = "SFX Volume"
 align = 1
 valign = 1
@@ -440,7 +308,7 @@ margin_top = 1.0
 margin_right = 108.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 39 )
 text = "Music Volume"
 align = 1
 valign = 1
@@ -463,9 +331,9 @@ expand = true
 
 [node name="ButtonContainer" type="HBoxContainer" parent="TabContainer/AUDIO/OptionsContainer"]
 margin_left = 104.0
-margin_top = 105.0
+margin_top = 102.0
 margin_right = 156.0
-margin_bottom = 129.0
+margin_bottom = 126.0
 size_flags_horizontal = 4
 size_flags_vertical = 10
 alignment = 1
@@ -478,7 +346,7 @@ margin_right = 24.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 size_flags_horizontal = 0
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 7 )
 expand = true
 __meta__ = {
 "_editor_description_": ""
@@ -491,9 +359,9 @@ margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
-texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 2 )
-texture_disabled = ExtResource( 2 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 8 )
+texture_disabled = ExtResource( 8 )
 expand = true
 __meta__ = {
 "_editor_description_": ""
@@ -509,7 +377,6 @@ margin_left = -80.0
 margin_top = -45.0
 margin_right = 80.0
 margin_bottom = 45.0
-custom_styles/panel = SubResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -532,7 +399,7 @@ modulate = Color( 1, 1, 1, 0 )
 margin_top = 4.0
 margin_right = 150.0
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 41 )
 text = "Are you sure you want to delete all of your progress?"
 align = 1
 valign = 1
@@ -554,17 +421,13 @@ __meta__ = {
 }
 
 [node name="ConfirmationYesButton" type="Button" parent="ConfirmationPopup/VBoxContainer/ButtonContainer"]
-margin_left = 45.0
-margin_right = 73.0
+margin_left = 31.0
+margin_right = 71.0
 margin_bottom = 27.0
+rect_min_size = Vector2( 40, 0 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/focus = SubResource( 7 )
-custom_styles/disabled = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 47 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 0.235294 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
@@ -575,17 +438,13 @@ __meta__ = {
 }
 
 [node name="ConfirmationNoButton" type="Button" parent="ConfirmationPopup/VBoxContainer/ButtonContainer"]
-margin_left = 81.0
-margin_right = 104.0
+margin_left = 79.0
+margin_right = 119.0
 margin_bottom = 27.0
+rect_min_size = Vector2( 40, 0 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/focus = SubResource( 7 )
-custom_styles/disabled = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 48 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 0.235294 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
@@ -596,12 +455,12 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/options_menu_fade_in = SubResource( 16 )
-anims/options_menu_fade_out = SubResource( 17 )
+anims/options_menu_fade_in = SubResource( 49 )
+anims/options_menu_fade_out = SubResource( 50 )
 
 [node name="ConfirmationPopupAnimation" type="AnimationPlayer" parent="."]
-anims/confirmation_fade_in = SubResource( 18 )
-anims/confirmation_fade_out = SubResource( 19 )
+anims/confirmation_fade_in = SubResource( 51 )
+anims/confirmation_fade_out = SubResource( 52 )
 [connection signal="pressed" from="TabContainer/GAMEPLAY/OptionsContainer/DeleteSaveButton" to="." method="_on_DeleteSaveButton_pressed"]
 [connection signal="pressed" from="TabContainer/GAMEPLAY/OptionsContainer/ButtonContainer/ReturnToMenuButton" to="." method="_on_ReturnToMenuButton_pressed"]
 [connection signal="pressed" from="TabContainer/GAMEPLAY/OptionsContainer/ButtonContainer/AcceptButton" to="." method="_on_AcceptButton_pressed"]

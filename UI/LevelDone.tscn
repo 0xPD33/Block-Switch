@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Font/AtlantisInternational-jen0.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/LevelDone.gd" type="Script" id=2]
@@ -8,20 +8,25 @@
 size = 24
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=2]
 size = 12
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=3]
 size = 12
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=4]
 size = 12
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="DynamicFont" id=5]
+size = 12
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=6]
 length = 1.4
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
@@ -47,13 +52,13 @@ tracks/1/keys = {
 "values": [ 0.0, 1.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("VBoxContainer/TimeLabel:percent_visible")
+tracks/2/path = NodePath("VBoxContainer/TimeValueLabel:percent_visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.4, 0.7 ),
+"times": PoolRealArray( 0.6, 0.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
@@ -101,7 +106,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0.7, 1.1 ),
+"times": PoolRealArray( 0.9, 1.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
@@ -118,8 +123,20 @@ tracks/7/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/8/type = "value"
+tracks/8/path = NodePath("VBoxContainer/CompletedLabel:percent_visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=7]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
@@ -139,13 +156,13 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.7, 1 ),
+"times": PoolRealArray( 0.6, 0.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 1.0, 0.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("VBoxContainer/TimeLabel:percent_visible")
+tracks/2/path = NodePath("VBoxContainer/TimeValueLabel:percent_visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -216,6 +233,18 @@ tracks/7/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/8/type = "value"
+tracks/8/path = NodePath("VBoxContainer/CompletedLabel:percent_visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
 
 [node name="LevelDone" type="Control"]
 anchor_right = 1.0
@@ -249,39 +278,49 @@ __meta__ = {
 }
 
 [node name="DoneLabel" type="Label" parent="VBoxContainer"]
-margin_top = 1.0
+margin_top = 2.0
 margin_right = 135.0
-margin_bottom = 26.0
+margin_bottom = 27.0
 custom_fonts/font = SubResource( 1 )
 text = "Level 1 done!"
 align = 1
 valign = 1
 percent_visible = 0.0
 
-[node name="TimeLabel" type="Label" parent="VBoxContainer"]
-margin_top = 30.0
+[node name="CompletedLabel" type="Label" parent="VBoxContainer"]
+margin_top = 31.0
 margin_right = 135.0
-margin_bottom = 43.0
-custom_fonts/font = SubResource( 7 )
-text = "Time: 0 seconds"
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 2 )
+text = "Completed in:"
+align = 1
+valign = 1
+percent_visible = 0.0
+
+[node name="TimeValueLabel" type="Label" parent="VBoxContainer"]
+margin_top = 48.0
+margin_right = 135.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 3 )
+text = "00:00:000"
 align = 1
 valign = 1
 percent_visible = 0.0
 
 [node name="RatingLabel" type="Label" parent="VBoxContainer"]
-margin_top = 47.0
+margin_top = 65.0
 margin_right = 135.0
-margin_bottom = 60.0
-custom_fonts/font = SubResource( 6 )
+margin_bottom = 78.0
+custom_fonts/font = SubResource( 4 )
 text = "Perfect!"
 align = 1
 valign = 1
-percent_visible = 0.0
+percent_visible = 2.98023e-07
 
 [node name="ButtonContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 64.0
+margin_top = 82.0
 margin_right = 135.0
-margin_bottom = 87.0
+margin_bottom = 105.0
 alignment = 1
 
 [node name="ContinueButton" type="Button" parent="VBoxContainer/ButtonContainer"]
@@ -289,7 +328,7 @@ modulate = Color( 1, 1, 1, 0 )
 margin_left = 10.0
 margin_right = 57.0
 margin_bottom = 23.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Continue"
 __meta__ = {
@@ -301,7 +340,7 @@ modulate = Color( 1, 1, 1, 0 )
 margin_left = 61.0
 margin_right = 94.0
 margin_bottom = 23.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Retry"
 __meta__ = {
@@ -313,7 +352,7 @@ modulate = Color( 1, 1, 1, 0 )
 margin_left = 98.0
 margin_right = 125.0
 margin_bottom = 23.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Quit"
 __meta__ = {
@@ -322,8 +361,8 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 2.0
-anims/fade_in = SubResource( 4 )
-anims/fade_out = SubResource( 5 )
+anims/fade_in = SubResource( 6 )
+anims/fade_out = SubResource( 7 )
 [connection signal="pressed" from="VBoxContainer/ButtonContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/ButtonContainer/RetryButton" to="." method="_on_RetryButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/ButtonContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

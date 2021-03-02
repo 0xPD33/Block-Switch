@@ -56,7 +56,6 @@ tracks/1/keys = {
 modulate = Color( 1, 1, 1, 0.784314 )
 rotation = -6.28319
 script = ExtResource( 2 )
-gem_disappear_sound = "res://Assets/SFX/gem_disappear.wav"
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
