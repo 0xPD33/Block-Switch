@@ -6,7 +6,8 @@ const OPTIONS_FILE_NAME = "user://options.json"
 var save_data = {
 	"levels_unlocked": [1],
 	"level_times": {},
-	"level_ratings": {}
+	"level_ratings": {},
+	"tutorials_shown": {}
 }
 
 var options_data = {
@@ -64,6 +65,7 @@ func load_level_rating(level_num : int):
 func delete_level_score(level_num : int):
 	save_data["level_times"].erase("Level" + str(level_num))
 	save_data["level_ratings"].erase("Level" + str(level_num))
+	save_game()
 
 
 func save_sfx_volume():

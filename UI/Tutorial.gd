@@ -1,7 +1,11 @@
 extends Control
 
-var shown = false
-var tutorial_state = 0
+var tutorial_levels : PoolIntArray = [1, 10, 20, 50]
+var tutorials_shown : Dictionary = {"Welcome": false, "YellowBlock": false, "BlueBlock": false, "MultipleWays": false}
+var shown : bool = false
+
+var changing_states : bool = false
+var tutorial_state : int = 0
 var current_values : PoolStringArray
 
 var welcome_tutorial_values : PoolStringArray = [
@@ -33,9 +37,22 @@ onready var anim_player = $AnimationPlayer
 
 
 func _input(event):
-	if shown:
+	if shown and !changing_states:
 		if event is InputEventScreenTouch and event.pressed:
 			advance_tutorial()
+
+
+func choose_tutorial():
+	match Global.current_level_number:
+		1:
+			setup_tutorial("Welcome")
+		10:
+			setup_tutorial("YellowBlock")
+		20:
+			setup_tutorial("BlueBlock")
+		50:
+			setup_tutorial("MultipleWays")
+	show_tutorial()
 
 
 func setup_tutorial(tutorial_type : String):
@@ -50,11 +67,6 @@ func setup_tutorial(tutorial_type : String):
 			current_values = multiple_ways_tutorial_values
 
 
-func advance_tutorial_text():
-	if tutorial_state < current_values.size():
-		tutorial_text.text = current_values[tutorial_state]
-
-
 func show_tutorial():
 	advance_tutorial_text()
 	show()
@@ -63,7 +75,13 @@ func show_tutorial():
 	shown = true
 
 
+func advance_tutorial_text():
+	if tutorial_state < current_values.size():
+		tutorial_text.text = current_values[tutorial_state]
+
+
 func advance_tutorial():
+	changing_states = true
 	if tutorial_state < current_values.size() - 1:
 		close_tutorial(false)
 		yield(anim_player, "animation_finished")
@@ -84,8 +102,8 @@ func close_tutorial(last : bool):
 		yield(anim_player, "animation_finished")
 		hide()
 		shown = false
-		Global.tutorial_shown = false
+		Global.movement_locked = false
 		get_tree().paused = false
 		tutorial_state = 0
-		get_tree().call_group("CurrentLevel", "start_timer")
+	changing_states = false
 

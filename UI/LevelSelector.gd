@@ -1,5 +1,7 @@
 extends Control
 
+export (String, FILE) var interface_click_sound = "res://Assets/SFX/interface_click.wav"
+
 var level_selected : bool = false
 var level_locked : bool = false
 
@@ -42,13 +44,12 @@ func update_panel():
 	else:
 		level_label.text = "Level -"
 	
-	if typeof(best_time_value) == TYPE_REAL:
-		delete_score_button.visible = true
-		best_time_value_label.text = str(best_time_value) + " seconds"
-	else:
+	if best_time_value == "---":
 		delete_score_button.visible = false
-		best_time_value_label.text = best_time_value
-	
+	else:
+		delete_score_button.visible = true
+		
+	best_time_value_label.text = best_time_value
 	best_rating_value_label.text = best_rating_value
 
 
@@ -86,12 +87,14 @@ func _on_LevelSelectContainer_gui_input(event: InputEvent):
 
 
 func _on_LevelPlayButton_pressed():
+	AudioManager.create_audio(interface_click_sound, 0.9, 1.1)
 	fade_out()
 	yield(anim_player, "animation_finished")
 	get_tree().change_scene("res://Game/Game.tscn")
 
 
 func _on_ReturnToMenuButton_pressed():
+	AudioManager.create_audio(interface_click_sound, 0.9, 1.1)
 	fade_out()
 	yield(anim_player, "animation_finished")
 	get_tree().change_scene("res://UI/MainMenu.tscn")

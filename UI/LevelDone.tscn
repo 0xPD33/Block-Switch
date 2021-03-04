@@ -278,9 +278,8 @@ __meta__ = {
 }
 
 [node name="DoneLabel" type="Label" parent="VBoxContainer"]
-margin_top = 2.0
 margin_right = 135.0
-margin_bottom = 27.0
+margin_bottom = 25.0
 custom_fonts/font = SubResource( 1 )
 text = "Level 1 done!"
 align = 1
@@ -288,9 +287,9 @@ valign = 1
 percent_visible = 0.0
 
 [node name="CompletedLabel" type="Label" parent="VBoxContainer"]
-margin_top = 31.0
+margin_top = 29.0
 margin_right = 135.0
-margin_bottom = 44.0
+margin_bottom = 42.0
 custom_fonts/font = SubResource( 2 )
 text = "Completed in:"
 align = 1
@@ -298,9 +297,9 @@ valign = 1
 percent_visible = 0.0
 
 [node name="TimeValueLabel" type="Label" parent="VBoxContainer"]
-margin_top = 48.0
+margin_top = 46.0
 margin_right = 135.0
-margin_bottom = 61.0
+margin_bottom = 59.0
 custom_fonts/font = SubResource( 3 )
 text = "00:00:000"
 align = 1
@@ -308,9 +307,9 @@ valign = 1
 percent_visible = 0.0
 
 [node name="RatingLabel" type="Label" parent="VBoxContainer"]
-margin_top = 65.0
+margin_top = 63.0
 margin_right = 135.0
-margin_bottom = 78.0
+margin_bottom = 76.0
 custom_fonts/font = SubResource( 4 )
 text = "Perfect!"
 align = 1
@@ -318,9 +317,9 @@ valign = 1
 percent_visible = 2.98023e-07
 
 [node name="ButtonContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 82.0
+margin_top = 80.0
 margin_right = 135.0
-margin_bottom = 105.0
+margin_bottom = 103.0
 alignment = 1
 
 [node name="ContinueButton" type="Button" parent="VBoxContainer/ButtonContainer"]

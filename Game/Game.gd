@@ -16,8 +16,13 @@ onready var level_fade_anim = $LevelFadeAnimation
 
 func _ready():
 	yield(get_tree(), "idle_frame")
-	if !Global.tutorial_shown:
-		launch_tutorial("Welcome")
+	Global.movement_locked = true
+	level_fade_anim.play("level_fade_in")
+	yield(level_fade_anim, "animation_finished")
+	if Global.current_level_number in tutorial_scene.tutorial_levels:
+		launch_tutorial()
+	else:
+		Global.movement_locked = false
 
 
 func _process(delta: float):
@@ -25,10 +30,9 @@ func _process(delta: float):
 		timer_in_game.set_timer(current_level.get_time())
 
 
-func launch_tutorial(tutorial_type : String):
+func launch_tutorial():
 	get_tree().paused = true
-	tutorial_scene.setup_tutorial(tutorial_type)
-	tutorial_scene.show_tutorial()
+	tutorial_scene.choose_tutorial()
 
 
 func create_death_cam(pos, zoom):

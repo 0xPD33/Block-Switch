@@ -1,5 +1,7 @@
 extends GridContainer
 
+export (String, FILE) var level_button_sound = "res://Assets/SFX/interface_click_secondary.wav"
+
 var level_selector = null
 var level_numbers := []
 
@@ -51,6 +53,7 @@ func check_lock():
 
 
 func _on_level_button_pressed(num):
+	AudioManager.create_audio(level_button_sound, 0.9, 1.1)
 	Global.current_level_number = num
 	#check_lock()
 	level_selector.level_selected = true

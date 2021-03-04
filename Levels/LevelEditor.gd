@@ -50,8 +50,6 @@ onready var level_editor_button_grid = level_editor_panel.get_node("BigPanel/Mar
 onready var level_editor_place_confirmation = $UI/LevelEditorPlaceConfirmation
 onready var level_editor_options_panel = $UI/LevelEditorOptionsPanel
 
-onready var level_editor_audio_manager = $LevelEditorAudioManager
-
 onready var tiles = $LevelEditorLevel/LevelTemplate/Tiles
 onready var player_tile = $LevelEditorLevel/LevelTemplate/PlayerTile
 onready var decoration = $LevelEditorLevel/LevelTemplate/Decoration
@@ -215,12 +213,12 @@ func select_block(block_name : String):
 func create_audio(block_selected, block_position : Vector2):
 	if block_selected != void_scene and block_selected != null:
 		if _check_if_tile_empty(block_position) == true or tiles.get_cellv(block_position) == tiles.VOID_ID:
-			level_editor_audio_manager.create_audio(place_block_sound, 0.9, 1.1)
+			AudioManager.create_audio(place_block_sound, 0.9, 1.1)
 	elif block_selected == void_scene:
 		if _check_if_tile_empty(block_position) == true or tiles.get_cellv(block_position) == tiles.BLOCK_ID:
-			level_editor_audio_manager.create_audio(place_block_sound, 0.9, 1.1)
+			AudioManager.create_audio(place_block_sound, 0.9, 1.1)
 	elif block_selected == null:
-		level_editor_audio_manager.create_audio(delete_block_sound, 0.8, 1.2)
+		AudioManager.create_audio(delete_block_sound, 0.9, 1.1)
 
 
 func save_block_information(block_position : Vector2):

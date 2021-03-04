@@ -36,7 +36,7 @@ func _ready():
 
 
 func _input(_event):
-	if !Global.game_over and !Global.level_done:
+	if !Global.movement_locked and !Global.game_over and !Global.level_done:
 		if Input.is_action_just_pressed("move_up"):
 			move(Vector2.UP)
 		if Input.is_action_just_pressed("move_down"):
@@ -57,7 +57,7 @@ func move(dir):
 		get_tree().current_scene.get_node("CurrentLevel").start_timer()
 	position += dir * tile_size
 	move_anim.play("move")
-	get_tree().call_group("AudioManager", "create_audio", hit_block_sound, 0.9, 1.1)
+	AudioManager.create_audio(hit_block_sound, 0.9, 1.1)
 
 
 func die():

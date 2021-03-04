@@ -30,6 +30,7 @@ Global="*res://Global/Global.gd"
 GlobalOptions="*res://Global/GlobalOptions.gd"
 SaveManager="*res://Global/SaveManager.gd"
 Helper="*res://Global/Helper.gd"
+AudioManager="*res://Global/AudioManager.gd"
 
 [debug]
 

@@ -82,13 +82,6 @@ func load_next_level():
 	var next_level_resource = load("res://Levels/Level" + str(level_number) + ".tscn")
 	var next_level_instance = next_level_resource.instance()
 	add_child(next_level_instance)
-	
-	if level_number == 10:
-		launch_tutorial("YellowBlock")
-	elif level_number == 20:
-		launch_tutorial("BlueBlock")
-	elif level_number == 50:
-		launch_tutorial("MultipleWays")
 
 
 func launch_tutorial(tutorial_string : String):
