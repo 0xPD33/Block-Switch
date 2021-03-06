@@ -39,6 +39,7 @@ onready var anim_player = $AnimationPlayer
 func _input(event):
 	if shown and !changing_states:
 		if event is InputEventScreenTouch and event.pressed:
+			AudioManager.create_interface_click_sound()
 			advance_tutorial()
 
 

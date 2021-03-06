@@ -1,8 +1,5 @@
 extends Node2D
 
-export (String, FILE) var place_block_sound = "res://Assets/SFX/add_block.wav"
-export (String, FILE) var delete_block_sound = "res://Assets/SFX/delete_block.wav"
-
 var current_block_selected
 var current_coordinates : Vector2
 
@@ -213,12 +210,12 @@ func select_block(block_name : String):
 func create_audio(block_selected, block_position : Vector2):
 	if block_selected != void_scene and block_selected != null:
 		if _check_if_tile_empty(block_position) == true or tiles.get_cellv(block_position) == tiles.VOID_ID:
-			AudioManager.create_audio(place_block_sound, 0.9, 1.1)
+			AudioManager.create_place_block_sound()
 	elif block_selected == void_scene:
 		if _check_if_tile_empty(block_position) == true or tiles.get_cellv(block_position) == tiles.BLOCK_ID:
-			AudioManager.create_audio(place_block_sound, 0.9, 1.1)
+			AudioManager.create_place_block_sound()
 	elif block_selected == null:
-		AudioManager.create_audio(delete_block_sound, 0.9, 1.1)
+		AudioManager.create_delete_block_sound()
 
 
 func save_block_information(block_position : Vector2):

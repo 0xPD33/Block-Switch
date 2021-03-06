@@ -137,6 +137,7 @@ func _on_MusicVolumeSlider_value_changed(value: float):
 
 func _on_DeleteSaveButton_pressed():
 	if !confirmation_popup.visible:
+		AudioManager.create_interface_click_sound()
 		confirmation_popup.popup()
 		confirmation_popup_anim.play("confirmation_fade_in")
 		yield(confirmation_popup_anim, "animation_finished")
@@ -145,6 +146,7 @@ func _on_DeleteSaveButton_pressed():
 
 func _on_ConfirmationNoButton_pressed():
 	if confirmation_popup.visible and confirmation_ready:
+		AudioManager.create_interface_click_sound()
 		confirmation_popup_anim.play("confirmation_fade_out")
 		yield(confirmation_popup_anim, "animation_finished")
 		confirmation_popup.hide()
@@ -153,6 +155,7 @@ func _on_ConfirmationNoButton_pressed():
 
 func _on_ConfirmationYesButton_pressed():
 	if confirmation_popup.visible and confirmation_ready:
+		AudioManager.create_interface_click_sound()
 		SaveManager.delete_save_file()
 		confirmation_popup_anim.play("confirmation_fade_out")
 		yield(confirmation_popup_anim, "animation_finished")
@@ -161,12 +164,14 @@ func _on_ConfirmationYesButton_pressed():
 
 
 func _on_ReturnToMenuButton_pressed():
+	AudioManager.create_interface_click_sound()
 	fade_out()
 	yield(anim_player, "animation_finished")
 	get_tree().change_scene("res://UI/MainMenu.tscn")
 
 
 func _on_AcceptButton_pressed():
+	AudioManager.create_interface_click_sound()
 	save_options()
 	fade_out()
 	yield(anim_player, "animation_finished")

@@ -11,7 +11,7 @@
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 2 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("OptionsPanel:modulate")
@@ -62,7 +62,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("OptionsPanel:modulate")
@@ -267,8 +267,8 @@ text = "Scale Controls"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 2.0
-anims/hide_controls = SubResource( 3 )
-anims/show_controls = SubResource( 4 )
+anims/hide_controls = SubResource( 2 )
+anims/show_controls = SubResource( 3 )
 [connection signal="pressed" from="OptionsButtonPanel/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="AcceptButtonPanel/AcceptButton" to="." method="_on_AcceptButton_pressed"]
 [connection signal="pressed" from="CancelButtonPanel/CancelButton" to="." method="_on_CancelButton_pressed"]

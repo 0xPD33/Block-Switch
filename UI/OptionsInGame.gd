@@ -97,6 +97,7 @@ func resize_controls_end():
 
 
 func _on_OptionsButton_pressed():
+	AudioManager.create_interface_click_sound()
 	if !options_shown:
 		options_open()
 	else:
@@ -104,16 +105,19 @@ func _on_OptionsButton_pressed():
 
 
 func _on_MoveControlsButton_pressed():
+	AudioManager.create_interface_click_sound()
 	if options_shown:
 		move_controls_start()
 
 
 func _on_ScaleControlsButton_pressed():
+	AudioManager.create_interface_click_sound()
 	if options_shown:
 		resize_controls_start()
 
 
 func _on_AcceptButton_pressed():
+	AudioManager.create_interface_click_sound()
 	if edit_mode:
 		if moving_controls:
 			move_controls_end()
@@ -124,6 +128,7 @@ func _on_AcceptButton_pressed():
 
 
 func _on_CancelButton_pressed():
+	AudioManager.create_interface_click_sound()
 	if edit_mode:
 		if moving_controls:
 			move_controls_end()

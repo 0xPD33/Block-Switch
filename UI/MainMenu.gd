@@ -1,7 +1,5 @@
 extends Control
 
-export (String, FILE) var interface_click_sound = "res://Assets/SFX/interface_click.wav"
-
 onready var title_anim = $TitleAnimation
 onready var anim_player = $AnimationPlayer
 onready var audio_manager = $AudioManager
@@ -18,7 +16,7 @@ func show_main_menu():
 
 
 func _on_PlayButton_pressed():
-	AudioManager.create_audio(interface_click_sound, 0.9, 1.1)
+	AudioManager.create_interface_click_sound()
 	anim_player.play("main_menu_hide")
 	title_anim.get_node("AnimationPlayer").play("title_hide")
 	yield(anim_player, "animation_finished")
@@ -26,7 +24,7 @@ func _on_PlayButton_pressed():
 
 
 func _on_OptionsButton_pressed():
-	AudioManager.create_audio(interface_click_sound, 0.9, 1.1)
+	AudioManager.create_interface_click_sound()
 	anim_player.play("main_menu_hide")
 	title_anim.get_node("AnimationPlayer").play("title_hide")
 	yield(anim_player, "animation_finished")

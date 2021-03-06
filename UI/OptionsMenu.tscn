@@ -8,30 +8,31 @@
 [ext_resource path="res://Assets/GameIcons/PNG/White/2x/exitLeft.png" type="Texture" id=7]
 [ext_resource path="res://Assets/GameIcons/PNG/White/2x/checkmark.png" type="Texture" id=8]
 
-[sub_resource type="DynamicFont" id=37]
+[sub_resource type="DynamicFont" id=1]
 size = 12
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=38]
+[sub_resource type="DynamicFont" id=2]
 size = 12
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=39]
+[sub_resource type="DynamicFont" id=3]
 size = 12
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=41]
+[sub_resource type="DynamicFont" id=4]
 size = 12
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=47]
+[sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=48]
+[sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=49]
+[sub_resource type="Animation" id=7]
 resource_name = "options_menu_fade_in"
+length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -39,14 +40,15 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=50]
+[sub_resource type="Animation" id=8]
 resource_name = "options_menu_fade_out"
+length = 0.8
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -55,13 +57,13 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=51]
+[sub_resource type="Animation" id=9]
 length = 1.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("ConfirmationPopup:modulate")
@@ -100,7 +102,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=52]
+[sub_resource type="Animation" id=10]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("ConfirmationPopup/VBoxContainer/ButtonContainer:modulate")
@@ -140,7 +142,6 @@ tracks/2/keys = {
 }
 
 [node name="OptionsMenu" type="Control"]
-modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -168,7 +169,7 @@ margin_left = -135.0
 margin_top = -80.0
 margin_right = 135.0
 margin_bottom = 80.0
-custom_fonts/font = SubResource( 37 )
+custom_fonts/font = SubResource( 1 )
 tab_align = 0
 __meta__ = {
 "_edit_use_anchors_": false,
@@ -197,7 +198,7 @@ margin_right = 160.0
 margin_bottom = 23.0
 size_flags_horizontal = 4
 size_flags_vertical = 2
-custom_fonts/font = SubResource( 38 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 0.235294 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
@@ -244,21 +245,19 @@ __meta__ = {
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 26.0
-margin_right = -5.0
-margin_bottom = -8.0
+margin_left = 6.0
+margin_top = 29.0
+margin_right = -4.0
+margin_bottom = -5.0
 
 [node name="AUDIO" type="Tabs" parent="TabContainer"]
 visible = false
-anchor_left = 0.0037037
-anchor_top = 0.025
-anchor_right = 1.0037
-anchor_bottom = 1.025
-margin_left = 5.0
-margin_top = 26.0
-margin_right = -5.0
-margin_bottom = -8.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 29.0
+margin_right = -4.0
+margin_bottom = -5.0
 
 [node name="OptionsContainer" type="VBoxContainer" parent="TabContainer/AUDIO"]
 anchor_right = 1.0
@@ -277,7 +276,7 @@ margin_top = 1.0
 margin_right = 108.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 39 )
+custom_fonts/font = SubResource( 3 )
 text = "SFX Volume"
 align = 1
 valign = 1
@@ -308,7 +307,7 @@ margin_top = 1.0
 margin_right = 108.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 39 )
+custom_fonts/font = SubResource( 3 )
 text = "Music Volume"
 align = 1
 valign = 1
@@ -399,7 +398,7 @@ modulate = Color( 1, 1, 1, 0 )
 margin_top = 4.0
 margin_right = 150.0
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 41 )
+custom_fonts/font = SubResource( 4 )
 text = "Are you sure you want to delete all of your progress?"
 align = 1
 valign = 1
@@ -427,7 +426,7 @@ margin_bottom = 27.0
 rect_min_size = Vector2( 40, 0 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 47 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 0.235294 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
@@ -444,7 +443,7 @@ margin_bottom = 27.0
 rect_min_size = Vector2( 40, 0 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 48 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 0.235294 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
@@ -455,12 +454,12 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/options_menu_fade_in = SubResource( 49 )
-anims/options_menu_fade_out = SubResource( 50 )
+anims/options_menu_fade_in = SubResource( 7 )
+anims/options_menu_fade_out = SubResource( 8 )
 
 [node name="ConfirmationPopupAnimation" type="AnimationPlayer" parent="."]
-anims/confirmation_fade_in = SubResource( 51 )
-anims/confirmation_fade_out = SubResource( 52 )
+anims/confirmation_fade_in = SubResource( 9 )
+anims/confirmation_fade_out = SubResource( 10 )
 [connection signal="pressed" from="TabContainer/GAMEPLAY/OptionsContainer/DeleteSaveButton" to="." method="_on_DeleteSaveButton_pressed"]
 [connection signal="pressed" from="TabContainer/GAMEPLAY/OptionsContainer/ButtonContainer/ReturnToMenuButton" to="." method="_on_ReturnToMenuButton_pressed"]
 [connection signal="pressed" from="TabContainer/GAMEPLAY/OptionsContainer/ButtonContainer/AcceptButton" to="." method="_on_AcceptButton_pressed"]
