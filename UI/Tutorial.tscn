@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Font/AtlantisInternational-jen0.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/Tutorial.gd" type="Script" id=2]
@@ -12,7 +12,40 @@ font_data = ExtResource( 1 )
 size = 12
 font_data = ExtResource( 1 )
 
+[sub_resource type="Animation" id=6]
+resource_name = "advance_in"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("TutorialPanel/TutorialText:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
 [sub_resource type="Animation" id=3]
+resource_name = "advance_out"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("TutorialPanel/TutorialText:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
@@ -20,7 +53,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.5, 1 ),
+"times": PoolRealArray( 0.4, 0.8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 0, 0, 0, 0.784314 ), Color( 0, 0, 0, 0 ) ]
@@ -32,7 +65,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -44,7 +77,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.5, 1 ),
+"times": PoolRealArray( 0.4, 0.8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 1.0, 0.0 ]
@@ -56,14 +89,14 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-length = 1.5
+[sub_resource type="Animation" id=5]
+length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
@@ -71,7 +104,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.784314 ) ]
@@ -83,7 +116,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.5, 1 ),
+"times": PoolRealArray( 0.2, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -95,10 +128,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 1.0 ]
+"values": [ 0.0, 0.0, 1.0 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("TutorialPanel/TapLabel:modulate")
@@ -107,22 +140,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 1.3, 1.5 ),
+"times": PoolRealArray( 0.6, 0.8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("TutorialPanel/TutorialText:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0.1, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
 }
 
 [node name="Tutorial" type="Control"]
@@ -159,7 +180,6 @@ __meta__ = {
 }
 
 [node name="TutorialText" type="Label" parent="TutorialPanel"]
-visible = false
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -90.0
@@ -178,7 +198,7 @@ __meta__ = {
 }
 
 [node name="TapLabel" type="Label" parent="TutorialPanel"]
-modulate = Color( 1, 1, 1, 5.96046e-07 )
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -186,7 +206,7 @@ anchor_bottom = 1.0
 margin_left = -90.0
 margin_top = -20.0
 margin_right = 90.0
-margin_bottom = -10.0
+margin_bottom = -7.0
 custom_fonts/font = SubResource( 2 )
 text = "[ Tap to Continue ]"
 align = 1
@@ -197,5 +217,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/close = SubResource( 3 )
-anims/open = SubResource( 4 )
+anims/advance_in = SubResource( 6 )
+anims/advance_out = SubResource( 3 )
+anims/close = SubResource( 4 )
+anims/open = SubResource( 5 )

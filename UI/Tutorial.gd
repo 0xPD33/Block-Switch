@@ -66,6 +66,7 @@ func setup_tutorial(tutorial_type : String):
 			current_values = blue_block_tutorial_values
 		"MultipleWays":
 			current_values = multiple_ways_tutorial_values
+	tutorials_shown[tutorial_type] = true
 
 
 func show_tutorial():
@@ -84,27 +85,24 @@ func advance_tutorial_text():
 func advance_tutorial():
 	changing_states = true
 	if tutorial_state < current_values.size() - 1:
-		close_tutorial(false)
-		yield(anim_player, "animation_finished")
-		show_tutorial()
-	else:
-		close_tutorial(true)
-
-
-func close_tutorial(last : bool):
-	if !last:
-		anim_player.play("close")
+		anim_player.play("advance_out")
 		yield(anim_player, "animation_finished")
 		tutorial_state += 1
-		hide()
-		shown = false
-	else:
-		anim_player.play("close")
+		advance_tutorial_text()
+		anim_player.play("advance_in")
 		yield(anim_player, "animation_finished")
-		hide()
-		shown = false
-		Global.movement_locked = false
-		get_tree().paused = false
-		tutorial_state = 0
+		changing_states = false
+	else:
+		close_tutorial()
+
+
+func close_tutorial():
+	anim_player.play("close")
+	yield(anim_player, "animation_finished")
+	hide()
+	shown = false
+	Global.movement_locked = false
+	get_tree().paused = false
+	tutorial_state = 0
 	changing_states = false
 
