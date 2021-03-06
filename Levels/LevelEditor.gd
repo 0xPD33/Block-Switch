@@ -208,15 +208,22 @@ func select_block(block_name : String):
 
 
 func create_audio(block_selected, block_position : Vector2):
-	if block_selected != void_scene and block_selected != null:
-		if _check_if_tile_empty(block_position) == true or tiles.get_cellv(block_position) == tiles.VOID_ID:
-			AudioManager.create_place_block_sound()
-	elif block_selected == void_scene:
-		if _check_if_tile_empty(block_position) == true or tiles.get_cellv(block_position) == tiles.BLOCK_ID:
-			AudioManager.create_place_block_sound()
-	elif block_selected == null:
-		AudioManager.create_delete_block_sound()
-
+	match block_selected:
+		block_scene:
+			if _check_if_tile_empty(block_position) == true or tiles.get_cellv(block_position) == tiles.VOID_ID:
+				AudioManager.create_place_block_sound()
+		block_yellow_scene, block_blue_scene, goal_scene:
+			if _check_if_tile_empty(block_position) == true or tiles.get_cellv(block_position) in [tiles.VOID_ID, tiles.BLOCK_ID]:
+				AudioManager.create_place_block_sound()
+		void_scene:
+			if _check_if_tile_empty(block_position) == true or tiles.get_cellv(block_position) == tiles.BLOCK_ID:
+				AudioManager.create_place_block_sound()
+		player_tile.player:
+			if tiles.get_cellv(block_position) == tiles.BLOCK_ID:
+				AudioManager.create_place_block_sound()
+		null:
+			AudioManager.create_delete_block_sound()
+	
 
 func save_block_information(block_position : Vector2):
 	saved_block_id = tiles.get_cellv(block_position)
