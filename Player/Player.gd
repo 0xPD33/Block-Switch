@@ -27,12 +27,14 @@ func _ready():
 		editor = get_tree().current_scene
 		editor_mode = true
 		starting_position = position
+		controls.fade_in()
 	else:
 		get_tree().current_scene.player = self
+		if !get_tree().current_scene.restarting:
+			controls.fade_in()
 	#set_cam_current()
 	snap()
-	if !get_tree().current_scene.restarting:
-		controls.fade_in()
+
 
 
 func _input(_event):
