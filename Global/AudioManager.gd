@@ -9,6 +9,8 @@ export (String, FILE) var game_retry_sound = "res://Assets/SFX/game_retry.wav"
 export (String, FILE) var place_block_sound = "res://Assets/SFX/add_block.wav"
 export (String, FILE) var delete_block_sound = "res://Assets/SFX/delete_block.wav"
 
+export (String, FILE) var gem_disappear_sound
+
 var sfx_volume : float = 0
 
 
