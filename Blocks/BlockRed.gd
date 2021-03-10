@@ -1,20 +1,23 @@
-extends Area2D
+extends "res://Blocks/Block.gd"
 
-var tile_size = 64
 var triggered = false
 
 
+# LEVEL EDITOR VARIABLES
+
+var editor_mode = false
+
+#
+
+
 func _ready():
+	if get_tree().current_scene.name == "LevelEditor":
+		editor_mode = true
 	snap()
 
 
 func spin_level():
 	get_parent().rotation_degrees = 90
-
-
-func snap():
-	position = position.snapped(Vector2.ONE * tile_size)
-	position += Vector2.ONE * tile_size / 2
 
 
 func _on_BlockRed_area_entered(area: Area2D):
