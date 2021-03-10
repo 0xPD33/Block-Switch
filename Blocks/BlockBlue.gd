@@ -1,8 +1,5 @@
 extends "res://Blocks/Block.gd"
 
-export (String, FILE) var teleport_sound_1 = "res://Assets/SFX/teleport_1.wav"
-export (String, FILE) var teleport_sound_2 = "res://Assets/SFX/teleport_2.wav"
-
 var teleport_pos setget set_teleport_pos
 var triggered = false
 
@@ -12,7 +9,7 @@ var editor_mode = false
 
 #
 
-onready var teleport_sounds = [teleport_sound_1, teleport_sound_2]
+onready var teleport_sounds = [AudioManager.teleport_sound_1, AudioManager.teleport_sound_2]
 
 
 func _ready():
@@ -36,7 +33,7 @@ func teleport(player):
 func play_teleport_sound():
 	randomize()
 	var sound = teleport_sounds[randi() % teleport_sounds.size()]
-	get_tree().call_group("AudioManager", "create_audio", sound, 0.9, 1.1)
+	AudioManager.create_audio(sound, 0.9, 1.1)
 
 
 func _on_BlockBlue_area_entered(area: Area2D):
