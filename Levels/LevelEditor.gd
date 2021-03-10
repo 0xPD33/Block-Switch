@@ -66,7 +66,7 @@ func _check_if_placement_is_allowed():
 
 
 func _check_if_dragging_is_allowed():
-	if current_block_selected in [block_scene, void_scene]:
+	if current_block_selected in [block_scene, void_scene] or current_block_selected == null:
 		can_drag = true
 	else:
 		can_drag = false
@@ -141,7 +141,16 @@ func _unhandled_input(event):
 		if event is InputEventScreenTouch:
 			if event.pressed:
 				var block_position : Vector2 = tiles.world_to_map(to_global(event.position * level_editor_camera.zoom.x + level_editor_camera_container.global_position))
-				place_block(block_position)
+				if current_block_selected == goal_scene:
+					if !goal_placed:
+						save_block_information(block_position)
+						place_block(block_position)
+					else:
+						place_last_block()
+						save_block_information(block_position)
+						place_block(block_position)
+				else:
+					place_block(block_position)
 		if event is InputEventScreenDrag:
 			_check_if_dragging_is_allowed()
 			if can_drag:
@@ -230,12 +239,19 @@ func save_block_information(block_position : Vector2):
 
 
 func place_last_block():
-	tiles.set_cellv(last_missing_block_position, saved_block_id)
-	decoration.set_cellv(last_missing_block_position, -1)
-	if tiles.yellow_blocks.has(last_missing_block_position):
-		tiles.yellow_blocks.erase(last_missing_block_position)
-	if tiles.blue_blocks.has(last_missing_block_position):
-		tiles.blue_blocks.erase(last_missing_block_position)
+	if placing_yellow_block:
+		tiles.set_cellv(last_missing_block_position, saved_block_id)
+		decoration.set_cellv(last_missing_block_position, -1)
+		if tiles.yellow_blocks.has(last_missing_block_position):
+			tiles.yellow_blocks.erase(last_missing_block_position)
+	elif placing_blue_block:
+		tiles.set_cellv(last_teleport_target_position, saved_block_id)
+		decoration.set_cellv(last_teleport_target_position, -1)
+		if tiles.blue_blocks.has(last_teleport_target_position):
+			tiles.blue_blocks.erase(last_teleport_target_position)
+	elif current_block_selected == goal_scene:
+		tiles.set_cellv(last_goal_position, saved_block_id)
+		decoration.set_cellv(last_goal_position, -1)
 
 
 func place_block(block_position : Vector2):
@@ -262,9 +278,6 @@ func place_block(block_position : Vector2):
 				level_editor_panel.disable_buttons()
 		goal_scene:
 			if _check_if_placeable(block_position) == true and _check_if_decoration_placed(block_position) == false:
-				if last_goal_position != null and tiles.get_cellv(last_goal_position) == tiles.GOAL_ID:
-					tiles.set_cellv(last_goal_position, -1)
-					remove_goal_position()
 				tiles.set_cellv(block_position, tiles.GOAL_ID)
 				last_goal_position = block_position
 				if !goal_placed:
@@ -378,12 +391,6 @@ func remove_block_coordinates(block_position : Vector2):
 		var index = tiles.blue_blocks.values().find(block_position)
 		tiles.set_cellv(tiles.blue_blocks.keys()[index], -1)
 		tiles.blue_blocks.erase(tiles.blue_blocks.keys()[index])
-
-
-func remove_goal_position():
-	last_goal_position = null
-	goal_placed = false
-	level_editor_options_panel.change_goal_requirement_text(0)
 
 
 func remove_player_position():
