@@ -9,12 +9,16 @@ export (String, FILE) var game_retry_sound = "res://Assets/SFX/game_retry.wav"
 export (String, FILE) var place_block_sound = "res://Assets/SFX/add_block.wav"
 export (String, FILE) var delete_block_sound = "res://Assets/SFX/delete_block.wav"
 
+export (String, FILE) var add_block_sound = "res://Assets/SFX/add_block.wav"
+
 export (String, FILE) var teleport_sound_1 = "res://Assets/SFX/teleport_1.wav"
 export (String, FILE) var teleport_sound_2 = "res://Assets/SFX/teleport_2.wav"
 
 export (String, FILE) var gem_disappear_sound
 
 var sfx_volume : float = 0
+
+onready var teleport_sounds = [AudioManager.teleport_sound_1, AudioManager.teleport_sound_2]
 
 
 func _ready():
@@ -55,4 +59,14 @@ func create_place_block_sound():
 
 func create_delete_block_sound():
 	create_audio(delete_block_sound, 0.9, 1.1)
+
+
+func create_add_block_sound():
+	create_audio(add_block_sound, 0.9, 1.1)
+
+
+func create_teleport_sound():
+	randomize()
+	var teleport_sound = teleport_sounds[randi() % teleport_sounds.size()]
+	create_audio(teleport_sound, 0.9, 1.1)
 

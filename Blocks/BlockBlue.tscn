@@ -10,8 +10,6 @@ extents = Vector2( 16, 16 )
 "BlockBlue",
 ]]
 script = ExtResource( 2 )
-teleport_sound_1 = "res://Assets/SFX/teleport_sound_1.wav"
-teleport_sound_2 = "res://Assets/SFX/teleport_sound_2.wav"
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 0.211765, 0.721569, 1, 1 )

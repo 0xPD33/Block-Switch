@@ -9,8 +9,6 @@ var editor_mode = false
 
 #
 
-onready var teleport_sounds = [AudioManager.teleport_sound_1, AudioManager.teleport_sound_2]
-
 
 func _ready():
 	if get_tree().current_scene.name == "LevelEditor":
@@ -27,13 +25,7 @@ func teleport(player):
 			triggered = true
 		player.global_position = teleport_pos
 		player.snap()
-		play_teleport_sound()
-
-
-func play_teleport_sound():
-	randomize()
-	var sound = teleport_sounds[randi() % teleport_sounds.size()]
-	AudioManager.create_audio(sound, 0.9, 1.1)
+		AudioManager.create_teleport_sound()
 
 
 func _on_BlockBlue_area_entered(area: Area2D):

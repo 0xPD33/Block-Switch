@@ -1,7 +1,6 @@
 extends "res://Blocks/Block.gd"
 
 export (PackedScene) var block_scene
-export (String, FILE) var add_block_sound = "res://Assets/SFX/add_block.wav"
 
 var missing_block_pos setget set_missing_block_pos
 var triggered = false setget set_triggered
@@ -41,7 +40,7 @@ func add_block():
 		block_instance.position = missing_block_pos
 		block_instance.name = "MissingBlock"
 		block_instance.add_to_group("MissingBlocks")
-		get_tree().call_group("AudioManager", "create_audio", add_block_sound, 0.9, 1.1)
+		AudioManager.create_add_block_sound()
 		get_parent().call_deferred("add_child", block_instance)
 
 
