@@ -93,14 +93,16 @@ func _on_OpenOptionsPanelButton_pressed():
 
 
 func _on_TestLevelButton_pressed():
-	if level_editor != null:
-		if !level_editor.testing_level:
-			level_editor.test_level()
-		else:
-			level_editor.stop_testing_level(false)
+	if !level_editor.testing_level:
+		level_editor.test_level()
+	else:
+		level_editor.stop_testing_level(false)
 
 
 func _on_SaveLevelButton_pressed():
-	if level_editor != null:
-		level_editor.open_level_saver_confirmation()
+	level_editor.open_level_saver_confirmation()
+
+
+func _on_LoadLevelButton_pressed():
+	level_editor.open_level_load_dialog()
 

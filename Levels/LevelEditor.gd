@@ -43,6 +43,9 @@ onready var level_editor_level = $LevelEditorLevel
 onready var level_editor_level_saver = $LevelEditorLevelSaver
 onready var level_editor_level_saver_confirmation = $UI/LevelEditorLevelSaverConfirmation
 
+onready var level_editor_level_loader = $LevelEditorLevelLoader
+onready var level_editor_level_load_dialog = $UI/LevelEditorLevelLoadDialog
+
 onready var level_editor_panel = $UI/LevelEditorPanel
 onready var level_editor_selected_block = level_editor_panel.get_node("LevelEditorSelectedBlock")
 onready var level_editor_button_grid = level_editor_panel.get_node("BigPanel/MarginContainer/LevelEditorButtonGrid")
@@ -50,8 +53,8 @@ onready var level_editor_place_confirmation = $UI/LevelEditorPlaceConfirmation
 onready var level_editor_options_panel = $UI/LevelEditorOptionsPanel
 
 onready var tiles = $LevelEditorLevel/LevelTemplate/Tiles
-onready var player_tile = $LevelEditorLevel/LevelTemplate/PlayerTile
 onready var decoration = $LevelEditorLevel/LevelTemplate/Decoration
+onready var player_tile = $LevelEditorLevel/LevelTemplate/PlayerTile
 
 onready var block_scene = tiles.block_scene
 onready var block_yellow_scene = tiles.block_yellow_scene
@@ -139,6 +142,8 @@ func _process(delta):
 
 
 func _unhandled_input(event):
+	if Input.is_action_just_pressed("reload"):
+		get_tree().reload_current_scene()
 	if can_place:
 		if event is InputEventScreenTouch:
 			if event.pressed:
@@ -484,6 +489,14 @@ func open_level_saver_confirmation():
 
 func save_level(level_name : String):
 	level_editor_level_saver.save_level(level_name)
+
+
+func open_level_load_dialog():
+	level_editor_level_load_dialog.open()
+
+
+func load_level(level_to_load : String):
+	level_editor_level_loader.load_level(level_to_load)
 
 
 func _on_place_confirmation_placement_accepted():

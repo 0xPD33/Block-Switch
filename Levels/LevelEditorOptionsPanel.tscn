@@ -5,15 +5,15 @@
 [ext_resource path="res://UI/black.theme" type="Theme" id=3]
 [ext_resource path="res://UI/black_level_editor_button.theme" type="Theme" id=4]
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=1]
 size = 8
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=21]
+[sub_resource type="DynamicFont" id=2]
 size = 8
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=26]
+[sub_resource type="DynamicFont" id=3]
 size = 12
 font_data = ExtResource( 1 )
 
@@ -56,7 +56,7 @@ margin_top = 2.0
 margin_right = 46.0
 margin_bottom = 11.0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 1 )
 text = "Requirements:"
 align = 1
 valign = 1
@@ -66,7 +66,7 @@ margin_top = 15.0
 margin_right = 46.0
 margin_bottom = 24.0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 1 )
 text = "Goal: 0/1"
 align = 1
 valign = 1
@@ -75,7 +75,7 @@ valign = 1
 margin_top = 28.0
 margin_right = 46.0
 margin_bottom = 37.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 1 )
 text = "Player: 0/1"
 align = 1
 valign = 1
@@ -84,7 +84,7 @@ valign = 1
 margin_top = 41.0
 margin_right = 46.0
 margin_bottom = 50.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 1 )
 text = "Playable: No"
 align = 1
 valign = 1
@@ -116,15 +116,15 @@ __meta__ = {
 
 [node name="TestLevelButton" type="Button" parent="BigPanel/ButtonContainer"]
 margin_left = 3.0
-margin_top = 33.0
+margin_top = 25.0
 margin_right = 43.0
-margin_bottom = 45.0
+margin_bottom = 37.0
 rect_min_size = Vector2( 40, 0 )
 focus_mode = 0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme = ExtResource( 4 )
-custom_fonts/font = SubResource( 21 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 0.235294 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
@@ -137,20 +137,39 @@ __meta__ = {
 
 [node name="SaveLevelButton" type="Button" parent="BigPanel/ButtonContainer"]
 margin_left = 3.0
-margin_top = 49.0
+margin_top = 41.0
 margin_right = 43.0
-margin_bottom = 61.0
+margin_bottom = 53.0
 rect_min_size = Vector2( 40, 0 )
 focus_mode = 0
 size_flags_horizontal = 4
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 21 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 0.235294 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 0.862745 )
 disabled = true
 text = "Save Level"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="LoadLevelButton" type="Button" parent="BigPanel/ButtonContainer"]
+margin_left = 3.0
+margin_top = 57.0
+margin_right = 43.0
+margin_bottom = 69.0
+rect_min_size = Vector2( 40, 0 )
+focus_mode = 0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 0.235294 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 0.862745 )
+text = "Load Level"
 __meta__ = {
 "_editor_description_": ""
 }
@@ -168,7 +187,7 @@ focus_mode = 0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme = ExtResource( 4 )
-custom_fonts/font = SubResource( 26 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 0.235294 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
@@ -182,4 +201,5 @@ __meta__ = {
 [node name="MoveTween" type="Tween" parent="."]
 [connection signal="pressed" from="BigPanel/ButtonContainer/TestLevelButton" to="." method="_on_TestLevelButton_pressed"]
 [connection signal="pressed" from="BigPanel/ButtonContainer/SaveLevelButton" to="." method="_on_SaveLevelButton_pressed"]
+[connection signal="pressed" from="BigPanel/ButtonContainer/LoadLevelButton" to="." method="_on_LoadLevelButton_pressed"]
 [connection signal="pressed" from="OpenOptionsPanelButton" to="." method="_on_OpenOptionsPanelButton_pressed"]
