@@ -5,6 +5,9 @@ var level_editor_camera_container
 
 var is_open : bool = false
 
+var delete_button_held : bool = false
+var delete_button_hold_time : float
+
 onready var level_editor_selected_block = $LevelEditorSelectedBlock
 onready var level_editor_button_grid = $BigPanel/MarginContainer/LevelEditorButtonGrid
 
@@ -25,6 +28,13 @@ func _ready():
 		move_tween.start()
 		open_panel_button.text = ">"
 		is_open = true
+
+
+func _process(delta):
+	if delete_button_held:
+		delete_button_hold_time += delta
+		if delete_button_hold_time >= 0.8:
+			level_editor.delete_whole_level()
 
 
 func open_level_editor_panel():
@@ -67,6 +77,16 @@ func _on_MoveButton_pressed():
 	level_editor.current_block_selected = null
 	level_editor.can_delete = false
 	$SmallPanel/ButtonContainer/DeleteButton.pressed = false
+
+
+func _on_DeleteButton_button_down():
+	delete_button_held = true
+	level_editor.delete_level_triggered = false
+
+
+func _on_DeleteButton_button_up():
+	delete_button_held = false
+	delete_button_hold_time = 0
 
 
 func _on_DeleteButton_pressed():

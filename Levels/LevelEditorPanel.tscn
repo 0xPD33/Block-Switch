@@ -10,7 +10,7 @@
 [ext_resource path="res://UI/black.theme" type="Theme" id=8]
 [ext_resource path="res://UI/black_level_editor_button.theme" type="Theme" id=9]
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=1]
 size = 8
 font_data = ExtResource( 5 )
 
@@ -154,7 +154,7 @@ rect_min_size = Vector2( 36, 0 )
 focus_mode = 0
 size_flags_horizontal = 4
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 0.235294 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
@@ -175,7 +175,7 @@ rect_min_size = Vector2( 36, 0 )
 focus_mode = 0
 size_flags_horizontal = 4
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 0.235294 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
@@ -210,5 +210,7 @@ __meta__ = {
 
 [node name="MoveTween" type="Tween" parent="."]
 [connection signal="pressed" from="SmallPanel/ButtonContainer/MoveButton" to="." method="_on_MoveButton_pressed"]
+[connection signal="button_down" from="SmallPanel/ButtonContainer/DeleteButton" to="." method="_on_DeleteButton_button_down"]
+[connection signal="button_up" from="SmallPanel/ButtonContainer/DeleteButton" to="." method="_on_DeleteButton_button_up"]
 [connection signal="pressed" from="SmallPanel/ButtonContainer/DeleteButton" to="." method="_on_DeleteButton_pressed"]
 [connection signal="pressed" from="OpenPanelButton" to="." method="_on_OpenPanelButton_pressed"]

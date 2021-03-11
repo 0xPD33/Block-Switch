@@ -23,6 +23,8 @@ var teleport_target_placed : bool = false
 var last_goal_position
 var last_player_position
 
+var delete_level_triggered : bool = false
+
 var goal_placed : bool = false
 var player_placed : bool = false
 
@@ -414,6 +416,24 @@ func delete_block(block_position : Vector2):
 		level_editor_options_panel.change_player_requirement_text(0)
 	_check_if_testable()
 	_check_if_playable()
+
+
+func delete_whole_level():
+	if !delete_level_triggered:
+		delete_level_triggered = true
+		AudioManager.create_trash_audio()
+		for tile in tiles.get_used_cells():
+			tiles.set_cellv(tile, -1)
+			decoration.set_cellv(tile, -1)
+			player_tile.set_cellv(tile, -1)
+		tiles.yellow_blocks.clear()
+		tiles.blue_blocks.clear()
+		goal_placed = false
+		player_placed = false
+		level_editor_options_panel.change_goal_requirement_text(0)
+		level_editor_options_panel.change_player_requirement_text(0)
+		_check_if_testable()
+		_check_if_playable()
 
 
 func hide_tiles():
