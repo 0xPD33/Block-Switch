@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Font/AtlantisInternational-jen0.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/GameIcons/PNG/White/1x/forward.png" type="Texture" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://UI/MainMenu.gd" type="Script" id=4]
 [ext_resource path="res://Assets/GameIcons/PNG/White/1x/gear.png" type="Texture" id=5]
 [ext_resource path="res://UI/black.theme" type="Theme" id=6]
-[ext_resource path="res://Global/AudioManager.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 15
@@ -180,8 +179,5 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/main_menu_hide = SubResource( 2 )
 anims/main_menu_show = SubResource( 3 )
-
-[node name="AudioManager" type="Node" parent="."]
-script = ExtResource( 7 )
 [connection signal="pressed" from="OptionsButtonPanel/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="ButtonContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
