@@ -499,6 +499,19 @@ func load_level(level_to_load : String):
 	level_editor_level_loader.load_level(level_to_load)
 
 
+func examine_loaded_level():
+	for goal in tiles.get_used_cells_by_id(tiles.GOAL_ID):
+		goal_placed = true
+		last_goal_position = goal
+		level_editor_options_panel.change_goal_requirement_text(1)
+	for player in player_tile.get_used_cells_by_id(0):
+		player_placed = true
+		last_player_position = player
+		level_editor_options_panel.change_player_requirement_text(1)
+	_check_if_testable()
+	
+
+
 func _on_place_confirmation_placement_accepted():
 	if placing_yellow_block:
 		placing_yellow_block = false
