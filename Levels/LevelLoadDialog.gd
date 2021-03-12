@@ -15,10 +15,8 @@ func _ready():
 
 func open():
 	file_dialog.show()
-	get_tree().paused = true
 
 
 func _on_FileDialog_file_selected(path: String):
 	level_editor.load_level(path)
-	get_tree().paused = false
 
