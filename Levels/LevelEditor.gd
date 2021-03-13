@@ -20,6 +20,9 @@ var blue_block_coordinates : Vector2
 var last_teleport_target_position : Vector2
 var teleport_target_placed : bool = false
 
+var placing_red_block : bool = false
+var red_block_coordinates : Vector2
+
 var last_goal_position
 var last_player_position
 
@@ -59,6 +62,7 @@ onready var player_tile = $LevelEditorLevel/LevelTemplate/PlayerTile
 onready var block_scene = tiles.block_scene
 onready var block_yellow_scene = tiles.block_yellow_scene
 onready var block_blue_scene = tiles.block_blue_scene
+onready var block_red_scene = tiles.block_red_scene
 onready var goal_scene = tiles.goal_scene
 onready var void_scene = tiles.void_scene
 
@@ -100,12 +104,14 @@ func _check_if_playable():
 func _check_if_placeable(pos : Vector2):
 	match current_block_selected:
 		block_scene:
-			if !tiles.get_cellv(pos) in [tiles.BLOCK_YELLOW_ID, tiles.BLOCK_BLUE_ID, tiles.GOAL_ID]:
+			if !tiles.get_cellv(pos) in [tiles.BLOCK_YELLOW_ID, tiles.BLOCK_BLUE_ID, tiles.GOAL_ID]\
+			and _check_if_decoration_placed(pos) == false:
 				return true
 			else:
 				return false
-		block_yellow_scene, block_blue_scene, goal_scene, void_scene:
-			if !tiles.get_cellv(pos) in [tiles.BLOCK_YELLOW_ID, tiles.BLOCK_BLUE_ID, tiles.GOAL_ID] and !player_tile.get_cellv(pos) == 0:
+		block_yellow_scene, block_blue_scene, block_red_scene, goal_scene, void_scene:
+			if !tiles.get_cellv(pos) in [tiles.BLOCK_YELLOW_ID, tiles.BLOCK_BLUE_ID, tiles.GOAL_ID]\
+			and !player_tile.get_cellv(pos) == 0 and _check_if_decoration_placed(pos) == false:
 				return true
 			else:
 				return false
@@ -215,6 +221,8 @@ func select_block(block_name : String):
 			current_block_selected = block_yellow_scene
 		"BlockBlue":
 			current_block_selected = block_blue_scene
+		"BlockRed":
+			current_block_selected = block_red_scene
 		"Goal":
 			current_block_selected = goal_scene
 		"Void":
@@ -228,7 +236,7 @@ func create_audio(block_selected, block_position : Vector2):
 		block_scene:
 			if _check_if_tile_empty(block_position) == true or tiles.get_cellv(block_position) == tiles.VOID_ID:
 				AudioManager.create_place_block_sound()
-		block_yellow_scene, block_blue_scene, goal_scene:
+		block_yellow_scene, block_blue_scene, block_red_scene, goal_scene:
 			if _check_if_tile_empty(block_position) == true or tiles.get_cellv(block_position) in [tiles.VOID_ID, tiles.BLOCK_ID]:
 				AudioManager.create_place_block_sound()
 		void_scene:
@@ -265,33 +273,40 @@ func place_block(block_position : Vector2):
 	create_audio(current_block_selected, block_position)
 	match current_block_selected:
 		block_scene:
-			if _check_if_placeable(block_position) == true and _check_if_decoration_placed(block_position) == false:
+			if _check_if_placeable(block_position) == true:
 				tiles.set_cellv(block_position, tiles.BLOCK_ID)
 				if !placing_blue_block:
 					place_void_around_block(block_position)
 		block_yellow_scene:
-			if _check_if_placeable(block_position) == true and _check_if_decoration_placed(block_position) == false:
+			if _check_if_placeable(block_position) == true:
 				tiles.set_cellv(block_position, tiles.BLOCK_YELLOW_ID)
 				yellow_block_coordinates = block_position
 				placing_yellow_block = true
 				level_editor_button_grid.disable_all_buttons()
 				level_editor_panel.disable_buttons()
 		block_blue_scene:
-			if _check_if_placeable(block_position) == true and _check_if_decoration_placed(block_position) == false:
+			if _check_if_placeable(block_position) == true:
 				tiles.set_cellv(block_position, tiles.BLOCK_BLUE_ID)
 				blue_block_coordinates = block_position
 				placing_blue_block = true
 				level_editor_button_grid.disable_all_buttons()
 				level_editor_panel.disable_buttons()
+		block_red_scene:
+			if _check_if_placeable(block_position) == true:
+				tiles.set_cellv(block_position, tiles.BLOCK_RED_ID)
+				red_block_coordinates = block_position
+				#placing_red_block = true
+				#level_editor_button_grid.disable_all_buttons()
+				#level_editor_panel.disable_buttons()
 		goal_scene:
-			if _check_if_placeable(block_position) == true and _check_if_decoration_placed(block_position) == false:
+			if _check_if_placeable(block_position) == true:
 				tiles.set_cellv(block_position, tiles.GOAL_ID)
 				last_goal_position = block_position
 				if !goal_placed:
 					goal_placed = true
 					level_editor_options_panel.change_goal_requirement_text(1)
 		void_scene:
-			if _check_if_placeable(block_position) == true and _check_if_decoration_placed(block_position) == false:
+			if _check_if_placeable(block_position) == true:
 				tiles.set_cellv(block_position, tiles.VOID_ID)
 		player_tile.player:
 			if _check_if_placeable(block_position) == true:
@@ -510,7 +525,6 @@ func examine_loaded_level():
 		level_editor_options_panel.change_player_requirement_text(1)
 	_check_if_testable()
 	
-
 
 func _on_place_confirmation_placement_accepted():
 	if placing_yellow_block:

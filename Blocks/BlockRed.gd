@@ -13,7 +13,6 @@ var editor_mode = false
 func _ready():
 	if get_tree().current_scene.name == "LevelEditor":
 		editor_mode = true
-	snap()
 
 
 func spin_level():

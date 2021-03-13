@@ -3,16 +3,19 @@ extends TileMap
 
 export (Dictionary) var yellow_blocks := {}
 export (Dictionary) var blue_blocks := {}
+export (Dictionary) var red_blocks := {}
 
 export (PackedScene) var block_scene
 export (PackedScene) var block_yellow_scene
 export (PackedScene) var block_blue_scene
+export (PackedScene) var block_red_scene
 export (PackedScene) var goal_scene
 export (PackedScene) var void_scene
 
 const BLOCK_ID = 0
 const BLOCK_YELLOW_ID = 1
 const BLOCK_BLUE_ID = 4
+const BLOCK_RED_ID = 5
 const GOAL_ID = 2
 const VOID_ID = 3
 
@@ -31,6 +34,7 @@ func setup_tiles():
 				create_instance_from_tilemap(cell, void_scene)
 	create_yellow_blocks()
 	create_blue_blocks()
+	create_red_blocks()
 	if !get_parent().in_editor:
 		get_parent().delete_tilemaps()
 
@@ -65,4 +69,15 @@ func create_blue_blocks():
 		blue_block_instance.teleport_pos = map_to_world(blue_blocks.values()[blue_blocks_placed])
 		get_parent().get_node("PlacedTiles").add_child(blue_block_instance)
 		blue_blocks_placed += 1
+
+
+func create_red_blocks():
+	var red_blocks_placed = 0
+	for key in red_blocks.keys():
+		if !get_parent().in_editor:
+			set_cellv(key, -1)
+		var red_block_instance = block_red_scene.instance()
+		red_block_instance.global_position = to_global(map_to_world(key))
+		get_parent().get_node("PlacedTiles").add_child(red_block_instance)
+		red_blocks_placed += 1
 
