@@ -1,7 +1,8 @@
 extends "res://Blocks/Block.gd"
 
-var triggered = false
+var player
 
+var triggered = false
 
 # LEVEL EDITOR VARIABLES
 
@@ -16,7 +17,11 @@ func _ready():
 
 
 func spin_level():
-	get_parent().rotation_degrees = 90
+	player = get_parent().get_parent().get_node("PlacedPlayer").get_child(0)
+	var player_pos = player.position
+	get_parent().rotation_degrees += 90
+	player.position = player_pos
+	player.rotation_degrees += 90
 
 
 func _on_BlockRed_area_entered(area: Area2D):

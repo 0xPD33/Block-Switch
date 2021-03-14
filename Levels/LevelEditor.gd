@@ -295,6 +295,7 @@ func place_block(block_position : Vector2):
 			if _check_if_placeable(block_position) == true:
 				tiles.set_cellv(block_position, tiles.BLOCK_RED_ID)
 				red_block_coordinates = block_position
+				tiles.red_blocks[red_block_coordinates] = red_block_coordinates
 				#placing_red_block = true
 				#level_editor_button_grid.disable_all_buttons()
 				#level_editor_panel.disable_buttons()
