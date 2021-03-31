@@ -406,6 +406,10 @@ func remove_block_coordinates(block_position : Vector2):
 		decoration.set_cellv(tiles.blue_blocks[block_position], -1)
 		tiles.set_cellv(tiles.blue_blocks[block_position], -1)
 		tiles.blue_blocks.erase(block_position)
+	elif tiles.get_cellv(block_position) == tiles.BLOCK_RED_ID:
+		decoration.set_cellv(tiles.red_blocks[block_position], -1)
+		tiles.set_cellv(tiles.red_blocks[block_position], -1)
+		tiles.red_blocks.erase(block_position)
 	if decoration.get_cellv(block_position) == 1:
 		var index = tiles.yellow_blocks.values().find(block_position)
 		tiles.set_cellv(tiles.yellow_blocks.keys()[index], -1)
@@ -539,4 +543,8 @@ func _on_place_confirmation_placement_accepted():
 	level_editor_button_grid.enable_all_buttons()
 	level_editor_panel.enable_buttons()
 	_check_if_testable()
+
+
+func _on_choice_place_confirmation_placement_accepted(choice):
+	print(choice)
 
