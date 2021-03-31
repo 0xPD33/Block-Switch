@@ -33,8 +33,10 @@ func confirmation_fade_out():
 
 func _on_ChoiceButton1_pressed():
 	emit_signal("placement_accepted", 1)
+	confirmation_fade_out()
 
 
 func _on_ChoiceButton2_pressed():
 	emit_signal("placement_accepted", 2)
+	confirmation_fade_out()
 

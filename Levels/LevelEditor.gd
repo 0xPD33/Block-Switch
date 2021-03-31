@@ -53,6 +53,7 @@ onready var level_editor_panel = $UI/LevelEditorPanel
 onready var level_editor_selected_block = level_editor_panel.get_node("LevelEditorSelectedBlock")
 onready var level_editor_button_grid = level_editor_panel.get_node("BigPanel/MarginContainer/LevelEditorButtonGrid")
 onready var level_editor_place_confirmation = $UI/LevelEditorPlaceConfirmation
+onready var level_editor_choice_place_confirmation = $UI/LevelEditorChoicePlaceConfirmation
 onready var level_editor_options_panel = $UI/LevelEditorOptionsPanel
 
 onready var tiles = $LevelEditorLevel/LevelTemplate/Tiles
@@ -68,7 +69,7 @@ onready var void_scene = tiles.void_scene
 
 
 func _check_if_placement_is_allowed():
-	if current_block_selected != null and !level_editor_camera_container.move_enabled and !can_delete and !placing_yellow_block and !placing_blue_block and !testing_level:
+	if current_block_selected != null and !level_editor_camera_container.move_enabled and !can_delete and !placing_yellow_block and !placing_blue_block and !placing_red_block and !testing_level:
 		can_place = true
 	else:
 		can_place = false
@@ -82,7 +83,7 @@ func _check_if_dragging_is_allowed():
 
 
 func _check_if_testable():
-	if goal_placed and player_placed and !placing_yellow_block and !placing_blue_block:
+	if goal_placed and player_placed and !placing_yellow_block and !placing_blue_block and !placing_red_block:
 		level_editor_options_panel.change_testable(true)
 	else:
 		level_editor_options_panel.change_testable(false)
@@ -295,10 +296,10 @@ func place_block(block_position : Vector2):
 			if _check_if_placeable(block_position) == true:
 				tiles.set_cellv(block_position, tiles.BLOCK_RED_ID)
 				red_block_coordinates = block_position
-				tiles.red_blocks[red_block_coordinates] = red_block_coordinates
-				#placing_red_block = true
-				#level_editor_button_grid.disable_all_buttons()
-				#level_editor_panel.disable_buttons()
+				placing_red_block = true
+				level_editor_choice_place_confirmation.confirmation_fade_in()
+				level_editor_button_grid.disable_all_buttons()
+				level_editor_panel.disable_buttons()
 		goal_scene:
 			if _check_if_placeable(block_position) == true:
 				tiles.set_cellv(block_position, tiles.GOAL_ID)
@@ -407,8 +408,6 @@ func remove_block_coordinates(block_position : Vector2):
 		tiles.set_cellv(tiles.blue_blocks[block_position], -1)
 		tiles.blue_blocks.erase(block_position)
 	elif tiles.get_cellv(block_position) == tiles.BLOCK_RED_ID:
-		decoration.set_cellv(tiles.red_blocks[block_position], -1)
-		tiles.set_cellv(tiles.red_blocks[block_position], -1)
 		tiles.red_blocks.erase(block_position)
 	if decoration.get_cellv(block_position) == 1:
 		var index = tiles.yellow_blocks.values().find(block_position)
@@ -546,5 +545,11 @@ func _on_place_confirmation_placement_accepted():
 
 
 func _on_choice_place_confirmation_placement_accepted(choice):
-	print(choice)
+	tiles.red_blocks[red_block_coordinates] = choice
+	placing_red_block = false
+	current_block_selected = null
+	level_editor_selected_block.remove_selected_block()
+	level_editor_button_grid.enable_all_buttons()
+	level_editor_panel.enable_buttons()
+	_check_if_testable()
 

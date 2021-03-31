@@ -62,14 +62,6 @@ tracks/1/keys = {
 
 [node name="LevelEditorChoicePlaceConfirmation" type="Control"]
 modulate = Color( 1, 1, 1, 0 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ChoiceContainer" type="HBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -77,6 +69,14 @@ anchor_bottom = 1.0
 margin_left = -32.0
 margin_top = -32.0
 margin_right = 32.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChoiceContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 custom_constants/separation = 12
 alignment = 1
 __meta__ = {

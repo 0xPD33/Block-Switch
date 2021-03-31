@@ -78,6 +78,7 @@ func create_red_blocks():
 			set_cellv(key, -1)
 		var red_block_instance = block_red_scene.instance()
 		red_block_instance.global_position = to_global(map_to_world(key))
+		red_block_instance.rotation_mode = red_blocks.values()[red_blocks_placed]
 		get_parent().get_node("PlacedTiles").add_child(red_block_instance)
 		red_blocks_placed += 1
 
