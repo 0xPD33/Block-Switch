@@ -2,7 +2,6 @@ extends Control
 
 onready var title_anim = $TitleAnimation
 onready var anim_player = $AnimationPlayer
-onready var audio_manager = $AudioManager
 
 
 func _ready():

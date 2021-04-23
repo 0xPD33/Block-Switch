@@ -105,13 +105,13 @@ func _check_if_playable():
 func _check_if_placeable(pos : Vector2):
 	match current_block_selected:
 		block_scene:
-			if !tiles.get_cellv(pos) in [tiles.BLOCK_YELLOW_ID, tiles.BLOCK_BLUE_ID, tiles.GOAL_ID]\
+			if !tiles.get_cellv(pos) in [tiles.BLOCK_YELLOW_ID, tiles.BLOCK_BLUE_ID, tiles.BLOCK_RED_ID, tiles.GOAL_ID]\
 			and _check_if_decoration_placed(pos) == false:
 				return true
 			else:
 				return false
 		block_yellow_scene, block_blue_scene, block_red_scene, goal_scene, void_scene:
-			if !tiles.get_cellv(pos) in [tiles.BLOCK_YELLOW_ID, tiles.BLOCK_BLUE_ID, tiles.GOAL_ID]\
+			if !tiles.get_cellv(pos) in [tiles.BLOCK_YELLOW_ID, tiles.BLOCK_BLUE_ID, tiles.BLOCK_RED_ID, tiles.GOAL_ID]\
 			and !player_tile.get_cellv(pos) == 0 and _check_if_decoration_placed(pos) == false:
 				return true
 			else:
@@ -368,34 +368,26 @@ func place_void_around_block(block_position : Vector2):
 		tiles.set_cellv(block_position + Vector2(-1, -1), tiles.VOID_ID)
 
 
-#func remove_void_around_block(block_position : Vector2):
-#	if tiles.get_cellv(block_position + Vector2(0, 1)) == tiles.VOID_ID:
-#		tiles.set_cellv(block_position + Vector2(0, 1), -1)
-#	if tiles.get_cellv(block_position + Vector2(0, -1)) == tiles.VOID_ID:
-#		tiles.set_cellv(block_position + Vector2(0, -1), -1)
-#	if tiles.get_cellv(block_position + Vector2(1, 0)) == tiles.VOID_ID:
-#		tiles.set_cellv(block_position + Vector2(1, 0), -1)
-#	if tiles.get_cellv(block_position + Vector2(-1, 0)) == tiles.VOID_ID:
-#		tiles.set_cellv(block_position + Vector2(-1, 0), -1)
-#	if tiles.get_cellv(block_position + Vector2(1, 1)) == tiles.VOID_ID:
-#		tiles.set_cellv(block_position + Vector2(1, 1), -1)
-#	if tiles.get_cellv(block_position + Vector2(1, -1)) == tiles.VOID_ID:
-#		tiles.set_cellv(block_position + Vector2(1, -1), -1)
-#	if tiles.get_cellv(block_position + Vector2(-1, 1)) == tiles.VOID_ID:
-#		tiles.set_cellv(block_position + Vector2(-1, 1), -1)
-#	if tiles.get_cellv(block_position + Vector2(-1, -1)) == tiles.VOID_ID:
-#		tiles.set_cellv(block_position + Vector2(-1, -1), -1)
+# kind of works but not finished
+func remove_void_around_block(block_position : Vector2, solid_block_position, empty_block_position, remove_block_position):
+	if !tiles.get_cellv(block_position + Vector2(solid_block_position)) == tiles.VOID_ID\
+	and _check_if_tile_empty(block_position + Vector2(empty_block_position)) == false\
+	and tiles.get_cellv(block_position + Vector2(remove_block_position)) == tiles.VOID_ID:
+		tiles.set_cellv(block_position + Vector2(remove_block_position), -1)
 
 
 func add_missing_void_blocks():
 	var used_tiles = tiles.get_used_cells()
+	remove_unnecessary_void_blocks(used_tiles)
 	for tile in used_tiles:
 		if tiles.get_cellv(tile) != tiles.VOID_ID or decoration.get_cellv(tile) == 1:
 			place_void_around_block(tile)
 
 
 func remove_unnecessary_void_blocks(used_tiles : Array):
-	pass
+	for tile in used_tiles:
+		if tiles.get_cellv(tile) == tiles.VOID_ID:
+			remove_void_around_block(tile, Vector2(0, 1), Vector2(0, 2), Vector2(0, -1))
 
 
 func remove_block_coordinates(block_position : Vector2):

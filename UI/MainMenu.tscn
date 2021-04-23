@@ -179,5 +179,6 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/main_menu_hide = SubResource( 2 )
 anims/main_menu_show = SubResource( 3 )
+
 [connection signal="pressed" from="OptionsButtonPanel/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="ButtonContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
