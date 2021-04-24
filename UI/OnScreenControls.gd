@@ -38,16 +38,10 @@ func rotate_controls(direction : int):
 			position.x = 381
 			position.y = 110
 			rotation_degrees = 90
-#			position.x = 320
-#			position.y = 171
-#			rotation_degrees = -90
 		2:
 			position.x = 320
 			position.y = 171
 			rotation_degrees = -90
-#			position.x = 381
-#			position.y = 110
-#			rotation_degrees = 90
 
 
 func fade_in():
