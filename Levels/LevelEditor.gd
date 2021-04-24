@@ -67,6 +67,8 @@ onready var block_red_scene = tiles.block_red_scene
 onready var goal_scene = tiles.goal_scene
 onready var void_scene = tiles.void_scene
 
+onready var solid_blocks = [tiles.BLOCK_ID, tiles.BLOCK_YELLOW_ID, tiles.BLOCK_BLUE_ID, tiles.BLOCK_RED_ID, tiles.GOAL_ID]
+
 
 func _check_if_placement_is_allowed():
 	if current_block_selected != null and !level_editor_camera_container.move_enabled and !can_delete and !placing_yellow_block and !placing_blue_block and !placing_red_block and !testing_level:
@@ -142,6 +144,21 @@ func _check_if_tile_empty(pos : Vector2):
 		return true
 	else:
 		return false
+
+
+func _check_if_void_next_to_solid_block(pos : Vector2):
+	if tiles.get_cellv(pos) == tiles.VOID_ID:
+		if tiles.get_cellv(pos + Vector2(0, 1)) in solid_blocks\
+		or tiles.get_cellv(pos + Vector2(0, -1)) in solid_blocks\
+		or tiles.get_cellv(pos + Vector2(1, 0)) in solid_blocks\
+		or tiles.get_cellv(pos + Vector2(-1, 0)) in solid_blocks\
+		or tiles.get_cellv(pos + Vector2(1, 1)) in solid_blocks\
+		or tiles.get_cellv(pos + Vector2(1, -1)) in solid_blocks\
+		or tiles.get_cellv(pos + Vector2(-1, 1)) in solid_blocks\
+		or tiles.get_cellv(pos + Vector2(-1, -1)) in solid_blocks:
+			return true
+		else:
+			return false
 
 
 func _process(delta):
@@ -369,25 +386,25 @@ func place_void_around_block(block_position : Vector2):
 
 
 # kind of works but not finished
-func remove_void_around_block(block_position : Vector2, solid_block_position, empty_block_position, remove_block_position):
-	if !tiles.get_cellv(block_position + Vector2(solid_block_position)) == tiles.VOID_ID\
-	and _check_if_tile_empty(block_position + Vector2(empty_block_position)) == false\
-	and tiles.get_cellv(block_position + Vector2(remove_block_position)) == tiles.VOID_ID:
-		tiles.set_cellv(block_position + Vector2(remove_block_position), -1)
+#func remove_void_around_block(block_position : Vector2, solid_block_position, empty_block_position, remove_block_position):
+#	if !tiles.get_cellv(block_position + Vector2(solid_block_position)) == tiles.VOID_ID\
+#	and _check_if_tile_empty(block_position + Vector2(empty_block_position)) == false\
+#	and tiles.get_cellv(block_position + Vector2(remove_block_position)) == tiles.VOID_ID:
+#		tiles.set_cellv(block_position + Vector2(remove_block_position), -1)
+
+
+func remove_void_around_block(block_position : Vector2):
+	if _check_if_void_next_to_solid_block(block_position) == false:
+		tiles.set_cellv(block_position, -1)
 
 
 func add_missing_void_blocks():
 	var used_tiles = tiles.get_used_cells()
-	remove_unnecessary_void_blocks(used_tiles)
 	for tile in used_tiles:
 		if tiles.get_cellv(tile) != tiles.VOID_ID or decoration.get_cellv(tile) == 1:
 			place_void_around_block(tile)
-
-
-func remove_unnecessary_void_blocks(used_tiles : Array):
-	for tile in used_tiles:
 		if tiles.get_cellv(tile) == tiles.VOID_ID:
-			remove_void_around_block(tile, Vector2(0, 1), Vector2(0, 2), Vector2(0, -1))
+			remove_void_around_block(tile)
 
 
 func remove_block_coordinates(block_position : Vector2):
