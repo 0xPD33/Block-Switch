@@ -27,13 +27,15 @@ func _ready():
 func spin_level(player):
 	var player_pos = player.position
 	if rotation_mode == rotation_modes.LEFT:
-		get_parent().rotation_degrees -= 90
+		player.rotation_degrees -= 90
+		player.controls.rotate_controls(1)
 	elif rotation_mode == rotation_modes.RIGHT:
-		get_parent().rotation_degrees += 90
-	player.position = player_pos 
+		player.rotation_degrees += 90
+		player.controls.rotate_controls(2)
 
 
 func _on_BlockRed_area_entered(area: Area2D):
-	if area.is_in_group("Player"):
+	if area.is_in_group("Player") and !triggered:
 		spin_level(area)
+		triggered = true
 

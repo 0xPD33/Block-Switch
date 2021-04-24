@@ -32,9 +32,7 @@ func _ready():
 		get_tree().current_scene.player = self
 		if !get_tree().current_scene.restarting:
 			controls.fade_in()
-	#set_cam_current()
 	snap()
-
 
 
 func _input(_event):

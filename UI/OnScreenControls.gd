@@ -32,6 +32,24 @@ func _input(event):
 			scale += event.relative / 50
 
 
+func rotate_controls(direction : int):
+	match direction:
+		1:
+			position.x = 381
+			position.y = 110
+			rotation_degrees = 90
+#			position.x = 320
+#			position.y = 171
+#			rotation_degrees = -90
+		2:
+			position.x = 320
+			position.y = 171
+			rotation_degrees = -90
+#			position.x = 381
+#			position.y = 110
+#			rotation_degrees = 90
+
+
 func fade_in():
 	set_visible(true)
 	fade_in_anim.play("fade_in")
