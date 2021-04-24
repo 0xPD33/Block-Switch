@@ -385,14 +385,6 @@ func place_void_around_block(block_position : Vector2):
 		tiles.set_cellv(block_position + Vector2(-1, -1), tiles.VOID_ID)
 
 
-# kind of works but not finished
-#func remove_void_around_block(block_position : Vector2, solid_block_position, empty_block_position, remove_block_position):
-#	if !tiles.get_cellv(block_position + Vector2(solid_block_position)) == tiles.VOID_ID\
-#	and _check_if_tile_empty(block_position + Vector2(empty_block_position)) == false\
-#	and tiles.get_cellv(block_position + Vector2(remove_block_position)) == tiles.VOID_ID:
-#		tiles.set_cellv(block_position + Vector2(remove_block_position), -1)
-
-
 func remove_void_around_block(block_position : Vector2):
 	if _check_if_void_next_to_solid_block(block_position) == false:
 		tiles.set_cellv(block_position, -1)
