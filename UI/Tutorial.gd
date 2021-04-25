@@ -16,13 +16,13 @@ var welcome_tutorial_values : PoolStringArray = [
 
 var yellow_block_tutorial_values : PoolStringArray = [
 	"You may notice a new block, the yellow-colored block, in this level.",
-	"These blocks add missing blocks to the path. You have to trigger them to fill in the way to the goal.",
+	"This block adds a missing block to the path. You have to trigger this yellow block to fill in the way to the goal.",
 	"The yellow gems placed around the level mark the positions where blocks are missing."
 ]
 
 var blue_block_tutorial_values : PoolStringArray = [
 	"Another new block, the blue-colored block, has been introduced.",
-	"This block teleports you around the level. It is important to act quickly in order to not lose time.",
+	"This block teleports you around the level. It is important to act quickly so you don't lose time.",
 	"The blue gems placed around the level are an indicator for where you're headed next.",
 ]
 
