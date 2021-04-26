@@ -101,6 +101,7 @@ func _on_ReturnToMenuButton_pressed():
 
 
 func _on_DeleteScoreButton_pressed():
+	AudioManager.create_trash_sound()
 	SaveManager.delete_level_score(Global.current_level_number)
 	update_panel()
 

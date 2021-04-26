@@ -5,6 +5,7 @@ var interface_click_secondary_sound = "res://Assets/SFX/interface_click_secondar
 
 var game_over_sound = "res://Assets/SFX/game_over.wav"
 var game_retry_sound = "res://Assets/SFX/game_retry.wav"
+var game_win_sound
 
 var place_block_sound = "res://Assets/SFX/add_block.wav"
 var delete_block_sound = "res://Assets/SFX/delete_block.wav"
@@ -54,6 +55,10 @@ func create_game_retry_sound():
 	create_audio(game_retry_sound)
 
 
+func create_game_win_sound():
+	create_audio(game_win_sound, 0.9, 1.1)
+
+
 func create_place_block_sound():
 	create_audio(place_block_sound, 0.9, 1.1)
 
@@ -62,7 +67,7 @@ func create_delete_block_sound():
 	create_audio(delete_block_sound, 0.9, 1.1)
 
 
-func create_trash_audio():
+func create_trash_sound():
 	create_audio(trash_sound, 0.9, 1.1)
 
 

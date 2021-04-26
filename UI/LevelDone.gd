@@ -15,6 +15,7 @@ func setup(time, rating):
 	rating_label.text = rating
 	show()
 	anim_player.play("fade_in")
+	AudioManager.create_game_win_sound()
 
 
 func _on_ContinueButton_pressed():
