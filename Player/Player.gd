@@ -69,6 +69,8 @@ func die():
 
 
 func respawn():
+	rotation_degrees = 0
+	controls.reset_control_rotation()
 	position = starting_position
 	snap()
 
@@ -80,5 +82,8 @@ func reset_level():
 		if yellow_block.triggered:
 			yellow_block.set_triggered(false)
 			yellow_block.place_void()
+	for red_block in get_tree().get_nodes_in_group("BlockRed"):
+		if red_block.triggered:
+			red_block.set_triggered(false)
 	respawn()
 	

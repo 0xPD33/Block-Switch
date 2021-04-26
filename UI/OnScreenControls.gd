@@ -44,6 +44,12 @@ func rotate_controls(direction : int):
 			rotation_degrees = -90
 
 
+func reset_control_rotation():
+	position.x = 320
+	position.y = 110
+	rotation_degrees = 0
+
+
 func fade_in():
 	set_visible(true)
 	fade_in_anim.play("fade_in")

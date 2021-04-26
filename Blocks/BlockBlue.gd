@@ -1,13 +1,17 @@
 extends "res://Blocks/Block.gd"
 
 var teleport_pos setget set_teleport_pos
-var triggered = false
+var triggered = false setget set_triggered
 
 # LEVEL EDITOR VARIABLES
 
 var editor_mode = false
 
 #
+
+
+func set_triggered(value):
+	triggered = value
 
 
 func set_teleport_pos(value):
@@ -22,7 +26,7 @@ func _ready():
 func teleport(player):
 	if !triggered:
 		if !editor_mode:
-			triggered = true
+			set_triggered(true)
 		player.global_position = teleport_pos
 		player.snap()
 		AudioManager.create_teleport_sound()
