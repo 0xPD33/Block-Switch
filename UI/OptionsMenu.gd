@@ -1,7 +1,10 @@
 extends Control
 
-export (Texture) var volume_loud_texture
-export (Texture) var volume_mute_texture
+export (Texture) var sfx_loud_texture
+export (Texture) var sfx_mute_texture
+
+export (Texture) var music_loud_texture
+export (Texture) var music_mute_texture
 
 export (Color) var volume_loud_color
 export (Color) var volume_mute_color
@@ -63,7 +66,7 @@ func load_options():
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"), sfx_muted)
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), music_muted)
 	
-	for string in ["Master", "SFX", "Music"]:
+	for string in ["SFX", "Music"]:
 		change_mute_button_texture(string)
 	
 	options_loaded = true
@@ -99,17 +102,17 @@ func change_mute_button_texture(audio_type : String):
 	match audio_type:
 		"SFX":
 			if sfx_muted:
-				sfx_mute_button.texture_normal = volume_mute_texture
+				sfx_mute_button.texture_normal = sfx_mute_texture
 				sfx_mute_button.modulate = volume_mute_color
 			else:
-				sfx_mute_button.texture_normal = volume_loud_texture
+				sfx_mute_button.texture_normal = sfx_loud_texture
 				sfx_mute_button.modulate = volume_loud_color
 		"Music":
 			if music_muted:
-				music_mute_button.texture_normal = volume_mute_texture
+				music_mute_button.texture_normal = music_mute_texture
 				music_mute_button.modulate = volume_mute_color
 			else:
-				music_mute_button.texture_normal = volume_loud_texture
+				music_mute_button.texture_normal = music_loud_texture
 				music_mute_button.modulate = volume_loud_color
 
 
