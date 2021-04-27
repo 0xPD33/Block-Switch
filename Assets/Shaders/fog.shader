@@ -2,6 +2,7 @@ shader_type canvas_item;
 
 uniform sampler2D noise_img;
 uniform float speed = 1.0;
+uniform float alpha_mult = 1.0;
 uniform vec4 smoke_color : hint_color;
 
 void fragment() {
@@ -18,5 +19,5 @@ void fragment() {
 	float new_alpha = noise_r * noise_g * noise_b;
 	
 	COLOR.rgb = smoke_color.rgb; //texture(TEXTURE, UV).rgb;
-	COLOR.a = clamp(new_alpha * 1.0 * texture(TEXTURE, UV).a, 0.0, 1.0);
+	COLOR.a = clamp(new_alpha * alpha_mult * texture(TEXTURE, UV).a, 0.0, 1.0);
 }
