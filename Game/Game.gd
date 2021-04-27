@@ -2,7 +2,8 @@ extends Node2D
 
 var player
 
-var restarting : bool = false
+var death_retry : bool = false
+var win_retry : bool = false
 
 onready var current_level = $CurrentLevel
 
@@ -11,6 +12,7 @@ onready var level_done_scene = $UI/LevelDone
 onready var tutorial_scene = $UI/Tutorial
 onready var timer_in_game = $UI/TimerInGame
 
+onready var fog = $FogLayer/ParallaxBackground/ParallaxLayer/Fog
 onready var level_fade_anim = $LevelFadeAnimation
 
 
@@ -49,7 +51,7 @@ func create_death_animation(camera):
 	var death_tween = Tween.new()
 	death_tween.name = "DeathTween"
 	var anim_duration = 60.0
-	death_tween.interpolate_property(camera, "zoom", Vector2(3, 3), Vector2(10, 10), anim_duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	death_tween.interpolate_property(camera, "zoom", Vector2(3, 3), Vector2(9, 9), anim_duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	get_tree().current_scene.add_child(death_tween)
 	death_tween.start()
 
@@ -74,6 +76,26 @@ func create_retry_animation(camera):
 	retry_tween.start()
 
 
+func create_win_cam(pos, zoom):
+	var win_cam = Camera2D.new()
+	win_cam.position = pos
+	win_cam.zoom = zoom
+	win_cam.name = "WinCamera"
+	get_tree().current_scene.add_child(win_cam)
+	win_cam.current = true
+	create_win_animation(win_cam)
+
+
+func create_win_animation(camera):
+	var win_tween = Tween.new()
+	win_tween.name = "WinTween"
+	var anim_duration = 1.66
+	win_tween.interpolate_property(camera, "zoom", Vector2(3, 3), Vector2(9, 9), anim_duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	win_tween.interpolate_property(camera, "position", camera.position, player.position, anim_duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	get_tree().current_scene.add_child(win_tween)
+	win_tween.start()
+
+
 func player_death():
 	Global.game_over = true
 	current_level.stop_timer()
@@ -83,28 +105,38 @@ func player_death():
 
 
 func player_restart():
-	if Global.level_done:
-		return
-	player.controls.set_visible(false)
-	create_retry_cam(get_node("DeathCamera").position, get_node("DeathCamera").zoom)
-	yield(get_node("RetryTween"), "tween_completed")
-	player.set_cam_current()
-	player.controls.fade_in()
-	get_node("DeathTween").queue_free()
-	get_node("DeathCamera").queue_free()
-	get_node("RetryTween").queue_free()
-	get_node("RetryCamera").queue_free()
-	restarting = false
+	if death_retry:
+		create_retry_cam(get_node("DeathCamera").position, get_node("DeathCamera").zoom)
+		yield(get_node("RetryTween"), "tween_completed")
+		player.set_cam_current()
+		player.controls.fade_in()
+		get_node("DeathTween").queue_free()
+		get_node("DeathCamera").queue_free()
+		get_node("RetryTween").queue_free()
+		get_node("RetryCamera").queue_free()
+		death_retry = false
+	elif win_retry:
+		create_retry_cam(get_node("WinCamera").position, get_node("WinCamera").zoom)
+		yield(get_node("RetryTween"), "tween_completed")
+		player.set_cam_current()
+		player.controls.fade_in()
+		get_node("WinTween").queue_free()
+		get_node("WinCamera").queue_free()
+		get_node("RetryTween").queue_free()
+		get_node("RetryCamera").queue_free()
+		win_retry = false
 
 
 func level_done():
 	Global.level_done = true
-	level_fade_anim.play("level_fade_out")
+	player.controls.fade_out()
+	var player_cam = player.get_node("Camera2D")
+	create_win_cam(player.position, player_cam.zoom)
+	fog.increase_alpha()
 	var completion_time = current_level.get_time()
 	var completion_rating = current_level.calculate_rating()
 	save_progress(completion_time, completion_rating)
 	current_level.stop_timer()
-	player.controls.set_visible(false)
 	level_done_scene.setup(completion_time, completion_rating)
 
 
@@ -123,10 +155,9 @@ func save_progress(time, rating):
 
 func restart_level():
 	if Global.game_over:
-		restarting = true
+		death_retry = true
 	elif Global.level_done:
-		level_fade_anim.play("level_fade_in")
-		player.controls.fade_in()
+		win_retry = true
 	current_level.restart_level()
 
 

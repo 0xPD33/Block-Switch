@@ -5,7 +5,7 @@ var moving = false
 var repositioning = false setget set_repositioning
 var resizing = false setget set_resizing
 
-onready var fade_in_anim = $FadeInAnimation
+onready var anim_player = $AnimationPlayer
 
 
 func set_repositioning(value):
@@ -52,7 +52,13 @@ func reset_control_rotation():
 
 func fade_in():
 	set_visible(true)
-	fade_in_anim.play("fade_in")
+	anim_player.play("fade_in")
+
+
+func fade_out():
+	anim_player.play("fade_out")
+	yield(anim_player, "animation_finished")
+	set_visible(false)
 
 
 func highlight_controls(changing_controls : bool):

@@ -30,7 +30,7 @@ func _ready():
 		controls.fade_in()
 	else:
 		get_tree().current_scene.player = self
-		if !get_tree().current_scene.restarting:
+		if !get_tree().current_scene.death_retry and !get_tree().current_scene.win_retry:
 			controls.fade_in()
 	snap()
 

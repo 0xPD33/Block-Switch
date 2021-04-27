@@ -5,7 +5,7 @@ var interface_click_secondary_sound = "res://Assets/SFX/interface_click_secondar
 
 var game_over_sound = "res://Assets/SFX/game_over.wav"
 var game_retry_sound = "res://Assets/SFX/game_retry.wav"
-var game_win_sound
+var game_win_sound = "res://Assets/SFX/zoom_out_sound.wav"
 
 var place_block_sound = "res://Assets/SFX/add_block.wav"
 var delete_block_sound = "res://Assets/SFX/delete_block.wav"
