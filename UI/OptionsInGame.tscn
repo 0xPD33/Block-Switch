@@ -235,7 +235,7 @@ __meta__ = {
 }
 
 [node name="OptionsLabel" type="Label" parent="OptionsPanel/VBoxContainer"]
-modulate = Color( 1, 1, 1, 0.00393927 )
+modulate = Color( 1, 1, 1, 0 )
 margin_top = 4.0
 margin_right = 160.0
 margin_bottom = 21.0
@@ -246,7 +246,7 @@ align = 1
 valign = 1
 
 [node name="MoveControlsButton" type="Button" parent="OptionsPanel/VBoxContainer"]
-modulate = Color( 1, 1, 1, -1.88748e-06 )
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 40.0
 margin_top = 29.0
 margin_right = 120.0
@@ -256,7 +256,7 @@ size_flags_horizontal = 4
 text = "Move Controls"
 
 [node name="ScaleControlsButton" type="Button" parent="OptionsPanel/VBoxContainer"]
-modulate = Color( 1, 1, 1, -1.88748e-06 )
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 40.0
 margin_top = 61.0
 margin_right = 120.0
@@ -269,6 +269,7 @@ text = "Scale Controls"
 playback_speed = 2.0
 anims/hide_controls = SubResource( 2 )
 anims/show_controls = SubResource( 3 )
+
 [connection signal="pressed" from="OptionsButtonPanel/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="AcceptButtonPanel/AcceptButton" to="." method="_on_AcceptButton_pressed"]
 [connection signal="pressed" from="CancelButtonPanel/CancelButton" to="." method="_on_CancelButton_pressed"]
