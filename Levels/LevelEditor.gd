@@ -446,7 +446,7 @@ func delete_block(block_position : Vector2):
 func delete_whole_level():
 	if !delete_level_triggered:
 		delete_level_triggered = true
-		AudioManager.create_trash_audio()
+		AudioManager.create_trash_sound()
 		for tile in tiles.get_used_cells():
 			tiles.set_cellv(tile, -1)
 			decoration.set_cellv(tile, -1)
