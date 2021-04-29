@@ -33,4 +33,4 @@ func _unhandled_input(event):
 					level_editor_cam.zoom = Vector2.ONE * new_zoom
 					print(level_editor_grid.region_rect)
 					last_drag_distance = drag_distance
-					
+
