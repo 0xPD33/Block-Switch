@@ -53,6 +53,8 @@ func close_level_editor_panel():
 
 
 func disable_buttons():
+	$SmallPanel/ButtonContainer/MoveButton.pressed = false
+	$SmallPanel/ButtonContainer/DeleteButton.pressed = false
 	$SmallPanel/ButtonContainer/MoveButton.disabled = true
 	$SmallPanel/ButtonContainer/DeleteButton.disabled = true
 
