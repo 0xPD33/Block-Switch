@@ -77,13 +77,6 @@ func _check_if_placement_is_allowed():
 		can_place = false
 
 
-func _check_if_deleting_is_allowed():
-	if current_block_selected == null and !level_editor_camera_container.move_enabled and !can_place and !placing_yellow_block and !placing_blue_block and !placing_red_block and !testing_level:
-		can_delete = true
-	else:
-		can_delete = false
-
-
 func _check_if_dragging_is_allowed():
 	if current_block_selected in [block_scene, void_scene] or current_block_selected == null:
 		can_drag = true
@@ -484,7 +477,8 @@ func test_level():
 	if !testing_level:
 		testing_level = true
 		level_editor_camera_container.move_enabled = false
-		_check_if_deleting_is_allowed()
+		can_delete = false
+		level_editor_panel.disable_buttons()
 		add_missing_void_blocks()
 		if level_editor_panel.is_open:
 			level_editor_panel.close_level_editor_panel()
@@ -500,6 +494,7 @@ func stop_testing_level(goal_reached : bool):
 	if testing_level:
 		testing_level = false
 		level_tested = goal_reached
+		level_editor_panel.enable_buttons()
 		if !level_editor_panel.is_open:
 			level_editor_panel.open_level_editor_panel()
 		if !level_editor_options_panel.is_open:
