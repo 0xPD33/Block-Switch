@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Levels/LevelSaverConfirmation.gd" type="Script" id=1]
+[ext_resource path="res://LevelEditor/LevelSaverConfirmation.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Font/AtlantisInternational-jen0.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Assets/GameIcons/PNG/White/2x/cross.png" type="Texture" id=3]
 [ext_resource path="res://Assets/GameIcons/PNG/White/2x/checkmark.png" type="Texture" id=4]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Font/AtlantisInternational-jen0.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Levels/LevelEditorOptionsPanel.gd" type="Script" id=2]
+[ext_resource path="res://LevelEditor/LevelEditorOptionsPanel.gd" type="Script" id=2]
 [ext_resource path="res://UI/black.theme" type="Theme" id=3]
 [ext_resource path="res://UI/black_level_editor_button.theme" type="Theme" id=4]
 
