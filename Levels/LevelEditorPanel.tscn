@@ -169,6 +169,7 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 0.862745 )
 toggle_mode = true
+enabled_focus_mode = 0
 text = "Move"
 __meta__ = {
 "_edit_use_anchors_": false,
@@ -190,6 +191,7 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 0.862745 )
 toggle_mode = true
+enabled_focus_mode = 0
 text = "Delete"
 __meta__ = {
 "_edit_use_anchors_": false,
@@ -211,6 +213,7 @@ custom_colors/font_color_disabled = Color( 1, 1, 1, 0.235294 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 0.862745 )
+enabled_focus_mode = 0
 text = ">"
 __meta__ = {
 "_edit_use_anchors_": false,
@@ -218,6 +221,7 @@ __meta__ = {
 }
 
 [node name="MoveTween" type="Tween" parent="."]
+
 [connection signal="pressed" from="SmallPanel/ButtonContainer/MoveButton" to="." method="_on_MoveButton_pressed"]
 [connection signal="button_down" from="SmallPanel/ButtonContainer/DeleteButton" to="." method="_on_DeleteButton_button_down"]
 [connection signal="button_up" from="SmallPanel/ButtonContainer/DeleteButton" to="." method="_on_DeleteButton_button_up"]

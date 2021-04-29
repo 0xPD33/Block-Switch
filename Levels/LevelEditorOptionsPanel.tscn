@@ -130,6 +130,7 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 0.862745 )
 disabled = true
+enabled_focus_mode = 0
 text = "Test Level"
 __meta__ = {
 "_editor_description_": ""
@@ -150,6 +151,7 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 0.862745 )
 disabled = true
+enabled_focus_mode = 0
 text = "Save Level"
 __meta__ = {
 "_editor_description_": ""
@@ -169,6 +171,7 @@ custom_colors/font_color_disabled = Color( 1, 1, 1, 0.235294 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 0.862745 )
+enabled_focus_mode = 0
 text = "Load Level"
 __meta__ = {
 "_editor_description_": ""
@@ -192,6 +195,7 @@ custom_colors/font_color_disabled = Color( 1, 1, 1, 0.235294 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 0.862745 )
+enabled_focus_mode = 0
 text = "<"
 __meta__ = {
 "_edit_use_anchors_": false,
@@ -199,6 +203,7 @@ __meta__ = {
 }
 
 [node name="MoveTween" type="Tween" parent="."]
+
 [connection signal="pressed" from="BigPanel/ButtonContainer/TestLevelButton" to="." method="_on_TestLevelButton_pressed"]
 [connection signal="pressed" from="BigPanel/ButtonContainer/SaveLevelButton" to="." method="_on_SaveLevelButton_pressed"]
 [connection signal="pressed" from="BigPanel/ButtonContainer/LoadLevelButton" to="." method="_on_LoadLevelButton_pressed"]
