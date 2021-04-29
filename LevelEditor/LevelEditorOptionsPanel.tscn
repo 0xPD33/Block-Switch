@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Font/AtlantisInternational-jen0.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://LevelEditor/LevelEditorOptionsPanel.gd" type="Script" id=2]
 [ext_resource path="res://UI/black.theme" type="Theme" id=3]
 [ext_resource path="res://UI/black_level_editor_button.theme" type="Theme" id=4]
+[ext_resource path="res://Assets/GameIcons/PNG/White/2x/exit.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 8
@@ -105,9 +106,9 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 3.73512
+margin_top = 4.0
 margin_right = -4.0
-margin_bottom = -4.26488
+margin_bottom = -4.0
 theme = ExtResource( 4 )
 alignment = 1
 __meta__ = {
@@ -116,9 +117,9 @@ __meta__ = {
 
 [node name="TestLevelButton" type="Button" parent="BigPanel/ButtonContainer"]
 margin_left = 3.0
-margin_top = 25.0
+margin_top = 15.0
 margin_right = 43.0
-margin_bottom = 37.0
+margin_bottom = 27.0
 rect_min_size = Vector2( 40, 0 )
 focus_mode = 0
 size_flags_horizontal = 4
@@ -138,9 +139,9 @@ __meta__ = {
 
 [node name="SaveLevelButton" type="Button" parent="BigPanel/ButtonContainer"]
 margin_left = 3.0
-margin_top = 41.0
+margin_top = 31.0
 margin_right = 43.0
-margin_bottom = 53.0
+margin_bottom = 43.0
 rect_min_size = Vector2( 40, 0 )
 focus_mode = 0
 size_flags_horizontal = 4
@@ -159,9 +160,9 @@ __meta__ = {
 
 [node name="LoadLevelButton" type="Button" parent="BigPanel/ButtonContainer"]
 margin_left = 3.0
-margin_top = 57.0
+margin_top = 47.0
 margin_right = 43.0
-margin_bottom = 69.0
+margin_bottom = 59.0
 rect_min_size = Vector2( 40, 0 )
 focus_mode = 0
 size_flags_horizontal = 4
@@ -176,6 +177,19 @@ text = "Load Level"
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="ExitEditorButton" type="TextureButton" parent="BigPanel/ButtonContainer"]
+margin_left = 15.0
+margin_top = 63.0
+margin_right = 31.0
+margin_bottom = 79.0
+rect_min_size = Vector2( 16, 16 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 5 )
+expand = true
+stretch_mode = 5
 
 [node name="OpenOptionsPanelButton" type="Button" parent="."]
 anchor_left = 1.0
@@ -207,4 +221,5 @@ __meta__ = {
 [connection signal="pressed" from="BigPanel/ButtonContainer/TestLevelButton" to="." method="_on_TestLevelButton_pressed"]
 [connection signal="pressed" from="BigPanel/ButtonContainer/SaveLevelButton" to="." method="_on_SaveLevelButton_pressed"]
 [connection signal="pressed" from="BigPanel/ButtonContainer/LoadLevelButton" to="." method="_on_LoadLevelButton_pressed"]
+[connection signal="pressed" from="BigPanel/ButtonContainer/ExitEditorButton" to="." method="_on_ExitEditorButton_pressed"]
 [connection signal="pressed" from="OpenOptionsPanelButton" to="." method="_on_OpenOptionsPanelButton_pressed"]

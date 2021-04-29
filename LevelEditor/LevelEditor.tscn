@@ -68,6 +68,5 @@ visible = false
 [node name="LevelEditorLevelSaverConfirmation" parent="UI" instance=ExtResource( 11 )]
 
 [node name="LevelEditorLevelLoadDialog" parent="UI" instance=ExtResource( 14 )]
-visible = false
 
 [editable path="LevelEditorLevel/LevelTemplate"]

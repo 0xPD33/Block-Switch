@@ -523,6 +523,10 @@ func load_level(level_to_load : String):
 	level_editor_level_loader.load_level(level_to_load)
 
 
+func export_level(level_to_export : String):
+	level_editor_level_loader.export_level(level_to_export)
+
+
 func examine_loaded_level():
 	for goal in tiles.get_used_cells_by_id(tiles.GOAL_ID):
 		goal_placed = true

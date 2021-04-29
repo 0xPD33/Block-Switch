@@ -11,9 +11,10 @@ onready var anim_player = $AnimationPlayer
 
 
 func _ready():
-	level_editor = get_parent().get_parent()
-	level_editor_panel = level_editor.get_node("UI/LevelEditorPanel")
-	level_editor_options_panel = level_editor.get_node("UI/LevelEditorOptionsPanel")
+	if get_tree().current_scene.name == "LevelEditor":
+		level_editor = get_parent().get_parent()
+		level_editor_panel = level_editor.get_node("UI/LevelEditorPanel")
+		level_editor_options_panel = level_editor.get_node("UI/LevelEditorOptionsPanel")
 
 
 func open():

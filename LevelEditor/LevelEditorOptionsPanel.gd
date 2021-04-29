@@ -93,6 +93,7 @@ func _on_OpenOptionsPanelButton_pressed():
 
 
 func _on_TestLevelButton_pressed():
+	AudioManager.create_interface_click_sound()
 	if !level_editor.testing_level:
 		level_editor.test_level()
 	else:
@@ -100,9 +101,16 @@ func _on_TestLevelButton_pressed():
 
 
 func _on_SaveLevelButton_pressed():
+	AudioManager.create_interface_click_sound()
 	level_editor.open_level_saver_confirmation()
 
 
 func _on_LoadLevelButton_pressed():
+	AudioManager.create_interface_click_sound()
 	level_editor.open_level_load_dialog()
+
+
+func _on_ExitEditorButton_pressed():
+	AudioManager.create_interface_click_sound()
+	get_tree().change_scene("res://UI/LevelSelector.tscn")
 
