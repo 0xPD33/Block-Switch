@@ -212,5 +212,6 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/close_confirmation = SubResource( 5 )
 anims/open_confirmation = SubResource( 6 )
+
 [connection signal="pressed" from="LevelSaverPanel/VBoxContainer/ButtonContainer/AcceptButton" to="." method="_on_AcceptButton_pressed"]
 [connection signal="pressed" from="LevelSaverPanel/VBoxContainer/ButtonContainer/CancelButton" to="." method="_on_CancelButton_pressed"]
