@@ -30,13 +30,13 @@ func _ready():
 		controls.fade_in()
 	else:
 		get_tree().current_scene.player = self
-		if !get_tree().current_scene.death_retry and !get_tree().current_scene.win_retry:
+		if !get_tree().current_scene.death_retry and !get_tree().current_scene.win_retry and !Global.changing_level:
 			controls.fade_in()
 	snap()
 
 
 func _input(_event):
-	if !Global.movement_locked and !Global.game_over and !Global.level_done:
+	if !Global.movement_locked and !Global.game_over and !Global.level_done and !Global.changing_level:
 		if Input.is_action_just_pressed("move_up"):
 			move(Vector2.UP)
 		if Input.is_action_just_pressed("move_down"):

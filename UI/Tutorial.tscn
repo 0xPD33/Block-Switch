@@ -12,7 +12,7 @@ font_data = ExtResource( 1 )
 size = 12
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 resource_name = "advance_in"
 length = 0.4
 tracks/0/type = "value"
@@ -28,8 +28,7 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "advance_out"
+[sub_resource type="Animation" id=8]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("TutorialPanel/TutorialText:percent_visible")
@@ -44,7 +43,7 @@ tracks/0/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=9]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
@@ -56,7 +55,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0.4, 0.8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 0.784314 ), Color( 0, 0, 0, 0 ) ]
+"values": [ Color( 0, 0, 0, 0.705882 ), Color( 0, 0, 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("TutorialPanel:modulate")
@@ -95,7 +94,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
@@ -107,7 +106,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.784314 ) ]
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.705882 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("TutorialPanel:modulate")
@@ -208,7 +207,7 @@ margin_top = -20.0
 margin_right = 90.0
 margin_bottom = -7.0
 custom_fonts/font = SubResource( 2 )
-text = "[ Tap to Continue ]"
+text = "[ Tap to Continue ] - 1/3"
 align = 1
 valign = 1
 autowrap = true
@@ -217,7 +216,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/advance_in = SubResource( 6 )
-anims/advance_out = SubResource( 3 )
-anims/close = SubResource( 4 )
-anims/open = SubResource( 5 )
+anims/advance_in = SubResource( 7 )
+anims/advance_out = SubResource( 8 )
+anims/close = SubResource( 9 )
+anims/open = SubResource( 6 )

@@ -246,7 +246,6 @@ align = 1
 valign = 1
 
 [node name="MoveControlsButton" type="Button" parent="OptionsPanel/VBoxContainer"]
-modulate = Color( 1, 1, 1, 0 )
 margin_left = 40.0
 margin_top = 29.0
 margin_right = 120.0
@@ -256,7 +255,6 @@ size_flags_horizontal = 4
 text = "Move Controls"
 
 [node name="ScaleControlsButton" type="Button" parent="OptionsPanel/VBoxContainer"]
-modulate = Color( 1, 1, 1, 0 )
 margin_left = 40.0
 margin_top = 61.0
 margin_right = 120.0

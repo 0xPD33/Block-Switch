@@ -13,14 +13,11 @@ onready var tutorial_scene = $UI/Tutorial
 onready var timer_in_game = $UI/TimerInGame
 
 onready var fog = $FogLayer/ParallaxBackground/ParallaxLayer/Fog
-onready var level_fade_anim = $LevelFadeAnimation
 
 
 func _ready():
 	yield(get_tree(), "idle_frame")
 	Global.movement_locked = true
-	level_fade_anim.play("level_fade_in")
-	yield(level_fade_anim, "animation_finished")
 	if Global.current_level_number in tutorial_scene.tutorial_levels:
 		launch_tutorial()
 	else:
@@ -89,16 +86,35 @@ func create_win_cam(pos, zoom):
 func create_win_animation(camera):
 	var win_tween = Tween.new()
 	win_tween.name = "WinTween"
-	var anim_duration = 1.66
+	var anim_duration = 1.2
 	win_tween.interpolate_property(camera, "zoom", Vector2(3, 3), Vector2(9, 9), anim_duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	win_tween.interpolate_property(camera, "position", camera.position, player.position, anim_duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	get_tree().current_scene.add_child(win_tween)
 	win_tween.start()
 
 
+func animate_change_level():
+	var cam = get_node("WinCamera")
+	var tween = get_node("WinTween")
+	var anim_duration = 0.6
+	tween.interpolate_property(cam, "position", cam.position, player.position, anim_duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
+	yield(tween, "tween_completed")
+	tween.interpolate_property(cam, "zoom", cam.zoom, Vector2(3, 3), anim_duration / 2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
+	yield(tween, "tween_completed")
+	cam.queue_free()
+	tween.queue_free()
+	player.set_cam_current()
+	player.controls.fade_in()
+	timer_in_game.timer_fade_in()
+	Global.changing_level = false
+
+
 func player_death():
 	Global.game_over = true
 	current_level.stop_timer()
+	timer_in_game.timer_fade_out()
 	var player_cam = player.get_node("Camera2D")
 	create_death_cam(player.position, player_cam.zoom)
 	game_over_scene.setup()
@@ -110,6 +126,7 @@ func player_restart():
 		yield(get_node("RetryTween"), "tween_completed")
 		player.set_cam_current()
 		player.controls.fade_in()
+		timer_in_game.timer_fade_in()
 		get_node("DeathTween").queue_free()
 		get_node("DeathCamera").queue_free()
 		get_node("RetryTween").queue_free()
@@ -120,6 +137,7 @@ func player_restart():
 		yield(get_node("RetryTween"), "tween_completed")
 		player.set_cam_current()
 		player.controls.fade_in()
+		timer_in_game.timer_fade_in()
 		get_node("WinTween").queue_free()
 		get_node("WinCamera").queue_free()
 		get_node("RetryTween").queue_free()
@@ -129,14 +147,15 @@ func player_restart():
 
 func level_done():
 	Global.level_done = true
+	fog.increase_alpha()
 	player.controls.fade_out()
 	var player_cam = player.get_node("Camera2D")
 	create_win_cam(player.position, player_cam.zoom)
-	fog.increase_alpha()
 	var completion_time = current_level.get_time()
 	var completion_rating = current_level.calculate_rating()
 	save_progress(completion_time, completion_rating)
 	current_level.stop_timer()
+	timer_in_game.timer_fade_out()
 	level_done_scene.setup(completion_time, completion_rating)
 
 
@@ -158,10 +177,13 @@ func restart_level():
 		death_retry = true
 	elif Global.level_done:
 		win_retry = true
+		fog.decrease_alpha()
 	current_level.restart_level()
 
 
 func change_level():
+	Global.changing_level = true
+	fog.decrease_alpha()
 	current_level.change_level()
-	level_fade_anim.play("level_fade_in")
+	animate_change_level()
 

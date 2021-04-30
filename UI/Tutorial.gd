@@ -33,6 +33,7 @@ var multiple_ways_tutorial_values : PoolStringArray = [
 ]
 
 onready var tutorial_text = $TutorialPanel/TutorialText
+onready var tap_label = $TutorialPanel/TapLabel
 onready var anim_player = $AnimationPlayer
 
 
@@ -80,6 +81,7 @@ func show_tutorial():
 func advance_tutorial_text():
 	if tutorial_state < current_values.size():
 		tutorial_text.text = current_values[tutorial_state]
+	tap_label.text = "[ Tap to Continue ] - " + str(tutorial_state + 1) + "/" + str(current_values.size())
 
 
 func advance_tutorial():

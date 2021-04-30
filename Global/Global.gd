@@ -5,6 +5,7 @@ var levels_unlocked := [1]
 
 var game_over = false
 var level_done = false
+var changing_level = false
 
 var movement_locked = false
 
