@@ -105,6 +105,8 @@ func animate_change_level():
 	yield(tween, "tween_completed")
 	cam.queue_free()
 	tween.queue_free()
+	if Global.current_level_number in tutorial_scene.tutorial_levels:
+		launch_tutorial()
 	player.set_cam_current()
 	player.controls.fade_in()
 	timer_in_game.timer_fade_in()

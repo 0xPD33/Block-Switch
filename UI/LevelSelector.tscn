@@ -413,6 +413,8 @@ text = "OPEN EDITOR"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/level_selector_fade_in = SubResource( 7 )
 anims/level_selector_fade_out = SubResource( 8 )
+
+[connection signal="tab_changed" from="TabContainer" to="." method="_on_tab_changed"]
 [connection signal="gui_input" from="TabContainer/MAIN/LevelSelectContainer" to="." method="_on_LevelSelectContainer_gui_input"]
 [connection signal="gui_input" from="TabContainer/MAIN/ButtonContainer" to="." method="_on_LevelSelectContainer_gui_input"]
 [connection signal="pressed" from="TabContainer/MAIN/ButtonContainer/ReturnToMenuButton" to="." method="_on_ReturnToMenuButton_pressed"]

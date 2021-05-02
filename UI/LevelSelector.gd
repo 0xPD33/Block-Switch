@@ -110,3 +110,7 @@ func _on_CustomLevelCreateButton_pressed():
 	AudioManager.create_audio(interface_click_sound, 0.9, 1.1)
 	get_tree().change_scene("res://LevelEditor/LevelEditor.tscn")
 
+
+func _on_tab_changed(tab: int):
+	AudioManager.create_interface_click_sound()
+

@@ -5,7 +5,7 @@
 [ext_resource path="res://Assets/Font/AtlantisInternational-jen0.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Assets/GameIcons/PNG/White/2x/cross.png" type="Texture" id=5]
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.294118, 0.294118, 0.294118, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -18,15 +18,15 @@ expand_margin_top = 4.0
 expand_margin_bottom = 4.0
 anti_aliasing = false
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=2]
 size = 8
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=3]
 size = 12
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=4]
 resource_name = "close_dialog"
 length = 0.4
 tracks/0/type = "value"
@@ -65,8 +65,20 @@ tracks/2/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("LevelLoaderPanel/CancelButton:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 resource_name = "open_dialog"
 length = 0.4
 tracks/0/type = "value"
@@ -105,6 +117,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("LevelLoaderPanel/CancelButton:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="LevelEditorLevelLoadDialog" type="Control"]
 pause_mode = 2
@@ -134,7 +158,7 @@ margin_top = -45.0
 margin_right = 80.0
 margin_bottom = 45.0
 mouse_filter = 2
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -168,7 +192,7 @@ margin_top = 26.0
 margin_right = 160.0
 margin_bottom = 47.0
 size_flags_vertical = 6
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 2 )
 text = "Load: Load a saved level and edit it
 Export: Send level to Downloads folder on device"
 align = 1
@@ -193,7 +217,7 @@ rect_min_size = Vector2( 55, 0 )
 focus_mode = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 3 )
 text = "Load"
 
 [node name="ExportButton" type="Button" parent="LevelLoaderPanel/VBoxContainer/ModeButtonContainer"]
@@ -205,11 +229,12 @@ rect_min_size = Vector2( 55, 0 )
 focus_mode = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 3 )
 disabled = true
 text = "Export"
 
 [node name="CancelButton" type="TextureButton" parent="LevelLoaderPanel"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -16.0
@@ -244,8 +269,8 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/close_dialog = SubResource( 8 )
-anims/open_dialog = SubResource( 7 )
+anims/close_dialog = SubResource( 4 )
+anims/open_dialog = SubResource( 5 )
 
 [connection signal="pressed" from="LevelLoaderPanel/VBoxContainer/ModeButtonContainer/LoadButton" to="." method="_on_LoadButton_pressed"]
 [connection signal="pressed" from="LevelLoaderPanel/VBoxContainer/ModeButtonContainer/ExportButton" to="." method="_on_ExportButton_pressed"]

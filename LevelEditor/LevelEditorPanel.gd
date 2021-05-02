@@ -65,6 +65,7 @@ func enable_buttons():
 
 
 func _on_button_pressed(block_name : String, block_image: Texture, block_modulate: Color):
+	AudioManager.create_interface_click_secondary_sound()
 	level_editor.select_block(block_name)
 	level_editor_selected_block.change_selected_block(block_name, block_image, block_modulate)
 	level_editor_camera_container.move_enabled = false
@@ -74,6 +75,7 @@ func _on_button_pressed(block_name : String, block_image: Texture, block_modulat
 
 
 func _on_MoveButton_pressed():
+	AudioManager.create_interface_click_sound()
 	level_editor_camera_container.move_enabled = !level_editor_camera_container.move_enabled
 	level_editor_selected_block.remove_selected_block()
 	level_editor.current_block_selected = null
@@ -92,6 +94,7 @@ func _on_DeleteButton_button_up():
 
 
 func _on_DeleteButton_pressed():
+	AudioManager.create_interface_click_sound()
 	level_editor.can_delete = !level_editor.can_delete
 	level_editor_selected_block.remove_selected_block()
 	level_editor.current_block_selected = null
@@ -100,6 +103,7 @@ func _on_DeleteButton_pressed():
 
 
 func _on_OpenPanelButton_pressed():
+	AudioManager.create_interface_click_sound()
 	if !is_open:
 		open_level_editor_panel()
 	else:

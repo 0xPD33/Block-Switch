@@ -124,7 +124,6 @@ func switch_mute(bus : String):
 		"Music":
 			music_muted = !music_muted
 			AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), music_muted)
-	
 	change_mute_button_texture(bus)
 
 
@@ -182,9 +181,15 @@ func _on_AcceptButton_pressed():
 
 
 func _on_SFXMuteButton_pressed():
+	AudioManager.create_interface_click_sound()
 	switch_mute("SFX")
 
 
 func _on_MusicMuteButton_pressed():
+	AudioManager.create_interface_click_sound()
 	switch_mute("Music")
+
+
+func _on_tab_changed(tab: int):
+	AudioManager.create_interface_click_sound()
 

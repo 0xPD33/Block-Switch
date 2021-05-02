@@ -29,7 +29,7 @@ var blue_block_tutorial_values : PoolStringArray = [
 var multiple_ways_tutorial_values : PoolStringArray = [
 	"In some levels, like this one, there are multiple ways of advancing toward the goal.",
 	"In this case you can choose which yellow blocks to trigger in the starting area (either the top 2 for the top path or the bottom 2 for the bottom path).",
-	"Sometimes both ways are equally short (or long) and in other cases one is shorter. It is up to you to find out the fastest way!",
+	"Sometimes both ways can be equally short (or equally long) and in other cases one is shorter. It is up to you to find out the fastest way!",
 ]
 
 onready var tutorial_text = $TutorialPanel/TutorialText

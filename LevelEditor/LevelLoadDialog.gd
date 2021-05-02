@@ -46,6 +46,7 @@ func close():
 
 
 func _on_LoadButton_pressed():
+	AudioManager.create_interface_click_sound()
 	current_mode = modes.LOAD
 	file_dialog.window_title = "Open a File"
 	file_dialog.show()
@@ -53,6 +54,7 @@ func _on_LoadButton_pressed():
 
 
 func _on_ExportButton_pressed():
+	AudioManager.create_interface_click_sound()
 	current_mode = modes.EXPORT
 	file_dialog.window_title = "Pick a File to Export"
 	file_dialog.show()
@@ -60,6 +62,7 @@ func _on_ExportButton_pressed():
 
 
 func _on_CancelButton_pressed():
+	AudioManager.create_interface_click_sound()
 	close()
 
 
@@ -69,5 +72,4 @@ func _on_FileDialog_file_selected(path: String):
 	elif current_mode == modes.EXPORT:
 		level_editor.export_level(path)
 	close()
-
 

@@ -84,12 +84,6 @@ func load_next_level():
 	add_child(next_level_instance)
 
 
-func launch_tutorial(tutorial_string : String):
-	yield(get_tree(), "idle_frame")
-	get_tree().call_group("Player", "set_cam_current")
-	get_parent().launch_tutorial(tutorial_string)
-
-
 func calculate_rating():
 	var number_of_normal_blocks = get_tree().get_nodes_in_group("Block").size()
 	var number_of_yellow_blocks = get_tree().get_nodes_in_group("BlockYellow").size()

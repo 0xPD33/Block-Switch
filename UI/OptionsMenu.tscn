@@ -472,6 +472,7 @@ anims/options_menu_fade_out = SubResource( 8 )
 anims/confirmation_fade_in = SubResource( 9 )
 anims/confirmation_fade_out = SubResource( 10 )
 
+[connection signal="tab_changed" from="TabContainer" to="." method="_on_tab_changed"]
 [connection signal="pressed" from="TabContainer/GAMEPLAY/OptionsContainer/DeleteSaveButton" to="." method="_on_DeleteSaveButton_pressed"]
 [connection signal="pressed" from="TabContainer/GAMEPLAY/OptionsContainer/ButtonContainer/ReturnToMenuButton" to="." method="_on_ReturnToMenuButton_pressed"]
 [connection signal="pressed" from="TabContainer/GAMEPLAY/OptionsContainer/ButtonContainer/AcceptButton" to="." method="_on_AcceptButton_pressed"]

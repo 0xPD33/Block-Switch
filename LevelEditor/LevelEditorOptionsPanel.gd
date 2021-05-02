@@ -85,13 +85,6 @@ func change_test_level_button_text():
 		test_level_button.text = "Test Level"
 
 
-func _on_OpenOptionsPanelButton_pressed():
-	if !is_open:
-		open_options_panel()
-	else:
-		close_options_panel()
-
-
 func _on_TestLevelButton_pressed():
 	AudioManager.create_interface_click_sound()
 	if !level_editor.testing_level:
@@ -113,4 +106,12 @@ func _on_LoadLevelButton_pressed():
 func _on_ExitEditorButton_pressed():
 	AudioManager.create_interface_click_sound()
 	get_tree().change_scene("res://UI/LevelSelector.tscn")
+
+
+func _on_OpenOptionsPanelButton_pressed():
+	AudioManager.create_interface_click_sound()
+	if !is_open:
+		open_options_panel()
+	else:
+		close_options_panel()
 
