@@ -14,7 +14,11 @@ var options_data = {
 	"sfx_volume": 0,
 	"music_volume": 0,
 	"sfx_muted": false,
-	"music_muted": false
+	"music_muted": false,
+	"controls_position_x": 320,
+	"controls_position_y": 110,
+	"controls_size_x": 1,
+	"controls_size_y": 1
 }
 
 
@@ -78,6 +82,16 @@ func save_music_volume():
 	options_data["music_muted"] = GlobalOptions.music_muted
 
 
+func save_controls_position():
+	options_data["controls_position_x"] = GlobalOptions.controls_position_x
+	options_data["controls_position_y"] = GlobalOptions.controls_position_y
+
+
+func save_controls_size():
+	options_data["controls_size_x"] = GlobalOptions.controls_size_x
+	options_data["controls_size_y"] = GlobalOptions.controls_size_y
+
+
 func load_master_volume():
 	if options_data.has("master_volume"):
 		return options_data["master_volume"]
@@ -106,6 +120,26 @@ func load_music_volume():
 func load_music_muted():
 	if options_data.has("music_muted"):
 		return options_data["music_muted"]
+
+
+func load_controls_position_x():
+	if options_data.has("controls_position_x"):
+		return options_data["controls_position_x"]
+
+
+func load_controls_position_y():
+	if options_data.has("controls_position_y"):
+		return options_data["controls_position_y"]
+
+
+func load_controls_size_x():
+	if options_data.has("controls_size_x"):
+		return options_data["controls_size_x"]
+
+
+func load_controls_size_y():
+	if options_data.has("controls_size_y"):
+		return options_data["controls_size_y"]
 
 
 func save_game():
@@ -163,5 +197,12 @@ func delete_options_file():
 	options_data.clear()
 	var dir = Directory.new()
 	dir.remove(OPTIONS_FILE_NAME)
-	options_data["master_volume"] = 0
+	options_data["sfx_volume"] = 0
+	options_data["music_volume"] = 0
+	options_data["sfx_muted"] = false
+	options_data["music_muted"] = false
+	options_data["controls_position_x"] = 320
+	options_data["controls_position_y"] = 110
+	options_data["controls_size_x"] = 1
+	options_data["controls_size_y"] = 1
 

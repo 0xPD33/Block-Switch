@@ -19,8 +19,9 @@ func set_resizing(value):
 
 
 func _ready():
-	check_saved_position()
-	check_saved_size()
+	yield(get_tree(), "idle_frame")
+	load_saved_position()
+	load_saved_size()
 
 
 func _input(event):
@@ -35,18 +36,18 @@ func _input(event):
 func rotate_controls(direction : int):
 	match direction:
 		1:
-			position.x = 381
-			position.y = 110
+			position.x = GlobalOptions.controls_position_x + 61
+			position.y = GlobalOptions.controls_position_y
 			rotation_degrees = 90
 		2:
-			position.x = 320
-			position.y = 171
+			position.x = GlobalOptions.controls_position_x
+			position.y = GlobalOptions.controls_position_y + 61
 			rotation_degrees = -90
 
 
 func reset_control_rotation():
-	position.x = 320
-	position.y = 110
+	position.x = GlobalOptions.controls_position_x
+	position.y = GlobalOptions.controls_position_y
 	rotation_degrees = 0
 
 
@@ -70,34 +71,38 @@ func highlight_controls(changing_controls : bool):
 				child.modulate = Color(1, 1, 1)
 
 
-func check_saved_position():
-	if GlobalOptions.get_controls_position() == null:
-		GlobalOptions.set_controls_position(position)
-	else:
-		position = GlobalOptions.get_controls_position()
+func load_saved_position():
+	position.x = GlobalOptions.get_controls_position_x()
+	position.y = GlobalOptions.get_controls_position_y()
 
 
-func check_saved_size():
-	if GlobalOptions.get_controls_size() == null:
-		GlobalOptions.set_controls_size(scale)
-	else:
-		scale = GlobalOptions.get_controls_size()
+func load_saved_size():
+	scale.x = GlobalOptions.get_controls_size_x()
+	scale.y = GlobalOptions.get_controls_size_y()
 
 
 func save_position():
-	GlobalOptions.set_controls_position(position)
+	GlobalOptions.set_controls_position_x(position.x)
+	GlobalOptions.set_controls_position_y(position.y)
+	SaveManager.save_controls_position()
+	SaveManager.save_options()
 
 
 func reset_position():
-	position = GlobalOptions.get_controls_position()
+	position.x = GlobalOptions.get_controls_position_x()
+	position.y = GlobalOptions.get_controls_position_y()
 
 
 func save_size():
-	GlobalOptions.set_controls_size(scale)
+	GlobalOptions.set_controls_size_x(scale.x)
+	GlobalOptions.set_controls_size_y(scale.y)
+	SaveManager.save_controls_size()
+	SaveManager.save_options()
 
 
 func reset_size():
-	scale = GlobalOptions.get_controls_size()
+	scale.x = GlobalOptions.get_controls_size_x()
+	scale.y = GlobalOptions.get_controls_size_y()
 
 
 func _on_UpButton_pressed():

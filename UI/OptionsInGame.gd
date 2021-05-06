@@ -59,7 +59,6 @@ func move_controls_start():
 		options_close()
 		options_button_change_visibility()
 		edit_buttons_change_visiblity()
-		get_tree().call_group("ScreenDarkener", "fade_in")
 		get_tree().call_group("Controls", "set_repositioning", true)
 
 
@@ -70,7 +69,6 @@ func move_controls_end():
 		options_open()
 		options_button_change_visibility()
 		edit_buttons_change_visiblity()
-		get_tree().call_group("ScreenDarkener", "fade_out")
 		get_tree().call_group("Controls", "set_repositioning", false)
 
 
@@ -81,7 +79,6 @@ func resize_controls_start():
 		options_close()
 		options_button_change_visibility()
 		edit_buttons_change_visiblity()
-		get_tree().call_group("ScreenDarkener", "fade_in")
 		get_tree().call_group("Controls", "set_resizing", true)
 
 
@@ -92,7 +89,6 @@ func resize_controls_end():
 		options_open()
 		options_button_change_visibility()
 		edit_buttons_change_visiblity()
-		get_tree().call_group("ScreenDarkener", "fade_out")
 		get_tree().call_group("Controls", "set_resizing", false)
 
 
