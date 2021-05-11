@@ -3,9 +3,12 @@ extends Node2D
 var level
 
 
-func setup_level():
+func _ready():
 	level = get_child(0)
 	level.in_editor = true
+
+
+func setup_level():
 	level.tiles.setup_tiles()
 	level.player_tile.setup_player()
 	level.decoration.setup_gems()

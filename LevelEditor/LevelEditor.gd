@@ -23,6 +23,11 @@ var teleport_target_placed : bool = false
 var placing_red_block : bool = false
 var red_block_coordinates : Vector2
 
+var placing_purple_block : bool = false
+var purple_block_coordinates : Vector2
+var last_locked_block_position : Vector2
+var locked_block_placed : bool = false
+
 var last_goal_position
 var last_player_position
 
@@ -64,14 +69,18 @@ onready var block_scene = tiles.block_scene
 onready var block_yellow_scene = tiles.block_yellow_scene
 onready var block_blue_scene = tiles.block_blue_scene
 onready var block_red_scene = tiles.block_red_scene
+onready var block_purple_scene = tiles.block_purple_scene
 onready var goal_scene = tiles.goal_scene
 onready var void_scene = tiles.void_scene
 
-onready var solid_blocks = [tiles.BLOCK_ID, tiles.BLOCK_YELLOW_ID, tiles.BLOCK_BLUE_ID, tiles.BLOCK_RED_ID, tiles.GOAL_ID]
+onready var solid_blocks = [tiles.BLOCK_ID, tiles.BLOCK_YELLOW_ID, tiles.BLOCK_BLUE_ID,\
+							tiles.BLOCK_RED_ID, tiles.BLOCK_PURPLE_ID, tiles.GOAL_ID]
 
 
 func _check_if_placement_is_allowed():
-	if current_block_selected != null and !level_editor_camera_container.move_enabled and !can_delete and !placing_yellow_block and !placing_blue_block and !placing_red_block and !testing_level:
+	if current_block_selected != null and !level_editor_camera_container.move_enabled\
+	and !can_delete and !placing_yellow_block and !placing_blue_block and !placing_red_block\
+	and !placing_purple_block and !testing_level:
 		can_place = true
 	else:
 		can_place = false
@@ -85,7 +94,8 @@ func _check_if_dragging_is_allowed():
 
 
 func _check_if_testable():
-	if goal_placed and player_placed and !placing_yellow_block and !placing_blue_block and !placing_red_block:
+	if goal_placed and player_placed and !placing_yellow_block and !placing_blue_block\
+	and !placing_red_block and !placing_purple_block:
 		level_editor_options_panel.change_testable(true)
 	else:
 		level_editor_options_panel.change_testable(false)
@@ -107,14 +117,15 @@ func _check_if_playable():
 func _check_if_placeable(pos : Vector2):
 	match current_block_selected:
 		block_scene:
-			if !tiles.get_cellv(pos) in [tiles.BLOCK_YELLOW_ID, tiles.BLOCK_BLUE_ID, tiles.BLOCK_RED_ID, tiles.GOAL_ID]\
-			and _check_if_decoration_placed(pos) == false:
+			if !tiles.get_cellv(pos) in [tiles.BLOCK_YELLOW_ID, tiles.BLOCK_BLUE_ID,\
+			tiles.BLOCK_RED_ID, tiles.BLOCK_PURPLE_ID, tiles.GOAL_ID] and _check_if_decoration_placed(pos) == false:
 				return true
 			else:
 				return false
-		block_yellow_scene, block_blue_scene, block_red_scene, goal_scene, void_scene:
-			if !tiles.get_cellv(pos) in [tiles.BLOCK_YELLOW_ID, tiles.BLOCK_BLUE_ID, tiles.BLOCK_RED_ID, tiles.GOAL_ID]\
-			and !player_tile.get_cellv(pos) == 0 and _check_if_decoration_placed(pos) == false:
+		block_yellow_scene, block_blue_scene, block_red_scene, block_purple_scene, goal_scene, void_scene:
+			if !tiles.get_cellv(pos) in [tiles.BLOCK_YELLOW_ID, tiles.BLOCK_BLUE_ID,\
+			tiles.BLOCK_RED_ID, tiles.BLOCK_PURPLE_ID, tiles.GOAL_ID] and !player_tile.get_cellv(pos) == 0\
+			and _check_if_decoration_placed(pos) == false:
 				return true
 			else:
 				return false
@@ -229,6 +240,21 @@ func _unhandled_input(event):
 					place_last_block()
 					save_block_information(teleport_target_position)
 					place_teleport_target(teleport_target_position)
+	if placing_purple_block:
+		if event is InputEventScreenTouch:
+			if event.pressed and !locked_block_placed:
+				var locked_block_position : Vector2 = tiles.world_to_map(to_global(event.position * level_editor_camera.zoom.x + level_editor_camera_container.global_position))
+				tiles.blue_blocks[purple_block_coordinates] = locked_block_position
+				if tiles.get_cellv(locked_block_position) != tiles.BLOCK_PURPLE_ID and _check_if_not_goal_and_not_player(locked_block_position) == true:
+					save_block_information(locked_block_position)
+					place_teleport_target(locked_block_position)
+			elif event.pressed and teleport_target_placed:
+				var locked_block_position : Vector2 = tiles.world_to_map(to_global(event.position * level_editor_camera.zoom.x + level_editor_camera_container.global_position))
+				tiles.blue_blocks[purple_block_coordinates] = locked_block_position
+				if tiles.get_cellv(locked_block_position) != tiles.BLOCK_BLUE_ID and _check_if_not_goal_and_not_player(locked_block_position) == true:
+					place_last_block()
+					save_block_information(locked_block_position)
+					place_teleport_target(locked_block_position)
 
 
 func select_block(block_name : String):
@@ -241,6 +267,8 @@ func select_block(block_name : String):
 			current_block_selected = block_blue_scene
 		"BlockRed":
 			current_block_selected = block_red_scene
+		"BlockPurple":
+			current_block_selected = block_purple_scene
 		"Goal":
 			current_block_selected = goal_scene
 		"Void":
@@ -282,6 +310,11 @@ func place_last_block():
 		decoration.set_cellv(last_teleport_target_position, -1)
 		if tiles.blue_blocks.has(last_teleport_target_position):
 			tiles.blue_blocks.erase(last_teleport_target_position)
+	elif placing_purple_block:
+		tiles.set_cellv(last_locked_block_position, saved_block_id)
+		decoration.set_cellv(last_locked_block_position, -1)
+		if tiles.purple_blocks.has(last_locked_block_position):
+			tiles.purple_blocks.erase(last_locked_block_position)
 	elif current_block_selected == goal_scene:
 		tiles.set_cellv(last_goal_position, saved_block_id)
 		decoration.set_cellv(last_goal_position, -1)
@@ -315,6 +348,13 @@ func place_block(block_position : Vector2):
 				red_block_coordinates = block_position
 				placing_red_block = true
 				level_editor_choice_place_confirmation.confirmation_fade_in()
+				level_editor_button_grid.disable_all_buttons()
+				level_editor_panel.disable_buttons()
+		block_purple_scene:
+			if _check_if_placeable(block_position) == true:
+				tiles.set_cellv(block_position, tiles.BLOCK_PURPLE_ID)
+				purple_block_coordinates = block_position
+				placing_purple_block = true
 				level_editor_button_grid.disable_all_buttons()
 				level_editor_panel.disable_buttons()
 		goal_scene:
@@ -359,11 +399,22 @@ func place_teleport_target(teleport_target_position : Vector2):
 	_check_if_testable()
 
 
+func place_locked_block(locked_block_position : Vector2):
+	place_decoration(locked_block_position)
+	tiles.set_cellv(locked_block_position, tiles.BLOCK_ID)
+	locked_block_placed = true
+	last_locked_block_position = locked_block_position
+	level_editor_place_confirmation.confirmation_fade_in()
+	_check_if_testable()
+
+
 func place_decoration(decoration_position : Vector2):
 	if placing_yellow_block:
 		decoration.set_cellv(decoration_position, 1)
 	elif placing_blue_block:
 		decoration.set_cellv(decoration_position, 0)
+	elif placing_purple_block:
+		decoration.set_cellv(decoration_position, 2)
 
 
 func place_void_around_block(block_position : Vector2):
@@ -410,6 +461,10 @@ func remove_block_coordinates(block_position : Vector2):
 		tiles.blue_blocks.erase(block_position)
 	elif tiles.get_cellv(block_position) == tiles.BLOCK_RED_ID:
 		tiles.red_blocks.erase(block_position)
+	elif tiles.get_cellv(block_position) == tiles.BLOCK_PURPLE_ID:
+		decoration.set_cellv(tiles.purple_blocks[block_position], -1)
+		tiles.set_cellv(tiles.purple_blocks[block_position], -1)
+		tiles.purple_blocks.erase(block_position)
 	if decoration.get_cellv(block_position) == 1:
 		var index = tiles.yellow_blocks.values().find(block_position)
 		tiles.set_cellv(tiles.yellow_blocks.keys()[index], -1)
@@ -546,6 +601,9 @@ func _on_place_confirmation_placement_accepted():
 	elif placing_blue_block:
 		placing_blue_block = false
 		teleport_target_placed = false
+	elif placing_purple_block:
+		placing_purple_block = false
+		locked_block_placed = false
 	current_block_selected = null
 	level_editor_selected_block.remove_selected_block()
 	level_editor_button_grid.enable_all_buttons()

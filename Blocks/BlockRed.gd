@@ -5,12 +5,6 @@ var rotation_mode
 
 var triggered = false setget set_triggered
 
-# LEVEL EDITOR VARIABLES
-
-var editor_mode = false
-
-#
-
 
 func set_triggered(value):
 	triggered = value

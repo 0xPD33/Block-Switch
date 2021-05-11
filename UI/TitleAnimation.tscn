@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Font/AtlantisInternational-jen0.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Assets/PNG/Default size/Blocks/block_06.png" type="Texture" id=2]
-[ext_resource path="res://Assets/PNG/Default size/Environment/environment_06.png" type="Texture" id=3]
+[ext_resource path="res://Assets/sokuban/Default size/Blocks/block_06.png" type="Texture" id=2]
+[ext_resource path="res://Assets/sokuban/Default size/Environment/environment_06.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32

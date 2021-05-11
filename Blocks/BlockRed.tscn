@@ -1,12 +1,13 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Assets/Tilesheets/sokoban_tilesheet.png" type="Texture" id=1]
+[ext_resource path="res://Assets/sokuban/Tilesheets/sokoban_tilesheet.png" type="Texture" id=1]
 [ext_resource path="res://Blocks/BlockRed.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 16 )
 
 [node name="BlockRed" type="Area2D" groups=[
+"ActionBlock",
 "BlockRed",
 ]]
 script = ExtResource( 2 )
@@ -22,4 +23,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
 [connection signal="area_entered" from="." to="." method="_on_BlockRed_area_entered"]

@@ -4,11 +4,13 @@ extends TileMap
 export (Dictionary) var yellow_blocks := {}
 export (Dictionary) var blue_blocks := {}
 export (Dictionary) var red_blocks := {}
+export (Dictionary) var purple_blocks := {}
 
 export (PackedScene) var block_scene
 export (PackedScene) var block_yellow_scene
 export (PackedScene) var block_blue_scene
 export (PackedScene) var block_red_scene
+export (PackedScene) var block_purple_scene
 export (PackedScene) var goal_scene
 export (PackedScene) var void_scene
 
@@ -16,6 +18,7 @@ const BLOCK_ID = 0
 const BLOCK_YELLOW_ID = 1
 const BLOCK_BLUE_ID = 4
 const BLOCK_RED_ID = 5
+const BLOCK_PURPLE_ID = 6
 const GOAL_ID = 2
 const VOID_ID = 3
 
@@ -35,6 +38,7 @@ func setup_tiles():
 	create_yellow_blocks()
 	create_blue_blocks()
 	create_red_blocks()
+	create_purple_blocks()
 	if !get_parent().in_editor:
 		get_parent().delete_tilemaps()
 
@@ -54,7 +58,7 @@ func create_yellow_blocks():
 			set_cellv(key, -1)
 		var yellow_block_instance = block_yellow_scene.instance()
 		yellow_block_instance.global_position = to_global(map_to_world(key))
-		yellow_block_instance.missing_block_pos = map_to_world(yellow_blocks.values()[yellow_blocks_placed])
+		yellow_block_instance.set_missing_block_pos(map_to_world(yellow_blocks.values()[yellow_blocks_placed]))
 		get_parent().get_node("PlacedTiles").add_child(yellow_block_instance)
 		yellow_blocks_placed += 1
 
@@ -66,7 +70,7 @@ func create_blue_blocks():
 			set_cellv(key, -1)
 		var blue_block_instance = block_blue_scene.instance()
 		blue_block_instance.global_position = to_global(map_to_world(key))
-		blue_block_instance.teleport_pos = map_to_world(blue_blocks.values()[blue_blocks_placed])
+		blue_block_instance.set_teleport_pos(map_to_world(blue_blocks.values()[blue_blocks_placed]))
 		get_parent().get_node("PlacedTiles").add_child(blue_block_instance)
 		blue_blocks_placed += 1
 
@@ -81,4 +85,16 @@ func create_red_blocks():
 		red_block_instance.set_rotation_mode(red_blocks.values()[red_blocks_placed])
 		get_parent().get_node("PlacedTiles").add_child(red_block_instance)
 		red_blocks_placed += 1
+
+
+func create_purple_blocks():
+	var purple_blocks_placed = 0
+	for key in purple_blocks.keys():
+		if !get_parent().in_editor:
+			set_cellv(key, -1)
+		var purple_block_instance = block_purple_scene.instance()
+		purple_block_instance.global_position = to_global(map_to_world(key))
+		purple_block_instance.set_locked_block_pos(map_to_world(purple_blocks.values()[purple_blocks_placed]))
+		get_parent().get_node("PlacedTiles").add_child(purple_block_instance)
+		purple_blocks_placed += 1
 

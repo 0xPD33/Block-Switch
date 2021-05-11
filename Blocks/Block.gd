@@ -5,6 +5,13 @@ var tile_size : int = 64
 var lit : bool = false
 var lit_time : float = 0.33
 
+# LEVEL EDITOR VARIABLES
+
+var editor_mode = false
+var void_scene = preload("res://Blocks/Void.tscn")
+
+#
+
 onready var anim_player = $AnimationPlayer
 
 

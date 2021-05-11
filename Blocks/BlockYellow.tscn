@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Assets/Tilesheets/sokoban_tilesheet.png" type="Texture" id=1]
+[ext_resource path="res://Assets/sokuban/Tilesheets/sokoban_tilesheet.png" type="Texture" id=1]
 [ext_resource path="res://Blocks/BlockYellow.gd" type="Script" id=2]
 [ext_resource path="res://Blocks/Block.tscn" type="PackedScene" id=3]
 
@@ -8,6 +8,7 @@
 extents = Vector2( 16, 16 )
 
 [node name="BlockYellow" type="Area2D" groups=[
+"ActionBlock",
 "BlockYellow",
 ]]
 script = ExtResource( 2 )
@@ -27,4 +28,5 @@ visible = false
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
 [connection signal="area_entered" from="." to="." method="_on_BlockYellow_area_entered"]

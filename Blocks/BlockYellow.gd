@@ -5,14 +5,6 @@ export (PackedScene) var block_scene
 var missing_block_pos setget set_missing_block_pos
 var triggered = false setget set_triggered
 
-# LEVEL EDITOR VARIABLES
-
-var editor_mode = false
-
-var void_scene = preload("res://Blocks/Void.tscn")
-
-#
-
 
 func set_triggered(value):
 	triggered = value

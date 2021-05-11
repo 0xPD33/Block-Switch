@@ -3,12 +3,6 @@ extends "res://Blocks/Block.gd"
 var teleport_pos setget set_teleport_pos
 var triggered = false setget set_triggered
 
-# LEVEL EDITOR VARIABLES
-
-var editor_mode = false
-
-#
-
 
 func set_triggered(value):
 	triggered = value
