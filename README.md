@@ -12,4 +12,4 @@ Make sure to open the project with **Godot 3.2** to be safe, else there might be
 
 ## Forking the project/using the code
 
-I will make sure to put a GPL license on this, which means you will be able to do anything you want with this project or parts of it as long as you make it open-source as well.
+This project uses the GPL-v3 license. Before forking the project or using code from it make sure to review the license.
