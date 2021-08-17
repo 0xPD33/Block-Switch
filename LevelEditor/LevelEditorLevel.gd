@@ -11,7 +11,7 @@ func _ready():
 func setup_level():
 	level.tiles.setup_tiles()
 	level.player_tile.setup_player()
-	level.decoration.setup_gems()
+	level.decoration.setup_deco()
 
 
 func destroy_placed_tiles():

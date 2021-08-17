@@ -16,6 +16,8 @@ onready var anim_player = $AnimationPlayer
 
 
 func _ready():
+	if get_tree().current_scene.name == "LevelEditor":
+		editor_mode = true
 	snap()
 
 

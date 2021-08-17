@@ -149,8 +149,8 @@ func player_restart():
 
 func level_done():
 	Global.level_done = true
-	fog.increase_alpha()
 	player.controls.fade_out()
+	fog.increase_alpha()
 	var player_cam = player.get_node("Camera2D")
 	create_win_cam(player.position, player_cam.zoom)
 	var completion_time = current_level.get_time()

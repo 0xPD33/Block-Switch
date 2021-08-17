@@ -12,11 +12,6 @@ func set_teleport_pos(value):
 	teleport_pos = value
 
 
-func _ready():
-	if get_tree().current_scene.name == "LevelEditor":
-		editor_mode = true
-
-
 func teleport(player):
 	if !triggered:
 		if !editor_mode:

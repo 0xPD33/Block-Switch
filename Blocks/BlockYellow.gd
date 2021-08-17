@@ -14,11 +14,6 @@ func set_missing_block_pos(value):
 	missing_block_pos = value
 
 
-func _ready():
-	if get_tree().current_scene.name == "LevelEditor":
-		editor_mode = true
-
-
 func place_void():
 	var void_instance = void_scene.instance()
 	void_instance.position = missing_block_pos

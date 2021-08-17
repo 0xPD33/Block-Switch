@@ -52,6 +52,7 @@ __meta__ = {
 [node name="MarginContainer" type="MarginContainer" parent="BigPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_bottom = 2.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_constants/margin_right = 8
@@ -114,8 +115,8 @@ rect_min_size = Vector2( 16, 16 )
 texture_normal = ExtResource( 10 )
 expand = true
 
-[node name="GoalButton" type="TextureButton" parent="BigPanel/MarginContainer/LevelEditorButtonGrid"]
-modulate = Color( 0.631373, 1, 0.380392, 1 )
+[node name="BlockPurpleButton" type="TextureButton" parent="BigPanel/MarginContainer/LevelEditorButtonGrid"]
+modulate = Color( 0.584314, 0, 0.72549, 1 )
 margin_left = 20.0
 margin_top = 40.0
 margin_right = 36.0
@@ -124,9 +125,19 @@ rect_min_size = Vector2( 16, 16 )
 texture_normal = ExtResource( 1 )
 expand = true
 
-[node name="PlayerButton" type="TextureButton" parent="BigPanel/MarginContainer/LevelEditorButtonGrid"]
+[node name="GoalButton" type="TextureButton" parent="BigPanel/MarginContainer/LevelEditorButtonGrid"]
+modulate = Color( 0.631373, 1, 0.380392, 1 )
 margin_top = 60.0
 margin_right = 16.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 16, 16 )
+texture_normal = ExtResource( 1 )
+expand = true
+
+[node name="PlayerButton" type="TextureButton" parent="BigPanel/MarginContainer/LevelEditorButtonGrid"]
+margin_left = 20.0
+margin_top = 60.0
+margin_right = 36.0
 margin_bottom = 76.0
 rect_min_size = Vector2( 16, 16 )
 texture_normal = ExtResource( 7 )

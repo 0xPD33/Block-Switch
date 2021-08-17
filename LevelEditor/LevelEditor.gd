@@ -136,6 +136,16 @@ func _check_if_placeable(pos : Vector2):
 				return false
 
 
+func _check_if_block_is_lockable(pos : Vector2):
+	var lockable_blocks = solid_blocks
+	lockable_blocks.erase(tiles.BLOCK_ID)
+	lockable_blocks.erase(tiles.BLOCK_PURPLE_ID)
+	if tiles.get_cellv(pos) in lockable_blocks:
+		return true
+	else:
+		return false
+
+
 func _check_if_not_goal_and_not_player(pos : Vector2):
 	if tiles.get_cellv(pos) != tiles.GOAL_ID and player_tile.get_cellv(pos) != 0:
 		return true 
@@ -244,17 +254,17 @@ func _unhandled_input(event):
 		if event is InputEventScreenTouch:
 			if event.pressed and !locked_block_placed:
 				var locked_block_position : Vector2 = tiles.world_to_map(to_global(event.position * level_editor_camera.zoom.x + level_editor_camera_container.global_position))
-				tiles.blue_blocks[purple_block_coordinates] = locked_block_position
-				if tiles.get_cellv(locked_block_position) != tiles.BLOCK_PURPLE_ID and _check_if_not_goal_and_not_player(locked_block_position) == true:
+				tiles.purple_blocks[purple_block_coordinates] = locked_block_position
+				if _check_if_block_is_lockable(locked_block_position) and player_tile.get_cellv(locked_block_position) != 0 and _check_if_tile_empty(locked_block_position) == false:
 					save_block_information(locked_block_position)
-					place_teleport_target(locked_block_position)
-			elif event.pressed and teleport_target_placed:
+					place_locked_block(locked_block_position)
+			elif event.pressed and locked_block_placed:
 				var locked_block_position : Vector2 = tiles.world_to_map(to_global(event.position * level_editor_camera.zoom.x + level_editor_camera_container.global_position))
-				tiles.blue_blocks[purple_block_coordinates] = locked_block_position
-				if tiles.get_cellv(locked_block_position) != tiles.BLOCK_BLUE_ID and _check_if_not_goal_and_not_player(locked_block_position) == true:
+				tiles.purple_blocks[purple_block_coordinates] = locked_block_position
+				if _check_if_block_is_lockable(locked_block_position) and _check_if_not_goal_and_not_player(locked_block_position) == true:
 					place_last_block()
 					save_block_information(locked_block_position)
-					place_teleport_target(locked_block_position)
+					place_locked_block(locked_block_position)
 
 
 func select_block(block_name : String):
@@ -282,7 +292,7 @@ func create_audio(block_selected, block_position : Vector2):
 		block_scene:
 			if _check_if_tile_empty(block_position) == true or tiles.get_cellv(block_position) == tiles.VOID_ID:
 				AudioManager.create_place_block_sound()
-		block_yellow_scene, block_blue_scene, block_red_scene, goal_scene:
+		block_yellow_scene, block_blue_scene, block_red_scene, block_purple_scene, goal_scene:
 			if _check_if_tile_empty(block_position) == true or tiles.get_cellv(block_position) in [tiles.VOID_ID, tiles.BLOCK_ID]:
 				AudioManager.create_place_block_sound()
 		void_scene:
@@ -401,7 +411,6 @@ func place_teleport_target(teleport_target_position : Vector2):
 
 func place_locked_block(locked_block_position : Vector2):
 	place_decoration(locked_block_position)
-	tiles.set_cellv(locked_block_position, tiles.BLOCK_ID)
 	locked_block_placed = true
 	last_locked_block_position = locked_block_position
 	level_editor_place_confirmation.confirmation_fade_in()
@@ -473,6 +482,10 @@ func remove_block_coordinates(block_position : Vector2):
 		var index = tiles.blue_blocks.values().find(block_position)
 		tiles.set_cellv(tiles.blue_blocks.keys()[index], -1)
 		tiles.blue_blocks.erase(tiles.blue_blocks.keys()[index])
+	elif decoration.get_cellv(block_position) == 2:
+		var index = tiles.purple_blocks.values().find(block_position)
+		tiles.set_cellv(tiles.purple_blocks.keys()[index], -1)
+		tiles.purple_blocks.erase(tiles.purple_blocks.keys()[index])
 
 
 func remove_player_position():

@@ -17,11 +17,6 @@ func set_rotation_mode(value):
 		rotation_mode = rotation_modes.RIGHT
 
 
-func _ready():
-	if get_tree().current_scene.name == "LevelEditor":
-		editor_mode = true
-
-
 func spin_level(player):
 	if !triggered:
 		set_triggered(true)

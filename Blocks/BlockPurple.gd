@@ -12,11 +12,6 @@ func set_locked_block_pos(value):
 	locked_block_pos = value
 
 
-func _ready():
-	if get_tree().current_scene.name == "LevelEditor":
-		editor_mode = true
-
-
 func unlock_block():
 	if !triggered:
 		set_triggered(true)

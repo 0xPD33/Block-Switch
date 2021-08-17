@@ -11,7 +11,7 @@ func _ready():
 	if get_tree().current_scene.name == "Game":
 		tiles.setup_tiles()
 		player_tile.setup_player()
-		decoration.setup_gems()
+		decoration.setup_deco()
 		get_parent().current_level = self
 
 
